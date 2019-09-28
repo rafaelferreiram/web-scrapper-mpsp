@@ -91,6 +91,8 @@ public class MockSrapperJob {
 		driver.findElement(By.id("formPesquisarTrabalhador:submitPesqTrab")).click();
 		cagedJob.getElementsFromScreenCagedTrabalhador(driver);
 		takeScreenShot(driver, "Caged/Trabalhador");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina10-relatorio-vinculos-trabalhador.pdf");
+		takeScreenShot(driver, "Caged/Trabalhador/pdf");
 		goHome(driver);
 	}
 
