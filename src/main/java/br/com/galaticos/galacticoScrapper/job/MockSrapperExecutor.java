@@ -33,9 +33,9 @@ public class MockSrapperExecutor {
 		logger.info("logged in ");
 		try {
 			TimeUnit.SECONDS.sleep(2);
-			mockSrapperJob.accessArisp(driver);
-			mockSrapperJob.accessArpenp(driver);
-			mockSrapperJob.accessCadesp(driver);
+			//mockSrapperJob.accessArisp(driver);
+			//mockSrapperJob.accessArpenp(driver);
+			//mockSrapperJob.accessCadesp(driver);
 			mockSrapperJob.accessCaged(driver);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -23,6 +23,9 @@ public class MockSrapperJob {
 	@Autowired
 	private CadespJob cadespJob;
 	
+	@Autowired
+	private CagedJob cagedJob;
+	
 	public WebDriver login(LoginDTO login, WebDriver driver) {
 		WebElement loginInput = driver.findElement(By.id("username"));
 		WebElement passwordInput = driver.findElement(By.id("password"));
@@ -78,12 +81,15 @@ public class MockSrapperJob {
 		driver.get(
 				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina3-consulta-autorizado-responsavel.html");
 		driver.findElement(By.id("formPesquisarAutorizado:bt027_8")).click();
+		cagedJob.getElementsFromScreenCaged(driver);
 		takeScreenShot(driver, "Caged");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina4-consulta-empresa.html");
 		driver.findElement(By.id("formPesquisarEmpresaCAGED:btConsultar")).click();
+		cagedJob.getElementsFromScreenCagedEmpresa(driver);
 		takeScreenShot(driver, "Caged/Empresa");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina6-consulta-trabalhador.html");
 		driver.findElement(By.id("formPesquisarTrabalhador:submitPesqTrab")).click();
+		cagedJob.getElementsFromScreenCagedTrabalhador(driver);
 		takeScreenShot(driver, "Caged/Trabalhador");
 		goHome(driver);
 	}
