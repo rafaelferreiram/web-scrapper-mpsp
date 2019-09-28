@@ -1,5 +1,8 @@
 HELP.md
 target/
+screeShots/
+chromedriver
+.chromedriver
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
