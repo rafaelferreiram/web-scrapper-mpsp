@@ -15,33 +15,46 @@ import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
 @Service
 @Scope("prototype")
 public class MockSrapperExecutor {
-	
+
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MockSrapperExecutor.class);
-	
+
 	@Autowired
 	private MockSrapperJob mockSrapperJob;
 
 	public void execute(LoginDTO login) throws InterruptedException {
-		
+
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
 		WebDriver driver = new ChromeDriver();
-		
+
 		// Navigate to URL
 		driver.get(login.getUrl());
-		
-		mockSrapperJob.login(login,driver);
-		logger.info("logged in ");
-		try {
-			TimeUnit.SECONDS.sleep(2);
-			//mockSrapperJob.accessArisp(driver);
-			//mockSrapperJob.accessArpenp(driver);
-			//mockSrapperJob.accessCadesp(driver);
-			mockSrapperJob.accessCaged(driver);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		if (!mockSrapperJob.login(login, driver)) {
+			logger.info("[Login ERROR] - Invalid Username or Password");
+		} else {
+			logger.info("[Login SUCCESS] - Logged in successfully");
+			try {
+				TimeUnit.SECONDS.sleep(2);
+				executeScrapperForMocks(driver);
+			} catch (IOException e) {
+				logger.error(e.getMessage());
+				e.printStackTrace();
+			}
 		}
+		TimeUnit.SECONDS.sleep(2);
 		driver.quit();
+	}
+
+	private void executeScrapperForMocks(WebDriver driver) throws IOException {
+
+		mockSrapperJob.accessArisp(driver);
+		mockSrapperJob.accessArpenp(driver);
+		mockSrapperJob.accessCadesp(driver);
+		mockSrapperJob.accessCaged(driver);
+		mockSrapperJob.accessCensec(driver);
+		mockSrapperJob.accessSiel(driver);
+		mockSrapperJob.accessSivec(driver);
+		
 	}
 
 }
