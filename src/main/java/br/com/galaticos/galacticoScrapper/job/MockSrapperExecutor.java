@@ -30,19 +30,16 @@ public class MockSrapperExecutor {
 
 	public void execute(LoginDTO login) throws InterruptedException {
 
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
-		String downloadFilepath = "/Users/rafaelferreira/Projetos/AMWebCrawler/galacticoScrapper/downloads";
+System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/chromedriver");
+		String downloadFilepath = System.getProperty("user.dir") +"\\downloads";
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-		chromePrefs.put("profile.default_content_settings.popups", 0);
 		chromePrefs.put("download.default_directory", downloadFilepath);
+		chromePrefs.put("plugins.always_open_pdf_externally", true);
+		chromePrefs.put("pdfjs.disabled", true);
 		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-print-preview");
 		options.setExperimentalOption("prefs", chromePrefs);
-		options.addArguments("--print-to-pdf"); // to disable browser extension popup
-		DesiredCapabilities cap = DesiredCapabilities.chrome();
-		cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
-		cap.setCapability(ChromeOptions.CAPABILITY, options);
-		WebDriver driver = new ChromeDriver(cap);
-		
+		WebDriver driver = new ChromeDriver(options);
 		// Navigate to URL
 		driver.get(login.getUrl());
 
