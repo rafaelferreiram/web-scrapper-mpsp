@@ -1,6 +1,7 @@
 package br.com.galaticos.galacticoScrapper.job;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
@@ -13,34 +14,41 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
 
 @Service
 public class MockSrapperJob {
-	
+
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MockSrapperJob.class);
-	
+
 	@Autowired
 	private ArpenpJob arpenpJob;
-	
+
 	@Autowired
 	private CadespJob cadespJob;
-	
+
 	@Autowired
 	private CagedJob cagedJob;
-	
+
 	@Autowired
 	private CensecJob censecJob;
-	
+
 	@Autowired
 	private SielJob sielJob;
-	
+
 	@Autowired
 	private SivecJob sivecJob;
-	
-	private static String HOME;
-	
+
+	@Autowired
+	private InfocrimJob infocrimJob;
+
 	public boolean login(LoginDTO login, WebDriver driver) {
 		boolean logged = Boolean.FALSE;
 		WebElement loginInput = driver.findElement(By.id("username"));
@@ -49,9 +57,8 @@ public class MockSrapperJob {
 		passwordInput.sendKeys(login.getPassword());
 
 		driver.findElement(By.tagName("button")).click();
-		if(!driver.getCurrentUrl().equals(login.getUrl())) {
-			setHOME(driver.getCurrentUrl().toString());
-			logged =  Boolean.TRUE;
+		if (!driver.getCurrentUrl().equals(login.getUrl())) {
+			logged = Boolean.TRUE;
 		}
 		return logged;
 
@@ -109,18 +116,20 @@ public class MockSrapperJob {
 		takeScreenShot(driver, "Caged");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina4-consulta-empresa.html");
 		driver.findElement(By.id("formPesquisarEmpresaCAGED:btConsultar")).click();
-		cagedJob.getElementsFromScreenCagedEmpresa(driver);
+		logger.info(driver.getCurrentUrl());
+		cagedJob.getElementsFromScreenCaged(driver);
 		takeScreenShot(driver, "Caged/Empresa");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina6-consulta-trabalhador.html");
 		driver.findElement(By.id("formPesquisarTrabalhador:submitPesqTrab")).click();
-		cagedJob.getElementsFromScreenCagedTrabalhador(driver);
+		cagedJob.getElementsFromScreenCaged(driver);
 		takeScreenShot(driver, "Caged/Trabalhador");
-		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina10-relatorio-vinculos-trabalhador.pdf");
+		driver.get(
+				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina10-relatorio-vinculos-trabalhador.pdf");
 		takeScreenShot(driver, "Caged/Trabalhador/pdf");
 		goHome(driver);
 	}
 
-	public void accessCensec(WebDriver driver) throws IOException{
+	public void accessCensec(WebDriver driver) throws IOException {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/login.html");
 		WebElement loginInput = driver.findElement(By.id("LoginTextBox"));
 		WebElement passwordInput = driver.findElement(By.id("SenhaTextBox"));
@@ -128,15 +137,16 @@ public class MockSrapperJob {
 		passwordInput.sendKeys(MockConstants.PASSWORD);
 
 		driver.findElement(By.id("EntrarButton")).click();
-		if(!driver.getCurrentUrl().equals(getHOME())) {
+		if (!driver.getCurrentUrl().equals(MockConstants.URL)) {
 			logger.info("Got into CENSEC");
-			
+
 			driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/pagina3-pesquisa.html");
-			driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/pagina5-dados.html?__VIEWSTATEGENERATOR=128406E2&__SCROLLPOSITIONX=0&__SCROLLPOSITIONY=670&ctl00%24ContentPlaceHolder1%24NomeTextBox=&ctl00%24ContentPlaceHolder1%24DocumentoTextBox=19.811.201%2F0001-05&ctl00%24ContentPlaceHolder1%24IdentidadeTextBox=&ctl00%24ContentPlaceHolder1%24ComplementoTextBox=&ctl00%24ContentPlaceHolder1%24LivroTextBox=&ctl00%24ContentPlaceHolder1%24FolhaTextBox=&ctl00%24ContentPlaceHolder1%24TipoAtoDropDownList=0&ctl00%24ContentPlaceHolder1%24DataDeTextBox=&ctl00%24ContentPlaceHolder1%24DataAteTextBox=&ctl00%24ContentPlaceHolder1%24UFDropDownList=0&ctl00%24ContentPlaceHolder1%24MunicipioDropDownList=0&ctl00%24ContentPlaceHolder1%24CartorioDropDownList=0&ctl00%24ContentPlaceHolder1%24txtCaptcha=&ctl00%24ContentPlaceHolder1%24VisualizarButton=Visualizar");
+			driver.get(
+					"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/pagina5-dados.html?__VIEWSTATEGENERATOR=128406E2&__SCROLLPOSITIONX=0&__SCROLLPOSITIONY=670&ctl00%24ContentPlaceHolder1%24NomeTextBox=&ctl00%24ContentPlaceHolder1%24DocumentoTextBox=19.811.201%2F0001-05&ctl00%24ContentPlaceHolder1%24IdentidadeTextBox=&ctl00%24ContentPlaceHolder1%24ComplementoTextBox=&ctl00%24ContentPlaceHolder1%24LivroTextBox=&ctl00%24ContentPlaceHolder1%24FolhaTextBox=&ctl00%24ContentPlaceHolder1%24TipoAtoDropDownList=0&ctl00%24ContentPlaceHolder1%24DataDeTextBox=&ctl00%24ContentPlaceHolder1%24DataAteTextBox=&ctl00%24ContentPlaceHolder1%24UFDropDownList=0&ctl00%24ContentPlaceHolder1%24MunicipioDropDownList=0&ctl00%24ContentPlaceHolder1%24CartorioDropDownList=0&ctl00%24ContentPlaceHolder1%24txtCaptcha=&ctl00%24ContentPlaceHolder1%24VisualizarButton=Visualizar");
 			censecJob.getElementsFromScreenCensec(driver);
 			takeScreenShot(driver, "Censec");
 		}
-		
+
 	}
 
 	public void accessSiel(WebDriver driver) throws IOException {
@@ -144,31 +154,35 @@ public class MockSrapperJob {
 
 		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/form/table/tbody/tr[3]/td[2]/input")).click();
 		logger.info("Got into SIEL");
-		WebElement inputName = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[1]/table/tbody/tr[1]/td[2]/input"));
+		WebElement inputName = driver.findElement(
+				By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[1]/table/tbody/tr[1]/td[2]/input"));
 		inputName.sendKeys("KLAUS TORRES CAMARA");
-		WebElement nmProcesso = driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input"));
+		WebElement nmProcesso = driver.findElement(
+				By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input"));
 		nmProcesso.sendKeys("889532255");
 		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/table/tbody/tr/td[2]/input")).click();
-		//driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/pagina3-dados.html?nome=KLAUS+TORRES+CAMARA&nome_mae=&dt_nascimento=&num_titulo=&num_processo=889532255&x=45&y=12");
+		// driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/pagina3-dados.html?nome=KLAUS+TORRES+CAMARA&nome_mae=&dt_nascimento=&num_titulo=&num_processo=889532255&x=45&y=12");
 		sielJob.getElementsFromScreenSiel(driver);
 		takeScreenShot(driver, "Siel");
 		goHome(driver);
 	}
 
-	public void accessSivec(WebDriver driver) throws IOException{
+	public void accessSivec(WebDriver driver) throws IOException {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/sivec/login.html");
-		WebElement inputUsername = driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/div/div[2]/div[1]/input"));
-		WebElement inputPassword = driver.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/div/div[2]/div[2]/input"));
+		WebElement inputUsername = driver
+				.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/div/div[2]/div[1]/input"));
+		WebElement inputPassword = driver
+				.findElement(By.xpath("/html/body/form/div/div[2]/div[1]/div/div[2]/div[2]/input"));
 		inputUsername.sendKeys(MockConstants.LOGIN);
 		inputPassword.sendKeys(MockConstants.PASSWORD);
 		driver.findElement(By.id("Acessar")).click();
-		if(!driver.getCurrentUrl().equals(getHOME())){
+		if (!driver.getCurrentUrl().equals(MockConstants.URL)) {
 			logger.info("Got into SIVEC");
 			driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/sivec/pagina3-pesquisa-rg.html");
 			WebElement inputRG = driver.findElement(By.xpath("/html/body/form/div/div[5]/div/div/input"));
 			inputRG.sendKeys("12312321");
 			driver.findElement(By.id("procurar")).click();
-			
+
 			driver.findElement(By.xpath("/html/body/form/div/div[3]/div/div/div[2]/table/tbody/tr[1]/td[1]/a")).click();
 			sivecJob.getElementsFromScreenSivec(driver);
 			takeScreenShot(driver, "Sivec");
@@ -176,10 +190,10 @@ public class MockSrapperJob {
 		}
 
 	}
-	
-	//Private Methods
+
+	// Private Methods
 	private static void goHome(WebDriver driver) {
-		driver.get(getHOME());
+		driver.get(MockConstants.URL_HOME);
 	}
 
 	private static void takeScreenShot(WebDriver driver, String folder) throws IOException {
@@ -189,14 +203,48 @@ public class MockSrapperJob {
 		FileUtils.copyFileToDirectory(SrcFile, DestFile);
 	}
 
-	public static String getHOME() {
-		return HOME;
+	public void accessDetran(WebDriver driver) {
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/login.html");
+		WebElement input = driver.findElement(By.xpath(
+				"/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[2]/div[2]/table[1]/tbody/tr[1]/td[2]/input"));
+		input.sendKeys(MockConstants.LOGIN);
+		WebElement password = driver.findElement(By.xpath(
+				"/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[2]/div[2]/table[1]/tbody/tr[2]/td[2]/input"));
+		password.sendKeys(MockConstants.PASSWORD);
+		driver.findElement(By.id("form:j_id563205015_44efc15b")).click();
+		driver.get(
+				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina6-relat%C3%B3rio-linha-de-vida.pdf");
+		// getFromPDF
 	}
 
-	public void setHOME(String hOME) {
-		HOME = hOME;
+	public void accessInfocrim(WebDriver driver) throws IOException, DocumentException {
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/login.html");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina2-pesquisa.html");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina3-dados.html");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina4-detalhes-bo.html");
+		//driver.findElement(By.xpath("/html/body/table/tbody/tr/td/a[2]/img")).click();
+//		Select select = new Select(driver.findElement(By.xpath("/html/body/print-preview-app//print-preview-sidebar//div[2]/print-preview-destination-settings//print-preview-settings-section[1]/div/print-preview-destination-select//select")));
+//		select.selectByVisibleText("Save as PDF");
+//		select.selectByIndex(2);
+//		driver.findElement(By.xpath("/html/body/print-preview-app//print-preview-sidebar//print-preview-header//div[2]/cr-button[2]")).click();
+		//infocrimJob.getElementsFromScreen(driver);
+		 getPdf(driver);
+		// TODO scrapping
+		// TODO getFromPDF
 	}
 
-
+	private void getPdf(WebDriver driver) throws IOException, DocumentException {
+		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); ///Users/rafaelferreira/Wget
+	    FileUtils.copyFile(screenshot, new File("screenshot.png"));
+	    Document document = new Document(PageSize.A4, 20, 20, 20, 20);
+	    PdfWriter.getInstance(document, new FileOutputStream("webaspdf.pdf"));
+	    document.open();
+	    Image image = Image.getInstance("screenshot.png");
+	    document.add(image);
+	    document.close();
+	    //File srcFile = driver.getCurrentUrl().toString();
+	    File DestFile = new File(System.getProperty("user.dir") + "/downloads/");
+	    //FileUtils.copyFileToDirectory(srcFile, DestFile);
+	}
 
 }

@@ -3,9 +3,11 @@ package br.com.galaticos.galacticoScrapper.job;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.galaticos.galacticoScrapper.model.Caged;
+import br.com.galaticos.galacticoScrapper.model.CagedAll;
 import br.com.galaticos.galacticoScrapper.model.CagedEmpresa;
 import br.com.galaticos.galacticoScrapper.model.CagedTrabalhador;
 
@@ -13,10 +15,31 @@ import br.com.galaticos.galacticoScrapper.model.CagedTrabalhador;
 public class CagedJob {
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CagedJob.class);
+	
+	private CagedAll cagedAll = new CagedAll();
+	private Caged caged;
+	private CagedEmpresa cagedEmpresa; 
+	private CagedTrabalhador cagedTrabalhador; 
 
-	public void getElementsFromScreenCagedTrabalhador(WebDriver driver) {
-		CagedTrabalhador cagedTrabalhador = populateCagedTrabalhador(driver);
-		logger.info(cagedTrabalhador.toString());
+	public void getElementsFromScreenCaged(WebDriver driver) {
+		
+		if(driver.getCurrentUrl().equals("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina7-dados-autorizado-responsavel.html?formPesquisarAutorizado=formPesquisarAutorizado&formPesquisarAutorizado%3AslctTipoPesquisaAutorizado=1&formPesquisarAutorizado%3Aj_idt40=1&formPesquisarAutorizado%3AslctPesquisarPrimeiroAutorizado=1&formPesquisarAutorizado%3AtxtChavePesquisaAutorizado014=&formPesquisarAutorizado%3Abt027_8=Consultar&formPesquisarAutorizado%3Aj_idt66=&javax.faces.ViewState=5832164626526760368%3A-3057975735432683263")) {
+			logger.info("CAGED");
+			caged = populateCaged(driver);
+			cagedAll.setCaged(caged);
+			logger.info(caged.toString());
+		}else if (driver.getCurrentUrl().equals("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina8-dados-empresa.html?formPesquisarEmpresaCAGED=formPesquisarEmpresaCAGED&formPesquisarEmpresaCAGED%3AtxtcnpjRaiz=&formPesquisarEmpresaCAGED%3AslctIdPesquisarPrimeiro=1&formPesquisarEmpresaCAGED%3AbtConsultar=Consultar&javax.faces.ViewState=5832164626526760368%3A4039376737370855809")) {
+			logger.info("CAGED EMPRESA");
+			cagedEmpresa =  populateCagedEmpresa(driver);
+			cagedAll.setCagedEmpresa(cagedEmpresa);
+			logger.info(cagedEmpresa.toString());
+		}else {
+			logger.info("CAGED TRABALHO");
+			cagedTrabalhador = populateCagedTrabalhador(driver);
+			cagedAll.setCagedTrabalhador(cagedTrabalhador);
+			logger.info(cagedTrabalhador.toString());
+		}
+		logger.info(cagedAll.toString());
 	}
 
 	private CagedTrabalhador populateCagedTrabalhador(WebDriver driver) {
@@ -35,17 +58,6 @@ public class CagedJob {
 		cagedTrabalhador.setCaged(driver.findElement(By.xpath("/html/body/div[2]/div[6]/fieldset[3]/div/div[1]/div[2]/span")).getText());
 		cagedTrabalhador.setRais(driver.findElement(By.xpath("/html/body/div[2]/div[6]/fieldset[3]/div/div[2]/div[2]/span")).getText());
 		return cagedTrabalhador;
-	}
-
-	public void getElementsFromScreenCagedEmpresa(WebDriver driver) {
-		CagedEmpresa cagedEmpresa = populateCagedEmpresa(driver);
-		logger.info(cagedEmpresa.toString());
-	}
-
-	public void getElementsFromScreenCaged(WebDriver driver) {
-		Caged caged = populateCaged(driver);
-		logger.info(caged.toString());
-
 	}
 
 	private CagedEmpresa populateCagedEmpresa(WebDriver driver) {
