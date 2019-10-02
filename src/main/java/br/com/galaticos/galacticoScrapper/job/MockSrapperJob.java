@@ -78,6 +78,7 @@ public class MockSrapperJob {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/pagina8-matriculas.html");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/pagina10-visualizar-matriculas.htm");
 		takeScreenShot(driver, "Arisp");
+		driver.findElement(By.xpath("/html/body/a")).click();
 		goHome(driver);
 
 	}
