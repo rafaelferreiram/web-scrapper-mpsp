@@ -1,8 +1,11 @@
 package br.com.galaticos.galacticoScrapper.job;
 
+import java.awt.print.PageFormat;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
+
+import javax.swing.text.BadLocationException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -14,11 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.qoppa.pdfWriter.PDFDocument;
 
 import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
@@ -183,7 +183,7 @@ public class MockSrapperJob {
 			inputRG.sendKeys("12312321");
 			driver.findElement(By.id("procurar")).click();
 
-			driver.findElement(By.xpath("/html/body/form/div/div[3]/div/div/div[2]/table/tbody/tr[1]/td[1]/a")).click();
+			driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/sivec/pagina7-dados.html");
 			sivecJob.getElementsFromScreenSivec(driver);
 			takeScreenShot(driver, "Sivec");
 			goHome(driver);
@@ -205,6 +205,7 @@ public class MockSrapperJob {
 
 	public void accessDetran(WebDriver driver) {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/login.html");
+		logger.info("Got into DETRAN");
 		WebElement input = driver.findElement(By.xpath(
 				"/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[2]/div[2]/table[1]/tbody/tr[1]/td[2]/input"));
 		input.sendKeys(MockConstants.LOGIN);
@@ -214,37 +215,32 @@ public class MockSrapperJob {
 		driver.findElement(By.id("form:j_id563205015_44efc15b")).click();
 		driver.get(
 				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina6-relat%C3%B3rio-linha-de-vida.pdf");
-		// getFromPDF
 	}
 
 	public void accessInfocrim(WebDriver driver) throws IOException, DocumentException {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/login.html");
+		logger.info("Got into INFOCRIM");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina2-pesquisa.html");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina3-dados.html");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina4-detalhes-bo.html");
-		//driver.findElement(By.xpath("/html/body/table/tbody/tr/td/a[2]/img")).click();
-//		Select select = new Select(driver.findElement(By.xpath("/html/body/print-preview-app//print-preview-sidebar//div[2]/print-preview-destination-settings//print-preview-settings-section[1]/div/print-preview-destination-select//select")));
-//		select.selectByVisibleText("Save as PDF");
-//		select.selectByIndex(2);
-//		driver.findElement(By.xpath("/html/body/print-preview-app//print-preview-sidebar//print-preview-header//div[2]/cr-button[2]")).click();
-		//infocrimJob.getElementsFromScreen(driver);
-		 getPdf(driver);
-		// TODO scrapping
-		// TODO getFromPDF
+		String urlAtual = driver.getCurrentUrl();
+		try {
+			logger.info("Got into PDF page INFOCRIM");
+			getPdf(driver,urlAtual);
+			logger.info("Wrote PDF file base on "+driver.getTitle());
+		} catch (BadLocationException e) {
+			logger.error("ERROR writing the PDF file base on "+driver.getTitle());
+			e.printStackTrace();
+		}
 	}
 
-	private void getPdf(WebDriver driver) throws IOException, DocumentException {
-		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); ///Users/rafaelferreira/Wget
-	    FileUtils.copyFile(screenshot, new File("screenshot.png"));
-	    Document document = new Document(PageSize.A4, 20, 20, 20, 20);
-	    PdfWriter.getInstance(document, new FileOutputStream("webaspdf.pdf"));
-	    document.open();
-	    Image image = Image.getInstance("screenshot.png");
-	    document.add(image);
-	    document.close();
-	    //File srcFile = driver.getCurrentUrl().toString();
-	    File DestFile = new File(System.getProperty("user.dir") + "/downloads/");
-	    //FileUtils.copyFileToDirectory(srcFile, DestFile);
+	private void getPdf(WebDriver driver, String urlPdf) throws IOException, DocumentException, BadLocationException {
+		URL url = new URL("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina4-detalhes-bo.html");
+		String downloadFilepath = System.getProperty("user.dir") + "/downloads";
+		logger.info("File path: "+downloadFilepath);
+		PageFormat pf = new PageFormat();
+		PDFDocument pdfDoc = PDFDocument.loadHTML(url, pf, true);
+		pdfDoc.saveDocument(downloadFilepath + "/" + driver.getTitle() + ".pdf");
 	}
 
 }

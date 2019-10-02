@@ -1,7 +1,9 @@
 package br.com.galaticos.galacticoScrapper.model;
-
+import org.springframework.data.annotation.Id;
 public class Arpenp {
-
+	
+	@Id
+	private String id;
 	private String cartorio;
 	private String cns;
 	private String uf;
@@ -18,6 +20,43 @@ public class Arpenp {
 	private String numeroFolha;
 	private String numeroRegistro;
 	private String tipoLivro;
+
+	
+	public Arpenp() {
+		super();
+	}
+
+	public Arpenp(String id, String cartorio, String cns, String uf, String conjuge, String conjugeNovoNome,
+			String conjuge2, String conjuge2NovoNome, String dtCasamento, String matricula, String dtEntrada,
+			String dtRegistro, String acervo, String numeroLivro, String numeroFolha, String numeroRegistro,
+			String tipoLivro) {
+		super();
+		this.id = id;
+		this.cartorio = cartorio;
+		this.cns = cns;
+		this.uf = uf;
+		this.conjuge = conjuge;
+		this.conjugeNovoNome = conjugeNovoNome;
+		this.conjuge2 = conjuge2;
+		this.conjuge2NovoNome = conjuge2NovoNome;
+		this.dtCasamento = dtCasamento;
+		this.matricula = matricula;
+		this.dtEntrada = dtEntrada;
+		this.dtRegistro = dtRegistro;
+		this.acervo = acervo;
+		this.numeroLivro = numeroLivro;
+		this.numeroFolha = numeroFolha;
+		this.numeroRegistro = numeroRegistro;
+		this.tipoLivro = tipoLivro;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getCartorio() {
 		return cartorio;
