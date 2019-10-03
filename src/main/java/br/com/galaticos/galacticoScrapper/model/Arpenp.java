@@ -1,5 +1,8 @@
 package br.com.galaticos.galacticoScrapper.model;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "arpenp")
 public class Arpenp {
 	
 	@Id

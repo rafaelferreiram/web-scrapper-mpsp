@@ -8,18 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.galaticos.galacticoScrapper.model.Arpenp;
-import br.com.galaticos.galacticoScrapper.repository.ArpenpRepository;
+import br.com.galaticos.galacticoScrapper.model.Cadesp;
+import br.com.galaticos.galacticoScrapper.repository.CadespRepository;
 
 @RestController
-@RequestMapping("/arpend")
-public class ArpenpController {
+@RequestMapping("/cadesp")
+public class CadespController {
 
 	@Autowired
-	  private ArpenpRepository repository;
-	  
-	  @RequestMapping(value = "/", method = RequestMethod.GET)
-	  public ResponseEntity<List<Arpenp>> getArpenp() {
-	    return ResponseEntity.ok().body(repository.findAll());
-	  }
+	private CadespRepository repository;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ResponseEntity<List<Cadesp>> getArpenp() {
+		return ResponseEntity.ok().body(repository.findAll());
+	}
 }
+
+

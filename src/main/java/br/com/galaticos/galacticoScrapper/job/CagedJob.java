@@ -10,6 +10,10 @@ import br.com.galaticos.galacticoScrapper.model.Caged;
 import br.com.galaticos.galacticoScrapper.model.CagedAll;
 import br.com.galaticos.galacticoScrapper.model.CagedEmpresa;
 import br.com.galaticos.galacticoScrapper.model.CagedTrabalhador;
+import br.com.galaticos.galacticoScrapper.repository.CagedAllRepository;
+import br.com.galaticos.galacticoScrapper.repository.CagedEmpresaRepository;
+import br.com.galaticos.galacticoScrapper.repository.CagedRepository;
+import br.com.galaticos.galacticoScrapper.repository.CagedTrabalhadorRepository;
 
 @Service
 public class CagedJob {
@@ -20,6 +24,18 @@ public class CagedJob {
 	private Caged caged;
 	private CagedEmpresa cagedEmpresa; 
 	private CagedTrabalhador cagedTrabalhador; 
+	
+	@Autowired
+	private CagedRepository cagedRepository;
+	
+	@Autowired
+	private CagedEmpresaRepository cagedEmpresaRepository;
+	
+	@Autowired
+	private CagedTrabalhadorRepository cagedTrabalhadorRepository;
+	
+	@Autowired
+	private CagedAllRepository cadegAllRepository;
 
 	public void getElementsFromScreenCaged(WebDriver driver) {
 		
@@ -28,18 +44,26 @@ public class CagedJob {
 			caged = populateCaged(driver);
 			cagedAll.setCaged(caged);
 			logger.info(caged.toString());
+			cagedRepository.save(caged);
+			logger.info("CAGED Saved");
 		}else if (driver.getCurrentUrl().equals("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina8-dados-empresa.html?formPesquisarEmpresaCAGED=formPesquisarEmpresaCAGED&formPesquisarEmpresaCAGED%3AtxtcnpjRaiz=&formPesquisarEmpresaCAGED%3AslctIdPesquisarPrimeiro=1&formPesquisarEmpresaCAGED%3AbtConsultar=Consultar&javax.faces.ViewState=5832164626526760368%3A4039376737370855809")) {
 			logger.info("CAGED EMPRESA");
 			cagedEmpresa =  populateCagedEmpresa(driver);
-			cagedAll.setCagedEmpresa(cagedEmpresa);
 			logger.info(cagedEmpresa.toString());
+			cagedAll.setCagedEmpresa(cagedEmpresa);
+			cagedEmpresaRepository.save(cagedEmpresa);
+			logger.info("CAGED EMPRESA Saved");
 		}else {
 			logger.info("CAGED TRABALHO");
 			cagedTrabalhador = populateCagedTrabalhador(driver);
-			cagedAll.setCagedTrabalhador(cagedTrabalhador);
 			logger.info(cagedTrabalhador.toString());
+			cagedAll.setCagedTrabalhador(cagedTrabalhador);
+			cagedTrabalhadorRepository.save(cagedTrabalhador);
+			logger.info("CAGED TRABALHADOR Saved");
 		}
 		logger.info(cagedAll.toString());
+		cadegAllRepository.save(cagedAll);
+		logger.info("CAGED ALL Saved");
 	}
 
 	private CagedTrabalhador populateCagedTrabalhador(WebDriver driver) {

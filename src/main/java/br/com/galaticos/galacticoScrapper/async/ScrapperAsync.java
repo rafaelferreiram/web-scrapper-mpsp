@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
-import br.com.galaticos.galacticoScrapper.job.MockSrapperExecutor;
+import br.com.galaticos.galacticoScrapper.executor.MockSrapperExecutor;
 
 @Component
 @Scope("prototype")

@@ -6,18 +6,25 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.galaticos.galacticoScrapper.model.Censec;
+import br.com.galaticos.galacticoScrapper.repository.CensecRepository;
 
 @Service
 public class CensecJob {
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CensecJob.class);
+	
+	@Autowired
+	private CensecRepository censecRepository;
 
 	public void getElementsFromScreenCensec(WebDriver driver) {
 		Censec censec = populateCensec(driver);
 		logger.info(censec.toString());
+		censecRepository.save(censec);
+		logger.info("CENSEC saved");
 	}
 
 	private Censec populateCensec(WebDriver driver) {

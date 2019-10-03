@@ -1,7 +1,13 @@
 package br.com.galaticos.galacticoScrapper.model;
 
-public class CagedEmpresa {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection="cagedEmpresa")
+public class CagedEmpresa {
+	
+	@Id
+	private String id;
 	//dados empresa
 	private String cnpj;
 	private String razaoSocial;
@@ -16,6 +22,12 @@ public class CagedEmpresa {
 	private String ultimoDia;
 	private String variacaoAbsoluta;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getCnpj() {
 		return cnpj;
 	}

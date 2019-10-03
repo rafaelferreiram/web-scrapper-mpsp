@@ -3,18 +3,25 @@ package br.com.galaticos.galacticoScrapper.job;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.galaticos.galacticoScrapper.model.Cadesp;
+import br.com.galaticos.galacticoScrapper.repository.CadespRepository;
 
 @Service
 public class CadespJob {
 	
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CadespJob.class);
 
+	@Autowired
+	private CadespRepository repository;
+	
 	public void getElementsFromScreenCadesp(WebDriver driver) {
 		Cadesp cadesp = populateCadesp(driver);
 		logger.info(cadesp.toString());
+		repository.save(cadesp);
+		logger.info("CADESP Saved");
 	}
 
 	private Cadesp populateCadesp(WebDriver driver) {

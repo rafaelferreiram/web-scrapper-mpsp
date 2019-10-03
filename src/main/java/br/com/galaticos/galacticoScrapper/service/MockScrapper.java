@@ -1,5 +1,6 @@
 package br.com.galaticos.galacticoScrapper.service;
 
+import java.io.IOException;
 import java.util.Date;
 
 import org.slf4j.LoggerFactory;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
-import br.com.galaticos.galacticoScrapper.job.MockSrapperExecutor;
+import br.com.galaticos.galacticoScrapper.executor.MockSrapperExecutor;
 
 
 @Service
@@ -27,8 +28,7 @@ public class MockScrapper {
 			mockSrapperExecutor.execute(login);
 			logger.info("Scrapper finished at "+new Date());
 			valid = Boolean.TRUE;
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+		} catch (InterruptedException | IOException e) {
 			e.printStackTrace();
 		}
 		return valid;

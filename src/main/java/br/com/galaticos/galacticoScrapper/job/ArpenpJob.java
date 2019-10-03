@@ -39,23 +39,9 @@ public class ArpenpJob {
 				}
 			}
 		}
-		MongoOperations mongoOps = new MongoTemplate(MongoClients.create(), "database");
-		mongoOps.insert(arpenp);
-		List<Arpenp> lista = mongoOps.findAll(Arpenp.class);
-		for (int i = 0; i < lista.size(); i++) {
-			Arpenp arp = lista.get(i);
-			logger.info(arpenp.toString());
-		}
+		repository.save(arpenp);
+		logger.info("ARPENP Saved");
 
-//		logger.info(arpenp.toString());
-//		repository.save(arpenp);
-//		logger.info("Salvo");
-//		//arpenp = null;
-//		repository.findAll();
-//		for (int i = 0; i < lista.size(); i++) {
-//			Arpenp arp = lista.get(i);
-//			logger.info(arpenp.toString());
-//		}
 	}
 
 	private Arpenp populateArpenp(WebElement cell, Arpenp arpenp) {

@@ -235,6 +235,13 @@ public class MockSrapperJob {
 		}
 	}
 
+	public void accessJucesp(WebDriver driver) {
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/jucesp/index.html");
+		driver.findElement(By.xpath("/html/body/div[4]/form/div[3]/div[4]/div[1]/div/div[1]/table/tbody/tr/td[2]/input")).click();
+		driver.findElement(By.xpath("/html/body/div[4]/div[3]/div[4]/div[2]/div/div/table/tbody/tr[2]/td/input")).click();
+		driver.findElement(By.id("ctl00_cphContent_gdvResultadoBusca_gdvContent_ctl02_lbtSelecionar")).click();
+	}
+
 	private void getPdf(WebDriver driver, String urlPdf) throws IOException, DocumentException, BadLocationException {
 		URL url = new URL("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina4-detalhes-bo.html");
 		String downloadFilepath = System.getProperty("user.dir") + "/downloads";
@@ -243,5 +250,6 @@ public class MockSrapperJob {
 		PDFDocument pdfDoc = PDFDocument.loadHTML(url, pf, true);
 		pdfDoc.saveDocument(downloadFilepath + "/" + driver.getTitle() + ".pdf");
 	}
+
 
 }

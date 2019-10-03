@@ -1,7 +1,13 @@
 package br.com.galaticos.galacticoScrapper.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "cadesp")
 public class Cadesp {
 
+	@Id
+	private String id;
 	private String ie;
 	private String cnpj;
 	private String situacao;
@@ -15,6 +21,38 @@ public class Cadesp {
 	private String ocorrenciaFiscal;
 	private String tipoUnidade;
 	private String formaAtuacao;
+
+	public Cadesp() {
+		super();
+	}
+
+	public Cadesp(String id, String ie, String cnpj, String situacao, String dtInscricaoEstado, String nomeEmpresarial,
+			String regimeEstadual, String drt, String postoFiscal, String dtInicioIE, String nire,
+			String ocorrenciaFiscal, String tipoUnidade, String formaAtuacao) {
+		super();
+		this.id = id;
+		this.ie = ie;
+		this.cnpj = cnpj;
+		this.situacao = situacao;
+		this.dtInscricaoEstado = dtInscricaoEstado;
+		this.nomeEmpresarial = nomeEmpresarial;
+		this.regimeEstadual = regimeEstadual;
+		this.drt = drt;
+		this.postoFiscal = postoFiscal;
+		this.dtInicioIE = dtInicioIE;
+		this.nire = nire;
+		this.ocorrenciaFiscal = ocorrenciaFiscal;
+		this.tipoUnidade = tipoUnidade;
+		this.formaAtuacao = formaAtuacao;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getIe() {
 		return ie;

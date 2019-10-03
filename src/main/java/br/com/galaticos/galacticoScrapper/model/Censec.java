@@ -3,8 +3,14 @@ package br.com.galaticos.galacticoScrapper.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="censec")
 public class Censec {
 
+	@Id
+	private String id;
 	// envio carga
 	private String carga;
 	private String dtMesAno;
@@ -28,6 +34,14 @@ public class Censec {
 	private List<String> ramal = new ArrayList<String>();
 	private List<String> contato = new ArrayList<String>();
 	private List<String> status = new ArrayList<String>();
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getCarga() {
 		return carga;
