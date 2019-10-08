@@ -29,7 +29,7 @@ public class MockScrapper {
 			logger.info("Scrapper finished at "+new Date());
 			valid = Boolean.TRUE;
 		} catch (InterruptedException | IOException e) {
-			e.printStackTrace();
+			//
 		}
 		return valid;
 	}

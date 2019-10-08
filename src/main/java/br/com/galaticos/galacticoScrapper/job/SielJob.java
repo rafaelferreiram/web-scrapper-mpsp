@@ -3,18 +3,25 @@ package br.com.galaticos.galacticoScrapper.job;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.galaticos.galacticoScrapper.model.Siel;
+import br.com.galaticos.galacticoScrapper.repository.SielRepository;
 
 @Service
 public class SielJob {
 
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(SielJob.class);
 	
+	@Autowired
+	private SielRepository repository;
+	
 	public void getElementsFromScreenSiel(WebDriver driver) {
 		Siel siel = populateSiel(driver);
 		logger.info(siel.toString());
+		repository.save(siel);
+		logger.info("SIEL Saved");
 	}
 
 	private Siel populateSiel(WebDriver driver) {

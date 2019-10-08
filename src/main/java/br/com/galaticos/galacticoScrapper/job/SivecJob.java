@@ -3,18 +3,25 @@ package br.com.galaticos.galacticoScrapper.job;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.galaticos.galacticoScrapper.model.Sivec;
+import br.com.galaticos.galacticoScrapper.repository.SivecRepository;
 
 @Service
 public class SivecJob {
 	
 	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(MockSrapperJob.class);
 
+	@Autowired
+	private SivecRepository repository;
+	
 	public void getElementsFromScreenSivec(WebDriver driver) {
 		Sivec sivec = populateSivec(driver);
 		logger.info(sivec.toString());
+		repository.save(sivec);
+		logger.info("SIVEC Saved");
 	}
 
 	private Sivec populateSivec(WebDriver driver) {

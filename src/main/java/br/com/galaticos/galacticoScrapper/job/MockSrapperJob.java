@@ -47,7 +47,7 @@ public class MockSrapperJob {
 	private SivecJob sivecJob;
 
 	@Autowired
-	private InfocrimJob infocrimJob;
+	private JucespJob jucespJob;
 
 	public boolean login(LoginDTO login, WebDriver driver) {
 		boolean logged = Boolean.FALSE;
@@ -162,7 +162,7 @@ public class MockSrapperJob {
 				By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/fieldset[2]/table[1]/tbody/tr/td[2]/input"));
 		nmProcesso.sendKeys("889532255");
 		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/table/tbody/tr/td[2]/input")).click();
-		// driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/pagina3-dados.html?nome=KLAUS+TORRES+CAMARA&nome_mae=&dt_nascimento=&num_titulo=&num_processo=889532255&x=45&y=12");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/pagina3-dados.html?nome=KLAUS+TORRES+CAMARA&nome_mae=&dt_nascimento=&num_titulo=&num_processo=889532255&x=45&y=12");
 		sielJob.getElementsFromScreenSiel(driver);
 		takeScreenShot(driver, "Siel");
 		goHome(driver);
@@ -231,7 +231,6 @@ public class MockSrapperJob {
 			logger.info("Wrote PDF file base on "+driver.getTitle());
 		} catch (BadLocationException e) {
 			logger.error("ERROR writing the PDF file base on "+driver.getTitle());
-			e.printStackTrace();
 		}
 	}
 
@@ -240,6 +239,8 @@ public class MockSrapperJob {
 		driver.findElement(By.xpath("/html/body/div[4]/form/div[3]/div[4]/div[1]/div/div[1]/table/tbody/tr/td[2]/input")).click();
 		driver.findElement(By.xpath("/html/body/div[4]/div[3]/div[4]/div[2]/div/div/table/tbody/tr[2]/td/input")).click();
 		driver.findElement(By.id("ctl00_cphContent_gdvResultadoBusca_gdvContent_ctl02_lbtSelecionar")).click();
+		//jucespJob.getElementsFromScreenJucesp(driver);
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/jucesp/pagina6-ficha-cadastral-simplificada-relatorio.pdf");
 	}
 
 	private void getPdf(WebDriver driver, String urlPdf) throws IOException, DocumentException, BadLocationException {

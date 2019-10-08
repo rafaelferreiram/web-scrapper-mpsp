@@ -1,6 +1,13 @@
 package br.com.galaticos.galacticoScrapper.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Sivec {
+	
+	@Id
+	private String id;
 
 	//detalhes do reu
 	private String nome;
@@ -205,6 +212,12 @@ public class Sivec {
 		this.nomeMaeOutros = nomeMaeOutros;
 	}
 
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
 		return "Sivec [nome=" + nome + ", sexo=" + sexo + ", rg=" + rg + ", tipoRg=" + tipoRg + ", dtNascimento="

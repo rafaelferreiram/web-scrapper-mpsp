@@ -1,7 +1,13 @@
 package br.com.galaticos.galacticoScrapper.model;
 
-public class Siel {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection="siel")
+public class Siel {
+	
+	@Id
+	private String id;
 	private String nome;
 	private String titulo;
 	private String dtNascimento;
