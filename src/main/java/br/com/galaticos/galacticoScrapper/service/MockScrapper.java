@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.DocumentException;
+
 import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
 import br.com.galaticos.galacticoScrapper.executor.MockSrapperExecutor;
@@ -28,7 +30,7 @@ public class MockScrapper {
 			mockSrapperExecutor.execute(login);
 			logger.info("Scrapper finished at "+new Date());
 			valid = Boolean.TRUE;
-		} catch (InterruptedException | IOException e) {
+		} catch (InterruptedException | IOException | DocumentException e) {
 			//
 		}
 		return valid;

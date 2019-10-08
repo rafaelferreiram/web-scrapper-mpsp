@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.itextpdf.text.DocumentException;
+
 import br.com.galaticos.galacticoScrapper.config.ChromeDriverConfig;
 import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
 import br.com.galaticos.galacticoScrapper.job.MockSrapperJob;
@@ -26,7 +28,7 @@ public class MockSrapperExecutor {
 	@Autowired
 	private ChromeDriverConfig chromeDriverConfig;
 
-	public void execute(LoginDTO login) throws InterruptedException, IOException {
+	public void execute(LoginDTO login) throws InterruptedException, IOException, DocumentException {
 
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/driver/chromedriver");
 		System.setProperty("java.net.preferIPv4Stack" , "true");
@@ -49,18 +51,18 @@ public class MockSrapperExecutor {
 	}
 
 
-	private void executeScrapperForMocks(WebDriver driver) throws IOException {
+	private void executeScrapperForMocks(WebDriver driver) throws IOException, DocumentException {
 
-			//mockSrapperJob.accessArisp(driver);
-			//mockSrapperJob.accessArpenp(driver);
+			mockSrapperJob.accessArisp(driver);
+			mockSrapperJob.accessArpenp(driver);
 			mockSrapperJob.accessCadesp(driver);
-			//mockSrapperJob.accessCaged(driver);
-			//mockSrapperJob.accessCensec(driver);
-			//mockSrapperJob.accessDetran(driver);
-			//mockSrapperJob.accessInfocrim(driver);
-			//mockSrapperJob.accessJucesp(driver);
-			//mockSrapperJob.accessSiel(driver);
-			//mockSrapperJob.accessSivec(driver);
+			mockSrapperJob.accessCaged(driver);
+			mockSrapperJob.accessCensec(driver);
+			mockSrapperJob.accessDetran(driver);
+			mockSrapperJob.accessInfocrim(driver);
+			mockSrapperJob.accessJucesp(driver);
+			mockSrapperJob.accessSiel(driver);
+			mockSrapperJob.accessSivec(driver);
 
 	}
 
