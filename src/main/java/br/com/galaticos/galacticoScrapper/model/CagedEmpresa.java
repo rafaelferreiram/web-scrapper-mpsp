@@ -2,6 +2,7 @@ package br.com.galaticos.galacticoScrapper.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="cagedEmpresa")
 public class CagedEmpresa {
@@ -9,6 +10,7 @@ public class CagedEmpresa {
 	@Id
 	private String id;
 	//dados empresa
+	@Field("cnpj")
 	private String cnpj;
 	private String razaoSocial;
 	private String atividadeEconomica;

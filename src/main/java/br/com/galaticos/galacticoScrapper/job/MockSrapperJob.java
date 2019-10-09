@@ -239,7 +239,7 @@ public class MockSrapperJob {
 		driver.findElement(By.xpath("/html/body/div[4]/form/div[3]/div[4]/div[1]/div/div[1]/table/tbody/tr/td[2]/input")).click();
 		driver.findElement(By.xpath("/html/body/div[4]/div[3]/div[4]/div[2]/div/div/table/tbody/tr[2]/td/input")).click();
 		driver.findElement(By.id("ctl00_cphContent_gdvResultadoBusca_gdvContent_ctl02_lbtSelecionar")).click();
-		//jucespJob.getElementsFromScreenJucesp(driver);
+		jucespJob.getElementsFromScreenJucesp(driver);
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/jucesp/pagina6-ficha-cadastral-simplificada-relatorio.pdf");
 	}
 

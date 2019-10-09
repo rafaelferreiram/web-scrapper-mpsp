@@ -2,6 +2,7 @@ package br.com.galaticos.galacticoScrapper.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="jucesp")
 public class Jucesp {
@@ -13,6 +14,7 @@ public class Jucesp {
 	private String tipoEmpresa;
 	private String dtConst;
 	private String inicioAtividade;
+	@Field("cnpj")
 	private String cnpj;
 	private String incricaoEstadual;
 	private String objetoDescricao;

@@ -2,6 +2,7 @@ package br.com.galaticos.galacticoScrapper.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection="cagedTrabalhador")
 public class CagedTrabalhador {
@@ -14,6 +15,7 @@ public class CagedTrabalhador {
 	private String pisConvertido;
 	
 	//resumo dos dados cadastrais
+	@Field("cpf")
 	private String cpf;
 	private String dtNascimento;
 	private String ctps;
