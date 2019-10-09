@@ -7,8 +7,4 @@ import br.com.galaticos.galacticoScrapper.model.Cadesp;
 
 public interface CadespRepository extends MongoRepository<Cadesp, String> {
 
-	//@Query("{'cnpj':'?'}")
-	@Query("{cnpj : ?0}")
-	Cadesp findByCnpj(String cnpj);
-
 }
