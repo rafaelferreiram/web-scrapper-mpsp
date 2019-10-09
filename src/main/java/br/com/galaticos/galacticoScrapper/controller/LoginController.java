@@ -1,36 +1,37 @@
 package br.com.galaticos.galacticoScrapper.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.com.galaticos.galacticoScrapper.service.LoginValidadorService;
+
 @Controller
 public class LoginController {
+	
+	@Autowired
+	private LoginValidadorService loginValidadorService;
 
-    @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "LoginPage";
-    }
-    
-    @PostMapping("/login")
-    public String loginParam(Model model, String username, String password) {
-        String returnPage = "LoginPage";
-    	if (isLoginValid(username,password)) {
-    		returnPage = "welcome";
-        }
-
-        return returnPage;
-    }
-
-	private boolean isLoginValid(String username, String password) {
-		boolean isValid = Boolean.FALSE;
-		if("fiap".equals(username) && "mpsp".equals(password)) {
-			isValid = Boolean.TRUE;
-		}
-		return isValid;
+	@GetMapping("/")
+	public String login(Model model, String error, String logout) {
+		return "LoginPage";
 	}
+	
+	@GetMapping("/research")
+	public String research() {
+		return "welcome";
+	}
+
+	@PostMapping("/login")
+	public String loginParam(Model model, String username, String password) {
+		String returnPage = "LoginPage";
+		if (loginValidadorService.isLoginValid(username, password)) {
+			returnPage = "welcome";
+		}
+
+		return returnPage;
+	}
+	
 }
