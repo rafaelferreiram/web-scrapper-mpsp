@@ -30,11 +30,15 @@ public class CadespController {
 		return ResponseEntity.ok().body(repository.findAll());
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET)
 	public ResponseEntity<Object> getByCnpj(@RequestParam("cnpj") String cnpj) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Cadesp> users = mongoTemplate.find(query, Cadesp.class);
-		return ResponseEntity.ok().body(users);
+		if(!users.isEmpty()) {
+			return ResponseEntity.ok().body(users);
+		}else {
+			return ResponseEntity.ok().body("No data found");
+		}
 	}
 }

@@ -18,18 +18,34 @@
 
 	<!-- Page Content -->
 	<div class="container">
-
+		<div>
+			<form class="input-field fifth-wrap inner-form"
+				action="${contextPath}/logout">
+				<input
+					style="position: absolute; right: 0; margin: 3%; top: 0; border-radius: 20px; cursor: pointer;"
+					type="submit" value="Logout" />
+			</form>
+		</div>
 		<!-- Heading Row -->
 		<div class="row">
 
 			<div class="col-md-12">
 				<h1>Resultado</h1>
-
+				<br>
+				<br>
+				<hr></hr>
+				<br>
 				<br>
 				<c:forEach items="${arpenp}" var="arpenp">
 					<h2>${arpenp}</h2>
 				</c:forEach>
-
+				<c:if test="${not empty arisp}">
+					<h2>Arisp :</h2>
+					<img src="${arisp}" alt="Arisp" width="100%" height="85%">
+				</c:if>
+				<c:if test="${not empty cadesp}">
+					<h2>Cadesp :</h2>
+				</c:if>
 				<c:forEach items="${cadesp}" var="cadesp">
 					<h2>${cadesp}</h2>
 				</c:forEach>
@@ -42,8 +58,11 @@
 					<h2>${censec}</h2>
 				</c:forEach>
 
+				<c:if test="${not empty jucesp}">
+					<h2>Jucesp :</h2>
+				</c:if>
 				<c:forEach items="${jucesp}" var="jucesp">
-					<h2>${jucesp}</h2>
+					<h4>${jucesp}</h4>
 				</c:forEach>
 
 				<c:forEach items="${siel}" var="siel">
@@ -54,9 +73,15 @@
 					<h2>${sivec}</h2>
 				</c:forEach>
 			</div>
-
-			<!-- Embed PDF File -->
-			<a href="${contextPath}/research">Voltar</a>
+			<hr></hr>
+			<div>
+				<form class="input-field fifth-wrap inner-form"
+					action="${contextPath}/research">
+					<input
+						style="position: absolute; right: 0; margin: 3%; top: 50; border-radius: 20px; cursor: pointer; color: white; background-color: blue"
+						type="submit" value="Nova Pesquisa" />
+				</form>
+			</div>
 			<!-- /.col-md-4 -->
 		</div>
 		<!-- /.row -->

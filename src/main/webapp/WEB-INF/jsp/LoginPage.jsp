@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Log in with your account</title>
+<title>MPSP - Scrapper System</title>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -33,12 +33,12 @@
 				<form method="POST" action="${contextPath}/login"
 					class="form-signin">
 					<div class="form-group">
-						<label>User Name</label> <input type="text" name="username"
-							class="form-control" placeholder="user">
+						<label>Username</label> <input type="text" name="username"
+							class="form-control" placeholder="your username">
 					</div>
 					<div class="form-group">
 						<label>Password</label> <input type="password" name="password"
-							class="form-control" placeholder="******">
+							class="form-control" placeholder="your super secret password">
 					</div>
 					<button type="submit" class="btn btn-black">Login</button>
 				</form>

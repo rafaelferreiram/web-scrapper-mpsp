@@ -30,11 +30,16 @@ public class JucespController {
 		return ResponseEntity.ok().body(repository.findAll());
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET)
 	public ResponseEntity<Object> getByCnpj(@RequestParam("cnpj") String cnpj) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Jucesp> users = mongoTemplate.find(query, Jucesp.class);
-		return ResponseEntity.ok().body(users);
+		if(!users.isEmpty()) {
+			return ResponseEntity.ok().body(users);
+		}else {
+			return ResponseEntity.ok().body("No data found");
+		}
 	}
+	
 }
