@@ -8,6 +8,10 @@ import java.net.URL;
 
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+
+import br.com.galaticos.galacticoScrapper.model.Censec;
+
 @Service
 public class ApiCallService {
 
@@ -118,7 +122,7 @@ public class ApiCallService {
 				System.out.println(output);
 				concat = "No data found".equals(output) ? null : output;
 			}
-			
+
 			apiUrl = new URL(BASE_URL + "caged/cpf?cpf=" + cpfCnpj);
 
 			conn = (HttpURLConnection) apiUrl.openConnection();
@@ -134,7 +138,7 @@ public class ApiCallService {
 			System.out.println("Output from Server .... \n");
 			while ((outputCpf = br.readLine()) != null) {
 				System.out.println(outputCpf);
-				concat+= "No data found".equals(outputCpf) ? null : outputCpf;
+				concat += "No data found".equals(outputCpf) ? null : outputCpf;
 			}
 			System.out.println(concat);
 			conn.disconnect();
@@ -158,13 +162,16 @@ public class ApiCallService {
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
+			StringBuilder b = new StringBuilder();
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
 				System.out.println(output);
-				return "No data found".equals(output) ? null : output;
+				b.append(output);
+				// return "No data found".equals(output) ? null : output;
 			}
-
+			Gson gson = new Gson();
+			Censec transformed = gson.fromJson(output, Censec.class);
+			System.out.println(transformed);
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

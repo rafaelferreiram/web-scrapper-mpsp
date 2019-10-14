@@ -31,17 +31,26 @@
 
 			<div class="col-md-12">
 				<h1>Resultado</h1>
-				<br>
-				<br>
+				<br> <br>
 				<hr></hr>
-				<br>
-				<br>
+				<br> <br>
 				<c:forEach items="${arpenp}" var="arpenp">
 					<h2>${arpenp}</h2>
 				</c:forEach>
 				<c:if test="${not empty arisp}">
 					<h2>Arisp :</h2>
-					<img src="${arisp}" alt="Arisp" width="100%" height="85%">
+					<object width="700" height="500" data="${arisp}" width="400"
+						height="300"></object>
+				</c:if>
+				<c:if test="${not empty detran}">
+					<h2>Detran :</h2>
+					<object width="700" height="500" data="${detran}" width="400"
+						height="300"></object>
+				</c:if>
+				<c:if test="${not empty infocrim}">
+					<h2>Infocrim :</h2>
+					<object width="700" height="500" data="${infocrim}" width="400"
+						height="300"></object>
 				</c:if>
 				<c:if test="${not empty cadesp}">
 					<h2>Cadesp :</h2>
@@ -50,25 +59,36 @@
 					<h2>${cadesp}</h2>
 				</c:forEach>
 
+				<c:if test="${not empty caged}">
+					<h2>Caged :</h2>
+				</c:if>
 				<c:forEach items="${caged}" var="caged">
 					<h2>${caged}</h2>
 				</c:forEach>
-
+				<c:if test="${not empty censec}">
+					<h2>Censec :</h2>
+				</c:if>
 				<c:forEach items="${censec}" var="censec">
 					<h2>${censec}</h2>
 				</c:forEach>
-
+				<c:if test="${not empty jucesp}">
+					<h2>Jucesp :</h2>
+				</c:if>
 				<c:if test="${not empty jucesp}">
 					<h2>Jucesp :</h2>
 				</c:if>
 				<c:forEach items="${jucesp}" var="jucesp">
 					<h4>${jucesp}</h4>
 				</c:forEach>
-
+				<c:if test="${not empty siel}">
+					<h2>Siel :</h2>
+				</c:if>
 				<c:forEach items="${siel}" var="siel">
 					<h2>${siel}</h2>
 				</c:forEach>
-
+				<c:if test="${not empty sivec}">
+					<h2>Sivec :</h2>
+				</c:if>
 				<c:forEach items="${sivec}" var="sivec">
 					<h2>${sivec}</h2>
 				</c:forEach>

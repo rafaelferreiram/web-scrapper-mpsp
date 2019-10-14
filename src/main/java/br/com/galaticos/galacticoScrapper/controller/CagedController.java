@@ -40,27 +40,27 @@ public class CagedController {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<CagedAll>> getAll() {
 		return ResponseEntity.ok().body(allRepository.findAll());
 	}
 
-	@RequestMapping(value = "/caged", method = RequestMethod.GET)
+	@RequestMapping(value = "/caged", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Caged>> getCaged() {
 		return ResponseEntity.ok().body(cagedRepository.findAll());
 	}
 
-	@RequestMapping(value = "/cagedEmpresa", method = RequestMethod.GET)
+	@RequestMapping(value = "/cagedEmpresa", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<CagedEmpresa>> getCagedEmpresa() {
 		return ResponseEntity.ok().body(cagedEmpresaRepository.findAll());
 	}
 
-	@RequestMapping(value = "/cagedTrabalhador", method = RequestMethod.GET)
+	@RequestMapping(value = "/cagedTrabalhador", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<CagedTrabalhador>> getCagedTrabalhador() {
 		return ResponseEntity.ok().body(cagedTrabalhadorRepository.findAll());
 	}
 
-	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Object> getByCnpj(@RequestParam("cnpj") String cnpj) {
 		Query query = new Query();
 		// get Caged
@@ -85,7 +85,7 @@ public class CagedController {
 
 	}
 
-	@RequestMapping(value = "/cpf{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/cpf{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Object> getByCpf(@RequestParam("cpf") String cpf) {
 		Query query = new Query();
 		// get Caged

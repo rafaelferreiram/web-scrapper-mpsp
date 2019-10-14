@@ -52,6 +52,9 @@ public class SearchService {
 		model.addAttribute("jucesp", repositories.jucespRepository.findAll());
 		model.addAttribute("siel", repositories.sielRepository.findAll());
 		model.addAttribute("sivec", repositories.sivecRepository.findAll());
+		model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
+		model.addAttribute("detran", "/downloads/detran.pdf");
+		model.addAttribute("arisp", "/downloads/arisp.pdf");
 	}
 
 	public void getAllWithTypeFilter(Model model, String select) {
@@ -65,12 +68,16 @@ public class SearchService {
 			model.addAttribute("caged", repositories.cagedRepository.findAll());
 		} else if ("Censec".equals(select)) {
 			model.addAttribute("censec", repositories.censecRepository.findAll());
-		}else if("Sivec".equals(select)) {
+		} else if ("Sivec".equals(select)) {
 			model.addAttribute("sivec", repositories.sivecRepository.findAll());
-		}else if("Siel".equals(select)) {
+		} else if ("Siel".equals(select)) {
 			model.addAttribute("siel", repositories.sielRepository.findAll());
-		}else if("Arisp".equals(select)) {
-			model.addAttribute("arisp","/images/screeShots/Arisp/screenshot2056061056907505241.png");
+		} else if ("Arisp".equals(select)) {
+			model.addAttribute("arisp", "/downloads/arisp.pdf");
+		} else if ("Detran".equals(select)) {
+			model.addAttribute("detran", "/downloads/detran.pdf");
+		} else if ("Infocrim".equals(select)) {
+			model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
 		}
 	}
 }

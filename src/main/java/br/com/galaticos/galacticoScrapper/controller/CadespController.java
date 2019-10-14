@@ -25,12 +25,12 @@ public class CadespController {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Cadesp>> getCadesp() {
 		return ResponseEntity.ok().body(repository.findAll());
 	}
 
-	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Object> getByCnpj(@RequestParam("cnpj") String cnpj) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));

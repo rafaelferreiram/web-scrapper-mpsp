@@ -25,21 +25,21 @@ public class ArpenpController {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Arpenp>> getArpenp() {
 		return ResponseEntity.ok().body(repository.findAll());
 	}
 
-	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Object> getByCnpj(@RequestParam("cnpj") String cnpj) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Arpenp> users = mongoTemplate.find(query, Arpenp.class);
-		if(!users.isEmpty()) {
+		if (!users.isEmpty()) {
 			return ResponseEntity.ok().body(users);
-		}else {
+		} else {
 			return ResponseEntity.ok().body("No data found");
 		}
-		
+
 	}
 }

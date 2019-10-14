@@ -35,6 +35,10 @@ public class Censec {
 	private List<String> contato = new ArrayList<String>();
 	private List<String> status = new ArrayList<String>();
 
+	public Censec() {
+		super();
+	}
+
 	public String getId() {
 		return id;
 	}
