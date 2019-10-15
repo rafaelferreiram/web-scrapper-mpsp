@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 
 <head>
@@ -65,21 +65,24 @@
 				<c:forEach items="${caged}" var="caged">
 					<h2>${caged}</h2>
 				</c:forEach>
+				
+				<c:if test="${not empty censecList}">
+					<h2>Censec :</h2>
+					<h2>${censecList}</h2>
+				</c:if>
 				<c:if test="${not empty censec}">
 					<h2>Censec :</h2>
+					<h2>${censec.carga}</h2>
 				</c:if>
-				<c:forEach items="${censec}" var="censec">
-					<h2>${censec}</h2>
-				</c:forEach>
-				<c:if test="${not empty jucesp}">
-					<h2>Jucesp :</h2>
-				</c:if>
+
+
 				<c:if test="${not empty jucesp}">
 					<h2>Jucesp :</h2>
 				</c:if>
 				<c:forEach items="${jucesp}" var="jucesp">
 					<h4>${jucesp}</h4>
 				</c:forEach>
+
 				<c:if test="${not empty siel}">
 					<h2>Siel :</h2>
 				</c:if>

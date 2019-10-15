@@ -10,15 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
 
+import br.com.galaticos.galacticoScrapper.model.Arpenp;
+import br.com.galaticos.galacticoScrapper.model.Caged;
 import br.com.galaticos.galacticoScrapper.model.Censec;
+import br.com.galaticos.galacticoScrapper.model.Jucesp;
 
 @Service
 public class ApiCallService {
 
 	static final String BASE_URL = "http://localhost:18080/";
 
-	public String getToJucesp(String cpfCnpj) {
-		String output = "";
+	public Jucesp getToJucesp(String cpfCnpj) {
+		Jucesp jucesp = new Jucesp();
 		try {
 			URL apiUrl = new URL(BASE_URL + "jucesp/cnpj?cnpj=" + cpfCnpj);
 
@@ -32,21 +35,24 @@ public class ApiCallService {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
+			StringBuilder b = new StringBuilder();
+			String output = "";
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
 				System.out.println(output);
-				return "No data found".equals(output) ? null : output;
+				b.append(output);
 			}
-
+			jucesp = new Gson().fromJson(b.toString(), Jucesp.class);
+			System.out.println(jucesp);
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return output;
+		return jucesp;
 	}
 
-	public String getToCadesp(String cpfCnpj) {
-		String output = "";
+	public Caged getToCadesp(String cpfCnpj) {
+		Caged caged = new Caged();
 		try {
 			URL apiUrl = new URL(BASE_URL + "cadesp/cnpj?cnpj=" + cpfCnpj);
 
@@ -59,22 +65,24 @@ public class ApiCallService {
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
+			StringBuilder b = new StringBuilder();
+			String output = "";
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
 				System.out.println(output);
-				return "No data found".equals(output) ? null : output;
+				b.append(output);
 			}
-
+			caged = new Gson().fromJson(b.toString(), Caged.class);
+			System.out.println(caged);
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return output;
+		return caged;
 	}
 
-	public String getToArpenp(String cpfCnpj) {
-		String output = "";
+	public Arpenp getToArpenp(String cpfCnpj) {
+		Arpenp arpenp = new Arpenp();
 		try {
 			URL apiUrl = new URL(BASE_URL + "arpend/cnpj?cnpj=" + cpfCnpj);
 
@@ -87,18 +95,21 @@ public class ApiCallService {
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
+			StringBuilder b = new StringBuilder();
+			String output = "";
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
 				System.out.println(output);
-				return "No data found".equals(output) ? null : output;
+				b.append(output);
 			}
+			arpenp = new Gson().fromJson(b.toString(), Arpenp.class);
+			System.out.println(arpenp);
 
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return output;
+		return arpenp;
 	}
 
 	public String getToCaged(String cpfCnpj) {
@@ -148,8 +159,8 @@ public class ApiCallService {
 		return concat;
 	}
 
-	public String getToCensec(String cpfCnpj) {
-		String output = "";
+	public Censec getToCensec(String cpfCnpj) {
+		Censec censec = new Censec();
 		try {
 			URL apiUrl = new URL(BASE_URL + "censec/cnpj?cnpj=" + cpfCnpj);
 
@@ -163,20 +174,19 @@ public class ApiCallService {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = new StringBuilder();
+			String output = "";
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
 				System.out.println(output);
 				b.append(output);
-				// return "No data found".equals(output) ? null : output;
 			}
-			Gson gson = new Gson();
-			Censec transformed = gson.fromJson(output, Censec.class);
-			System.out.println(transformed);
+			censec = new Gson().fromJson(b.toString(), Censec.class);
+			System.out.println(censec);
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return output;
+		return censec;
 	}
 
 }

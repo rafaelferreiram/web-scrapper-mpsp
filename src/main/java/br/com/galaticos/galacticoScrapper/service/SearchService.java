@@ -48,7 +48,7 @@ public class SearchService {
 		model.addAttribute("arpenp", repositories.arpenpRepository.findAll());
 		model.addAttribute("cadesp", repositories.cadespRepository.findAll());
 		model.addAttribute("caged", repositories.cagedRepository.findAll());
-		model.addAttribute("censec", repositories.censecRepository.findAll());
+		model.addAttribute("censecList", repositories.censecRepository.findAll());
 		model.addAttribute("jucesp", repositories.jucespRepository.findAll());
 		model.addAttribute("siel", repositories.sielRepository.findAll());
 		model.addAttribute("sivec", repositories.sivecRepository.findAll());
@@ -67,7 +67,7 @@ public class SearchService {
 		} else if ("Caged".equals(select)) {
 			model.addAttribute("caged", repositories.cagedRepository.findAll());
 		} else if ("Censec".equals(select)) {
-			model.addAttribute("censec", repositories.censecRepository.findAll());
+			model.addAttribute("censecList", repositories.censecRepository.findAll());
 		} else if ("Sivec".equals(select)) {
 			model.addAttribute("sivec", repositories.sivecRepository.findAll());
 		} else if ("Siel".equals(select)) {

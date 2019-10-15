@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class ChromeDriverConfig {
 
 	public WebDriver setConfig(WebDriver driver) {
-		String downloadFilepath = "/Users/rafaelferreira/Projetos/AMWebCrawler/galacticoScrapper/downloads";
+		String downloadFilepath = System.getProperty("user.dir") + "/downloads";
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
 		chromePrefs.put("download.default_directory", downloadFilepath);
@@ -22,7 +22,7 @@ public class ChromeDriverConfig {
 		chromePrefs.put("plugins.always_open_pdf_externally", true);
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", chromePrefs);
-		options.addArguments("--print-to-pdf"); 
+		options.addArguments("--print-to-pdf");
 		options.addArguments("disable-popup-blocking");
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
 		cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);

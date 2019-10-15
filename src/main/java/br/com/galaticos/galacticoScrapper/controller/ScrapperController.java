@@ -1,4 +1,5 @@
 package br.com.galaticos.galacticoScrapper.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,21 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.galaticos.galacticoScrapper.service.MockScrapper;
 
-
 @RestController
 @RequestMapping("/mpsp")
 public class ScrapperController {
-	
+
 	@Autowired
 	private MockScrapper mockScrapper;
-	
+
 	@SuppressWarnings("rawtypes")
 	@GetMapping("/scrapping")
 	public ResponseEntity scraping(@RequestParam(value = "active") boolean isActive) {
 		boolean response = mockScrapper.initCrawaler(isActive);
-		return  ResponseEntity.status(HttpStatus.OK).body(String.valueOf(response));
+		if (isActive) {
+			String responseMsg = "Scappred ON [isActive=" + String.valueOf(response) + "]";
+			return ResponseEntity.status(HttpStatus.OK).body(responseMsg);
+		} else {
+			String responseMsg = "Scappred OFF [isActive=" + String.valueOf(response) + "]";
+			return ResponseEntity.status(HttpStatus.OK).body(responseMsg);
+		}
 	}
-	
 
 }
-

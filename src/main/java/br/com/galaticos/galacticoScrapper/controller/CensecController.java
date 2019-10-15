@@ -1,6 +1,5 @@
 package br.com.galaticos.galacticoScrapper.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +37,11 @@ public class CensecController {
 	public boolean isInTheDocument(List<String> list, String cnpj) {
 		boolean result = Boolean.FALSE;
 		if (cnpj != null) {
-			Censec censec = new Censec();
-			List<String> cpfCnpj = new ArrayList<String>();
-			cpfCnpj.add(cnpj);
-			censec.setCpfCnpj(cpfCnpj);
-			if (list.contains(censec.getCpfCnpj().get(0))) {
-				result = Boolean.TRUE;
+			for(String cpfDoc : list) {
+				String cpfToCompare = cpfDoc;
+				if(cpfToCompare.trim().equalsIgnoreCase(cnpj.toString())) {
+					return Boolean.TRUE;
+				}
 			}
 		}
 		return result;

@@ -1,16 +1,12 @@
 package br.com.galaticos.galacticoScrapper.job;
 
 import java.awt.print.PageFormat;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.swing.text.BadLocationException;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
@@ -77,7 +73,6 @@ public class MockSrapperJob {
 		driver.findElement(By.id("btnPesquisar")).click();
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/pagina8-matriculas.html");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arisp/pagina10-visualizar-matriculas.htm");
-		takeScreenShot(driver, "Arisp");
 		driver.findElement(By.xpath("/html/body/a")).click();
 		goHome(driver);
 
@@ -89,7 +84,6 @@ public class MockSrapperJob {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/arpensp/pagina3-busca.html");
 		driver.findElement(By.id("btn_pesquisar")).click();
 		arpenpJob.getElementsFromScreenArpenp(driver);
-		takeScreenShot(driver, "Arpenp");
 		goHome(driver);
 	}
 
@@ -102,7 +96,6 @@ public class MockSrapperJob {
 				By.id("ctl00_conteudoPaginaPlaceHolder_tcConsultaCompleta_TabPanel1_btnConsultarEstabelecimento"))
 				.click();
 		cadespJob.getElementsFromScreenCadesp(driver);
-		takeScreenShot(driver, "Cadesp");
 		goHome(driver);
 	}
 
@@ -114,19 +107,15 @@ public class MockSrapperJob {
 				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina3-consulta-autorizado-responsavel.html");
 		driver.findElement(By.id("formPesquisarAutorizado:bt027_8")).click();
 		cagedJob.getElementsFromScreenCaged(driver);
-		takeScreenShot(driver, "Caged");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina4-consulta-empresa.html");
 		driver.findElement(By.id("formPesquisarEmpresaCAGED:btConsultar")).click();
 		logger.info(driver.getCurrentUrl());
 		cagedJob.getElementsFromScreenCaged(driver);
-		takeScreenShot(driver, "Caged/Empresa");
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina6-consulta-trabalhador.html");
 		driver.findElement(By.id("formPesquisarTrabalhador:submitPesqTrab")).click();
 		cagedJob.getElementsFromScreenCaged(driver);
-		takeScreenShot(driver, "Caged/Trabalhador");
 		driver.get(
 				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/caged/pagina10-relatorio-vinculos-trabalhador.pdf");
-		takeScreenShot(driver, "Caged/Trabalhador/pdf");
 		goHome(driver);
 	}
 
@@ -145,7 +134,6 @@ public class MockSrapperJob {
 			driver.get(
 					"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/censec/pagina5-dados.html?__VIEWSTATEGENERATOR=128406E2&__SCROLLPOSITIONX=0&__SCROLLPOSITIONY=670&ctl00%24ContentPlaceHolder1%24NomeTextBox=&ctl00%24ContentPlaceHolder1%24DocumentoTextBox=19.811.201%2F0001-05&ctl00%24ContentPlaceHolder1%24IdentidadeTextBox=&ctl00%24ContentPlaceHolder1%24ComplementoTextBox=&ctl00%24ContentPlaceHolder1%24LivroTextBox=&ctl00%24ContentPlaceHolder1%24FolhaTextBox=&ctl00%24ContentPlaceHolder1%24TipoAtoDropDownList=0&ctl00%24ContentPlaceHolder1%24DataDeTextBox=&ctl00%24ContentPlaceHolder1%24DataAteTextBox=&ctl00%24ContentPlaceHolder1%24UFDropDownList=0&ctl00%24ContentPlaceHolder1%24MunicipioDropDownList=0&ctl00%24ContentPlaceHolder1%24CartorioDropDownList=0&ctl00%24ContentPlaceHolder1%24txtCaptcha=&ctl00%24ContentPlaceHolder1%24VisualizarButton=Visualizar");
 			censecJob.getElementsFromScreenCensec(driver);
-			takeScreenShot(driver, "Censec");
 		}
 
 	}
@@ -164,7 +152,6 @@ public class MockSrapperJob {
 		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[4]/form[2]/table/tbody/tr/td[2]/input")).click();
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/siel/pagina3-dados.html?nome=KLAUS+TORRES+CAMARA&nome_mae=&dt_nascimento=&num_titulo=&num_processo=889532255&x=45&y=12");
 		sielJob.getElementsFromScreenSiel(driver);
-		takeScreenShot(driver, "Siel");
 		goHome(driver);
 	}
 
@@ -186,7 +173,6 @@ public class MockSrapperJob {
 
 			driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/sivec/pagina7-dados.html");
 			sivecJob.getElementsFromScreenSivec(driver);
-			takeScreenShot(driver, "Sivec");
 			goHome(driver);
 		}
 
@@ -195,13 +181,6 @@ public class MockSrapperJob {
 	// Private Methods
 	private static void goHome(WebDriver driver) {
 		driver.get(MockConstants.URL_HOME);
-	}
-
-	private static void takeScreenShot(WebDriver driver, String folder) throws IOException {
-		TakesScreenshot scrShot = ((TakesScreenshot) driver);
-		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-		File DestFile = new File(System.getProperty("user.dir") + "/screeShots/" + folder);
-		FileUtils.copyFileToDirectory(SrcFile, DestFile);
 	}
 
 	public void accessDetran(WebDriver driver) {
