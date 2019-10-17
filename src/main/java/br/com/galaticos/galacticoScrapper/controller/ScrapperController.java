@@ -20,12 +20,12 @@ public class ScrapperController {
 	@SuppressWarnings("rawtypes")
 	@GetMapping("/scrapping")
 	public ResponseEntity scraping(@RequestParam(value = "active") boolean isActive) {
-		boolean response = mockScrapper.initCrawaler(isActive);
 		if (isActive) {
-			String responseMsg = "Scappred ON [isActive=" + String.valueOf(response) + "]";
+			mockScrapper.initCrawaler(isActive);
+			String responseMsg = "Scappred ON [isActive=" + String.valueOf(isActive) + "]";
 			return ResponseEntity.status(HttpStatus.OK).body(responseMsg);
 		} else {
-			String responseMsg = "Scappred OFF [isActive=" + String.valueOf(response) + "]";
+			String responseMsg = "Scappred OFF [isActive=" + String.valueOf(isActive) + "]";
 			return ResponseEntity.status(HttpStatus.OK).body(responseMsg);
 		}
 	}

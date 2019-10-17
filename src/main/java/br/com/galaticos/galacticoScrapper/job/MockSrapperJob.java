@@ -57,7 +57,6 @@ public class MockSrapperJob {
 			logged = Boolean.TRUE;
 		}
 		return logged;
-
 	}
 
 	public void accessArisp(WebDriver driver) throws IOException {
@@ -223,7 +222,7 @@ public class MockSrapperJob {
 	}
 
 	private void getPdf(WebDriver driver, String urlPdf) throws IOException, DocumentException, BadLocationException {
-		URL url = new URL("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/infocrim/pagina4-detalhes-bo.html");
+		URL url = new URL(driver.getCurrentUrl().toString());
 		String downloadFilepath = System.getProperty("user.dir") + "/downloads";
 		logger.info("File path: "+downloadFilepath);
 		PageFormat pf = new PageFormat();

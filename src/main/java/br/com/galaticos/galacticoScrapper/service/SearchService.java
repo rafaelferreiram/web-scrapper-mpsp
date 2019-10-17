@@ -17,28 +17,59 @@ public class SearchService {
 
 	public void getWithCpfFilter(Model model, String select, String cpfCnpj) {
 		if ("Caged".equals(select)) {
-			model.addAttribute("caged", apiCallService.getToCaged(cpfCnpj));
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("caged", apiCallService.getToCagedCpf(cpfCnpj));
+			}
 		} else if ("Censec".equals(select)) {
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
+			}
+		}else if ("All".equalsIgnoreCase(select)) {
+			model.addAttribute("caged", apiCallService.getToCagedCpf(cpfCnpj));
 			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
 		}
 	}
 
 	public void getWithCnpjFilter(Model model, String select, String cpfCnpj) {
 		if ("Jucesp".equals(select)) {
-			model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
+			}
 		} else if ("Cadesp".equals(select)) {
-			model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
+			}
 		} else if ("Arpenp".equals(select)) {
-			model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
+			}
 		} else if ("Caged".equals(select)) {
-			model.addAttribute("caged", apiCallService.getToCaged(cpfCnpj));
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
+			}
 		} else if ("Censec".equals(select)) {
-			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
+			if("".equals(cpfCnpj)) {
+				model.addAttribute("msg", "No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
+			}else {
+				model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
+			}
 		} else if ("All".equalsIgnoreCase(select)) {
 			model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
 			model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
 			model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
-			model.addAttribute("caged", apiCallService.getToCaged(cpfCnpj));
+			model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
 			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
 
 		}
@@ -48,7 +79,7 @@ public class SearchService {
 		model.addAttribute("arpenp", repositories.arpenpRepository.findAll());
 		model.addAttribute("cadesp", repositories.cadespRepository.findAll());
 		model.addAttribute("caged", repositories.cagedRepository.findAll());
-		model.addAttribute("censecList", repositories.censecRepository.findAll());
+		model.addAttribute("censec", repositories.censecRepository.findAll());
 		model.addAttribute("jucesp", repositories.jucespRepository.findAll());
 		model.addAttribute("siel", repositories.sielRepository.findAll());
 		model.addAttribute("sivec", repositories.sivecRepository.findAll());
@@ -67,7 +98,7 @@ public class SearchService {
 		} else if ("Caged".equals(select)) {
 			model.addAttribute("caged", repositories.cagedRepository.findAll());
 		} else if ("Censec".equals(select)) {
-			model.addAttribute("censecList", repositories.censecRepository.findAll());
+			model.addAttribute("censec", repositories.censecRepository.findAll());
 		} else if ("Sivec".equals(select)) {
 			model.addAttribute("sivec", repositories.sivecRepository.findAll());
 		} else if ("Siel".equals(select)) {

@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 
 import br.com.galaticos.galacticoScrapper.model.Arpenp;
-import br.com.galaticos.galacticoScrapper.model.Caged;
+import br.com.galaticos.galacticoScrapper.model.Cadesp;
+import br.com.galaticos.galacticoScrapper.model.CagedAll;
 import br.com.galaticos.galacticoScrapper.model.Censec;
 import br.com.galaticos.galacticoScrapper.model.Jucesp;
 
@@ -23,170 +24,156 @@ public class ApiCallService {
 	public Jucesp getToJucesp(String cpfCnpj) {
 		Jucesp jucesp = new Jucesp();
 		try {
-			URL apiUrl = new URL(BASE_URL + "jucesp/cnpj?cnpj=" + cpfCnpj);
+			URL apiUrl = new URL(BASE_URL + "jucesp/cnpj?cnpj=" + cpfCnpj.trim());
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
+			conn = connectToWebService(apiUrl, conn);
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+			StringBuilder b = parseApiReturnToJson(br);
 
-			StringBuilder b = new StringBuilder();
-			String output = "";
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-				b.append(output);
+			if(!"No data found".equals(b.toString())) {
+				jucesp = new Gson().fromJson(b.toString(), Jucesp.class);
 			}
-			jucesp = new Gson().fromJson(b.toString(), Jucesp.class);
-			System.out.println(jucesp);
+
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return jucesp;
+		return jucesp.getId() == null ? null : jucesp;
 	}
 
-	public Caged getToCadesp(String cpfCnpj) {
-		Caged caged = new Caged();
+	public Cadesp getToCadesp(String cpfCnpj) {
+		Cadesp cadesp = new Cadesp();
 		try {
-			URL apiUrl = new URL(BASE_URL + "cadesp/cnpj?cnpj=" + cpfCnpj);
+			URL apiUrl = new URL(BASE_URL + "cadesp/cnpj?cnpj=" + cpfCnpj.trim());
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
+			conn = connectToWebService(apiUrl, conn);
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-			StringBuilder b = new StringBuilder();
-			String output = "";
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-				b.append(output);
+			StringBuilder b = parseApiReturnToJson(br);
+
+			if(!"No data found".equals(b.toString())) {
+				cadesp = new Gson().fromJson(b.toString(), Cadesp.class);
 			}
-			caged = new Gson().fromJson(b.toString(), Caged.class);
-			System.out.println(caged);
+
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return caged;
+		return cadesp.getId() == null ? null : cadesp;
 	}
 
 	public Arpenp getToArpenp(String cpfCnpj) {
 		Arpenp arpenp = new Arpenp();
 		try {
-			URL apiUrl = new URL(BASE_URL + "arpend/cnpj?cnpj=" + cpfCnpj);
+			URL apiUrl = new URL(BASE_URL + "arpend/cnpj?cnpj=" + cpfCnpj.trim());
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
+			conn = connectToWebService(apiUrl, conn);
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-			StringBuilder b = new StringBuilder();
-			String output = "";
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-				b.append(output);
+			StringBuilder b = parseApiReturnToJson(br);
+
+			if(!"No data found".equals(b.toString())) {
+				arpenp = new Gson().fromJson(b.toString(), Arpenp.class);
 			}
-			arpenp = new Gson().fromJson(b.toString(), Arpenp.class);
-			System.out.println(arpenp);
 
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return arpenp;
+		return arpenp.getId() == null ? null : arpenp;
 	}
 
-	public String getToCaged(String cpfCnpj) {
-		String output = "";
-		String concat = "";
+	public CagedAll getToCagedCnpj(String cpfCnpj) {
+		CagedAll cagedAll = new CagedAll();
 		try {
-			URL apiUrl = new URL(BASE_URL + "caged/cnpj?cnpj=" + cpfCnpj);
+			URL apiUrl = new URL(BASE_URL + "caged/cnpj?cnpj=" + cpfCnpj.trim());
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
+			conn = connectToWebService(apiUrl, conn);
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+			StringBuilder b = parseApiReturnToJson(br);
 
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-				concat = "No data found".equals(output) ? null : output;
+			if(!"No data found".equals(b.toString())) {
+				cagedAll = new Gson().fromJson(b.toString(), CagedAll.class);
 			}
 
-			apiUrl = new URL(BASE_URL + "caged/cpf?cpf=" + cpfCnpj);
-
-			conn = (HttpURLConnection) apiUrl.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
-			br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-			String outputCpf;
-			System.out.println("Output from Server .... \n");
-			while ((outputCpf = br.readLine()) != null) {
-				System.out.println(outputCpf);
-				concat += "No data found".equals(outputCpf) ? null : outputCpf;
-			}
-			System.out.println(concat);
 			conn.disconnect();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return concat;
+		return cagedAll.getId() == null ? null : cagedAll;
+	}
+
+	public CagedAll getToCagedCpf(String cpfCnpj) {
+		CagedAll cagedAllCpf = new CagedAll();
+		try {
+			URL apiUrl = new URL(BASE_URL + "caged/cpf?cpf=" + cpfCnpj.trim());
+
+			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
+			conn = connectToWebService(apiUrl, conn);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+			StringBuilder b = parseApiReturnToJson(br);
+			
+			if(!"No data found".equals(b.toString())) {
+				cagedAllCpf = new Gson().fromJson(b.toString(), CagedAll.class);
+
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+		}
+		return cagedAllCpf.getId() == null ? null : cagedAllCpf;
 	}
 
 	public Censec getToCensec(String cpfCnpj) {
 		Censec censec = new Censec();
 		try {
-			URL apiUrl = new URL(BASE_URL + "censec/cnpj?cnpj=" + cpfCnpj);
-
+			URL apiUrl = new URL(BASE_URL + "censec/cnpj?cnpj=" + cpfCnpj.trim());
+			
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Accept", "application/json");
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
-
+			conn = connectToWebService(apiUrl, conn);
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-			StringBuilder b = new StringBuilder();
-			String output = "";
-			System.out.println("Output from Server .... \n");
-			while ((output = br.readLine()) != null) {
-				System.out.println(output);
-				b.append(output);
+			StringBuilder b = parseApiReturnToJson(br);
+
+			if(!"No data found".equals(b.toString())) {
+				censec = new Gson().fromJson(b.toString(), Censec.class);
 			}
-			censec = new Gson().fromJson(b.toString(), Censec.class);
-			System.out.println(censec);
+
 			conn.disconnect();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return censec;
+		return censec.getId() == null ? null : censec;
+	}
+
+	private StringBuilder parseApiReturnToJson(BufferedReader br) throws IOException {
+		StringBuilder b = new StringBuilder();
+		String output = "";
+		System.out.println("Output from Server .... \n");
+		while ((output = br.readLine()) != null) {
+			System.out.println(output);
+			b.append(output);
+		}
+		return b;
+	}
+
+	private HttpURLConnection connectToWebService(URL apiUrl, HttpURLConnection conn) throws IOException {
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Accept", "application/json");
+
+		if (conn.getResponseCode() != 200) {
+			throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+		}
+
+		return conn;
+
 	}
 
 }
