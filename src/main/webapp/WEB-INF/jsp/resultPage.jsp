@@ -11,33 +11,35 @@
 
 <c:set value="${pageContext.request.contextPath}" var="contextPath" />
 <link href="/css/bootstrap.css" rel="stylesheet">
-<link href="/css/small-business.css" rel="stylesheet">
+<link href="/css/result-page.css" rel="stylesheet">
+
 </head>
 
 <body>
-	<!-- Page Content -->
-	<div class="container">
+	<nav class="navbar d-flex justify-content-between">
 		<div>
-			<form class="input-field fifth-wrap inner-form"
-				action="${contextPath}/research">
-				<input
-					style="position: absolute; right: 0; margin: 3%; top: 50; border-radius: 20px; cursor: pointer; color: white; background-color: #3e83a3"
-					type="submit" value="Nova Pesquisa" />
-			</form>
+			<a href="${contextPath}/research" class="navbar-brand">
+				MPSP Scrapper
+			</a>
 		</div>
-		<div>
-			<form class="input-field fifth-wrap inner-form"
+		<div class="block-button">
+			<form class="form-button"
 				action="${contextPath}/logout">
 				<input
-					style="position: absolute; right: 0; margin: 3%; top: 0; border-radius: 20px; cursor: pointer;"
-					type="submit" value="Logout" />
+					class="button btn btn-outline-light btn-sm"
+					type="submit"
+					value="Logout"
+				/>
 			</form>
 		</div>
+	</nav>
+	<!-- Page Content -->
+	<div class="container">
 		<!-- Heading Row -->
 		<div class="row">
 
 			<div class="col-md-12">
-				<h1>Resultado da Pesquisa</h1>
+
 				<br> <br>
 				<c:if test="${not empty msg}">
 					<div class="alert alert-warning" role="alert">
@@ -104,6 +106,7 @@
 							<label>Numero do Registro : ${arpenp.numeroRegistro} </label>
 							<br>
 							<label>Tipo da Folha : ${arpenp.tipoLivro} </label>
+							<br>
 							<!-- END ARPENP  -->
 						</c:forEach>
 					</div>
@@ -115,18 +118,21 @@
 					<hr>
 					<object width="700" height="500" data="${arisp}" width="400"
 						height="300"></object>
+					<br>
 				</c:if>
 				<c:if test="${not empty detran}">
 					<h2>Detran :</h2>
 					<hr>
 					<object width="700" height="500" data="${detran}" width="400"
 						height="300"></object>
+					<br>
 				</c:if>
 				<c:if test="${not empty infocrim}">
 					<h2>Infocrim :</h2>
 					<hr>
 					<object width="700" height="500" data="${infocrim}" width="400"
 						height="300"></object>
+					<br>
 				</c:if>
 				<!-- END PDF's -->
 
@@ -147,7 +153,7 @@
 							${cadesp.nire} </label> <br> <label>Ocorrencia Fiscal :
 							${cadesp.ocorrenciaFiscal} </label> <br> <label>Tipo de
 							Unidade : ${cadesp.tipoUnidade} </label> <br> <label>Forma
-							de Atuacao : ${cadesp.formaAtuacao} </label>
+							de Atuacao : ${cadesp.formaAtuacao} </label> <br>
 						<!-- END CADESP  -->
 					</div>
 				</c:if>
@@ -183,6 +189,7 @@
 							<label>Tipo de Unidade : ${cadesp.tipoUnidade} </label>
 							<br>
 							<label>Forma de Atuacao : ${cadesp.formaAtuacao} </label>
+							<br>
 							<!-- END CADESP  -->
 						</c:forEach>
 					</div>
@@ -289,6 +296,7 @@
 							<br>
 							<label>Variacao Absoluta :
 								${caged.cagedEmpresa.variacaoAbsoluta} </label>
+							<br>
 						</c:if>
 					</div>
 				</c:if>
@@ -396,6 +404,7 @@
 								<br>
 								<label>Variacao Absoluta :
 									${caged.cagedEmpresa.variacaoAbsoluta} </label>
+								<br>
 							</c:if>
 						</c:forEach>
 					</div>
@@ -419,7 +428,7 @@
 						</label> <br> <label>Contato : ${censec.contato} </label> <br> <label>Status
 							: ${censec.status} </label> <br> <label>UF : ${censec.uf} </label> <br>
 						<label>Municipio : ${censec.municipio} </label> <br> <label>Cartorio
-							: ${censec.cartorio} </label>
+							: ${censec.cartorio} </label><br>
 					</div>
 				</c:if>
 
@@ -463,6 +472,7 @@
 							<label>Municipio : ${censec.municipio} </label>
 							<br>
 							<label>Cartorio : ${censec.cartorio} </label>
+							<br>
 						</c:forEach>
 					</div>
 				</c:if>
@@ -485,7 +495,7 @@
 							${jucesp.bairro} </label> <br> <label>Complemento :
 							${jucesp.complemento} </label> <br> <label>Municipio :
 							${jucesp.municipio} </label> <br> <label>CEP : ${jucesp.cep}
-						</label> <br> <label>UF : ${jucesp.uf} </label>
+						</label> <br> <label>UF : ${jucesp.uf} </label><br>
 					</div>
 				</c:if>
 
@@ -523,6 +533,7 @@
 							<label>CEP : ${jucesp.cep} </label>
 							<br>
 							<label>UF : ${jucesp.uf} </label>
+							<br>
 						</c:forEach>
 					</div>
 				</c:if>
@@ -541,7 +552,7 @@
 							do Pai : ${siel.nomePai} </label> <br> <label>Nome da Mae :
 							${siel.nomeMae} </label> <br> <label>Naturalidade :
 							${siel.naturalidade} </label> <br> <label>Codigo Validacao :
-							${siel.cdValidacao} </label>
+							${siel.cdValidacao} </label><br>
 					</div>
 				</c:if>
 
@@ -573,6 +584,7 @@
 							<label>Naturalidade : ${siel.naturalidade} </label>
 							<br>
 							<label>Codigo Validacao : ${siel.cdValidacao} </label>
+							<br>
 						</c:forEach>
 					</div>
 				</c:if>
@@ -607,7 +619,7 @@
 							Outros : ${sivec.dtNascimentoOutros} </label> <br> <label>Nacionalidade
 							Outros : ${sivec.nacionalidadeOutros} </label> <br> <label>Nome
 							do Pai Outros : ${sivec.nomePaiOutros} </label> <br> <label>Nome
-							do Mae Outros : ${sivec.nomeMaeOutros} </label>
+							do Mae Outros : ${sivec.nomeMaeOutros} </label><br>
 					</div>
 				</c:if>
 
@@ -675,6 +687,7 @@
 							<label>Nome do Pai Outros : ${sivec.nomePaiOutros} </label>
 							<br>
 							<label>Nome do Mae Outros : ${sivec.nomeMaeOutros} </label>
+							<br>
 						</c:forEach>
 					</div>
 				</c:if>

@@ -1,0 +1,36 @@
+a, a:hover {
+	color: #fff;
+}
+
+form {
+	margin: 0;
+}
+
+body {
+	background-color: #2d2d2d;
+	color: #fff;
+}
+
+.button-block {
+	display: flex;
+	heigth: 2.8125rem;
+}
+
+.form-button {
+	display: content;
+}
+
+.navbar {
+	width: 100%;
+	background: linear-gradient(90deg, #2d2d2d 0%, #191919 35%, #121212 100%);
+}
+
+.button {
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.block-button {
+	display: flex;
+	align-items: center;	
+}
