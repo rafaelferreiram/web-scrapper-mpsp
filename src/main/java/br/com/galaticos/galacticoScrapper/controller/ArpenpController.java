@@ -36,7 +36,7 @@ public class ArpenpController {
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Arpenp> users = mongoTemplate.find(query, Arpenp.class);
 		if (!users.isEmpty()) {
-			return ResponseEntity.ok().body(users);
+			return ResponseEntity.ok().body(users.get(0));
 		} else {
 			return ResponseEntity.ok().body("No data found");
 		}

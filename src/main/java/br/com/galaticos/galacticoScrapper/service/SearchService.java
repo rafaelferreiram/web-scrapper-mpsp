@@ -76,13 +76,13 @@ public class SearchService {
 	}
 
 	public void getAllWithNoFilter(Model model) {
-		model.addAttribute("arpenp", repositories.arpenpRepository.findAll());
-		model.addAttribute("cadesp", repositories.cadespRepository.findAll());
-		model.addAttribute("caged", repositories.cagedRepository.findAll());
-		model.addAttribute("censec", repositories.censecRepository.findAll());
-		model.addAttribute("jucesp", repositories.jucespRepository.findAll());
-		model.addAttribute("siel", repositories.sielRepository.findAll());
-		model.addAttribute("sivec", repositories.sivecRepository.findAll());
+		model.addAttribute("arpenpList", repositories.arpenpRepository.findAll());
+		model.addAttribute("cadespList", repositories.cadespRepository.findAll());
+		model.addAttribute("cagedList", repositories.cagedRepository.findAll());
+		model.addAttribute("censecList", repositories.censecRepository.findAll());
+		model.addAttribute("jucespList", repositories.jucespRepository.findAll());
+		model.addAttribute("sielList", repositories.sielRepository.findAll());
+		model.addAttribute("sivecList", repositories.sivecRepository.findAll());
 		model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
 		model.addAttribute("detran", "/downloads/detran.pdf");
 		model.addAttribute("arisp", "/downloads/arisp.pdf");
@@ -90,19 +90,19 @@ public class SearchService {
 
 	public void getAllWithTypeFilter(Model model, String select) {
 		if ("Jucesp".equals(select)) {
-			model.addAttribute("jucesp", repositories.jucespRepository.findAll());
+			model.addAttribute("jucespList", repositories.jucespRepository.findAll());
 		} else if ("Cadesp".equals(select)) {
-			model.addAttribute("cadesp", repositories.cadespRepository.findAll());
+			model.addAttribute("cadespList", repositories.cadespRepository.findAll());
 		} else if ("Arpenp".equals(select)) {
-			model.addAttribute("arpenp", repositories.arpenpRepository.findAll());
+			model.addAttribute("arpenpList", repositories.arpenpRepository.findAll());
 		} else if ("Caged".equals(select)) {
-			model.addAttribute("caged", repositories.cagedRepository.findAll());
+			model.addAttribute("cagedList", repositories.cagedRepository.findAll());
 		} else if ("Censec".equals(select)) {
-			model.addAttribute("censec", repositories.censecRepository.findAll());
+			model.addAttribute("censecList", repositories.censecRepository.findAll());
 		} else if ("Sivec".equals(select)) {
-			model.addAttribute("sivec", repositories.sivecRepository.findAll());
+			model.addAttribute("sivecList", repositories.sivecRepository.findAll());
 		} else if ("Siel".equals(select)) {
-			model.addAttribute("siel", repositories.sielRepository.findAll());
+			model.addAttribute("sielList", repositories.sielRepository.findAll());
 		} else if ("Arisp".equals(select)) {
 			model.addAttribute("arisp", "/downloads/arisp.pdf");
 		} else if ("Detran".equals(select)) {

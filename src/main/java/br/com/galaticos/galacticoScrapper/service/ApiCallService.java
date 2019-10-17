@@ -106,7 +106,7 @@ public class ApiCallService {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return cagedAll.getId() == null ? null : cagedAll;
+		return cagedAll.getCagedEmpresa() == null && cagedAll.getCaged() == null ? null : cagedAll;
 	}
 
 	public CagedAll getToCagedCpf(String cpfCnpj) {
@@ -127,7 +127,7 @@ public class ApiCallService {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return cagedAllCpf.getId() == null ? null : cagedAllCpf;
+		return cagedAllCpf.getCagedTrabalhador()  == null && cagedAllCpf.getCaged()  == null ? null : cagedAllCpf;
 	}
 
 	public Censec getToCensec(String cpfCnpj) {

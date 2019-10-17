@@ -36,7 +36,7 @@ public class JucespController {
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Jucesp> users = mongoTemplate.find(query, Jucesp.class);
 		if(!users.isEmpty()) {
-			return ResponseEntity.ok().body(users);
+			return ResponseEntity.ok().body(users.get(0));
 		}else {
 			return ResponseEntity.ok().body("No data found");
 		}
