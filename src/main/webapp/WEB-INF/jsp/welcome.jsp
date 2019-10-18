@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500"
 	rel="stylesheet" />
 <link href="css/main.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 <link href="js/multi.js" />
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

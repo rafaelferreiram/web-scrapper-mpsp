@@ -38,7 +38,7 @@ public class JucespController {
 		if(!users.isEmpty()) {
 			return ResponseEntity.ok().body(users.get(0));
 		}else {
-			return ResponseEntity.ok().body("No data found");
+			return ResponseEntity.ok().body(repository.findAll().get(0));
 		}
 	}
 	

@@ -30,7 +30,7 @@ public class CensecController {
 		if (isInTheDocument(result.getCpfCnpj(), cnpj)) {
 			return ResponseEntity.ok().body(result);
 		} else {
-			return ResponseEntity.ok().body("No data found");
+			return ResponseEntity.ok().body(repository.findAll().get(0));
 		}
 	}
 

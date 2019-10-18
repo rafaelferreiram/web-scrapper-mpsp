@@ -9,6 +9,7 @@ form {
 body {
 	background-color: #2d2d2d;
 	color: #fff;
+	font-family: 'Raleway', sans-serif;
 }
 
 .button-block {
@@ -32,5 +33,15 @@ body {
 
 .block-button {
 	display: flex;
-	align-items: center;	
+	align-items: center;
+    margin-bottom: 20px;
+}
+
+.button-result-function{
+	
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	
 }
