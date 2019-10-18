@@ -38,8 +38,9 @@ public class ApiCallService {
 
 			conn.disconnect();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 		}
+		
 		return jucesp.getId() == null ? null : jucesp;
 	}
 

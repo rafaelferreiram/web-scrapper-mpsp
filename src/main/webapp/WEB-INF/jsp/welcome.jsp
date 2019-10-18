@@ -40,17 +40,13 @@
 				</div>
 				<div class="input-field fouth-wrap">
 					<select data-trigger="" name="tipoBusca" required="required">
-						<option name="1" value="" disabled="disabled" selected="selected">Select
-							an option</option>
-						<option name="cpf" value="cpf">CPF</option>
-						<option name="cnpj" value="cnpj">CNPJ</option>
-						<option name="all" value="all">ALL</option>
+						<option value="all">ALL</option>
+						<option value="cpf">CPF</option>
+						<option value="cnpj">CNPJ</option>
 					</select>
 				</div>
 				<div class="input-field fouth-wrap">
 					<select data-trigger="" name="select" required="required">
-						<!-- <option name="1" value="" disabled="disabled" selected="selected">Select
-							an option</option> -->
 						<option value="All">ALL</option>
 						<option value="Arisp">Arisp</option>
 						<option value="Arpenp">Arpenp</option>

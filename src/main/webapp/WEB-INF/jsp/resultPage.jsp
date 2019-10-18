@@ -15,7 +15,9 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
 	rel="stylesheet">
-
+<script src="js/jspdf.js"></script>
+<script src="js/jquery-2.1.3.js"></script>
+<script src="js/pdfFromHTML.js"></script>
 </head>
 
 <body>
@@ -707,10 +709,10 @@
 							value="Nova Pesquisa" />
 					</form>
 				</div>
-				<div class="block-button">
+				<div class="d-flex align-">
 					<form class="form-button">
-						<a class="button btn btn-outline-light btn-sm" 
-							onclick="HTMLtoPDF()">Gerar PDF</a>
+						 <a class="button btn btn-outline-light btn-sm" href="#"
+							onclick="HTMLtoPDF()">Gerar PDF</a> 
 					</form>
 				</div>
 			</div>

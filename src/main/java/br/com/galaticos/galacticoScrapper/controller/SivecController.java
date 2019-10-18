@@ -12,7 +12,7 @@ import br.com.galaticos.galacticoScrapper.model.Sivec;
 import br.com.galaticos.galacticoScrapper.repository.SivecRepository;
 
 @RestController
-@RequestMapping(value = "sivec")
+@RequestMapping(value = "/sivec")
 public class SivecController {
 
 	@Autowired
