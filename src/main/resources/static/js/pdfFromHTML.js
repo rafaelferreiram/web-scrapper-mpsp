@@ -23,7 +23,7 @@ pdf.fromHTML(
   	  // dispose: object with X, Y of the last line add to the PDF
 		//          this allow the insertion of new lines after html
 		var d = new Date();
-        pdf.save(`resultOfSearch-${Date.now()}.pdf`);
+        pdf.save(`result-Of-Scrapper-Search-${Date.now()}.pdf`);
       }
   )		
 }
