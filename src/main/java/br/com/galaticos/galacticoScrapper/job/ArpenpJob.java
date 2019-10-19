@@ -7,12 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
-
-import com.mongodb.client.MongoClients;
 
 import br.com.galaticos.galacticoScrapper.model.Arpenp;
 import br.com.galaticos.galacticoScrapper.repository.ArpenpRepository;

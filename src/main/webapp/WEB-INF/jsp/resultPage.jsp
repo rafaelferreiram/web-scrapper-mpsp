@@ -15,9 +15,10 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
 	rel="stylesheet">
-<script src="js/jspdf.js"></script>
-<script src="js/jquery-2.1.3.js"></script>
-<script src="js/pdfFromHTML.js"></script>
+
+<script src="/js/jspdf.js"></script>
+<script src="/js/jquery-2.1.3.js"></script>
+<script src="/js/pdfFromHTML.js"></script>
 </head>
 
 <body>
@@ -40,13 +41,7 @@
 			<div class="col-10">
 
 				<div>
-
 					<br> <br>
-					<c:if test="${not empty msg}">
-						<div class="alert alert-warning" role="alert">
-							<h4>${msg}</h4>
-						</div>
-					</c:if>
 					<c:if test="${not empty arpenp }">
 						<h2>Arpenp</h2>
 						<hr>
@@ -710,10 +705,8 @@
 					</form>
 				</div>
 				<div class="d-flex align-">
-					<form class="form-button">
-						 <a class="button btn btn-outline-light btn-sm" href="#"
-							onclick="HTMLtoPDF()">Gerar PDF</a> 
-					</form>
+					<button class="button btn btn-outline-light btn-sm"
+						onclick="HTMLtoPDF()">Download PDF</button>
 				</div>
 			</div>
 		</div>

@@ -14,19 +14,14 @@ public class LoginController {
 	@Autowired
 	private LoginValidadorService loginValidadorService;
 
-	@GetMapping("/")
-	public String login(Model model, String error, String logout) {
+	@GetMapping(value={"/", "/logout"})
+	public String login() {
 		return "LoginPage";
 	}
 	
-	@GetMapping("/research")
+	@GetMapping(value={"/research", "/search"})
 	public String research() {
 		return "welcome";
-	}
-	
-	@GetMapping("/logout")
-	public String logout() {
-		return "LoginPage";
 	}
 
 	@PostMapping("/login")
@@ -35,7 +30,6 @@ public class LoginController {
 		if (loginValidadorService.isLoginValid(username, password)) {
 			returnPage = "welcome";
 		}
-
 		return returnPage;
 	}
 	

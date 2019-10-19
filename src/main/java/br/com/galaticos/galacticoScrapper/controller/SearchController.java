@@ -16,7 +16,7 @@ public class SearchController {
 	private SearchService searchService;
 
 	@PostMapping("/search")
-	public String loginParam(Model model, String cpfCnpj, String tipoBusca, String select)
+	public String search(Model model, String cpfCnpj, String tipoBusca, String select)
 			throws MalformedURLException {
 		if (isCpf(tipoBusca)) {
 			searchService.getWithCpfFilter(model, select, cpfCnpj);
@@ -31,7 +31,7 @@ public class SearchController {
 		}
 		return "resultPage";
 	}
-
+	
 	private boolean isTypeSelected(String select) {
 		return "All".equalsIgnoreCase(select) ? true : false;
 	}

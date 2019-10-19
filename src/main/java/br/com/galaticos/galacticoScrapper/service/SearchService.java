@@ -17,76 +17,25 @@ public class SearchService {
 
 	public void getWithCpfFilter(Model model, String select, String cpfCnpj) {
 		if ("Caged".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("caged", apiCallService.getToCagedCpf(cpfCnpj));
-			}
+			model.addAttribute("caged", apiCallService.getToCagedCpf(cpfCnpj));
 		} else if ("Jucesp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
-			}
+			model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
 		} else if ("Cadesp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
-			}
+			model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
 		} else if ("Caged".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
-			}
+			model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
 		} else if ("Censec".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
-			}
-
+			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
 		} else if ("Sivec".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("sivecList", repositories.sivecRepository.findAll());
-			}
+			model.addAttribute("sivecList", repositories.sivecRepository.findAll());
 		} else if ("Siel".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("sielList", repositories.sielRepository.findAll());
-			}
+			model.addAttribute("sielList", repositories.sielRepository.findAll());
 		} else if ("Arisp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("arisp", "/downloads/arisp.pdf");
-			}
+			model.addAttribute("arisp", "/downloads/arisp.pdf");
 		} else if ("Detran".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("detran", "/downloads/detran.pdf");
-			}
+			model.addAttribute("detran", "/downloads/detran.pdf");
 		} else if ("Infocrim".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
-			}
+			model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
 		} else if ("All".equalsIgnoreCase(select)) {
 			model.addAttribute("arpenpList", repositories.arpenpRepository.findAll());
 			model.addAttribute("cadespList", repositories.cadespRepository.findAll());
@@ -104,76 +53,25 @@ public class SearchService {
 
 	public void getWithCnpjFilter(Model model, String select, String cpfCnpj) {
 		if ("Jucesp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
-			}
+			model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
 		} else if ("Cadesp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
-			}
+			model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
 		} else if ("Arpenp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
-			}
+			model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
 		} else if ("Caged".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
-			}
+			model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
 		} else if ("Censec".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
-			}
-
+			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
 		} else if ("Sivec".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("sivecList", repositories.sivecRepository.findAll());
-			}
+			model.addAttribute("sivecList", repositories.sivecRepository.findAll());
 		} else if ("Siel".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("sielList", repositories.sielRepository.findAll());
-			}
+			model.addAttribute("sielList", repositories.sielRepository.findAll());
 		} else if ("Arisp".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("arisp", "/downloads/arisp.pdf");
-			}
+			model.addAttribute("arisp", "/downloads/arisp.pdf");
 		} else if ("Detran".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("detran", "/downloads/detran.pdf");
-			}
+			model.addAttribute("detran", "/downloads/detran.pdf");
 		} else if ("Infocrim".equals(select)) {
-			if ("".equals(cpfCnpj)) {
-				model.addAttribute("msg",
-						"No data found ! [Either select 'All' instead of CNPJ/CPF or informe a CNPJ/CPF number ]");
-			} else {
-				model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
-			}
+			model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
 		} else if ("All".equalsIgnoreCase(select)) {
 			model.addAttribute("arpenpList", repositories.arpenpRepository.findAll());
 			model.addAttribute("cadespList", repositories.cadespRepository.findAll());

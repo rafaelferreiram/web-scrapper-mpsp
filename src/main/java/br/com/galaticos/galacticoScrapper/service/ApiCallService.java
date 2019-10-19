@@ -19,7 +19,7 @@ import br.com.galaticos.galacticoScrapper.model.Jucesp;
 @Service
 public class ApiCallService {
 
-	static final String BASE_URL = "http://localhost:18080/";
+	static final String BASE_URL = "http://localhost:8080/";
 
 	public Jucesp getToJucesp(String cpfCnpj) {
 		Jucesp jucesp = new Jucesp();
