@@ -1,7 +1,6 @@
 package br.com.galaticos.galacticoScrapper.executor;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.itextpdf.text.DocumentException;
 
 import br.com.galaticos.galacticoScrapper.config.ChromeDriverConfig;
-import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
+import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 import br.com.galaticos.galacticoScrapper.job.MockSrapperJob;
 
 @Service
@@ -28,7 +27,7 @@ public class MockSrapperExecutor {
 	@Autowired
 	private ChromeDriverConfig chromeDriverConfig;
 
-	public void execute(LoginDTO login) throws InterruptedException, IOException, DocumentException {
+	public void execute() throws InterruptedException, IOException, DocumentException {
 
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/driver/chromedriver");
 		System.setProperty("java.net.preferIPv4Stack" , "true");
@@ -36,23 +35,20 @@ public class MockSrapperExecutor {
 		driver = chromeDriverConfig.setConfig(driver);
 		
 		// Navigate to URL
-		driver.get(login.getUrl());
+		driver.get(MockConstants.URL);
 
-		if (!mockSrapperJob.login(login, driver)) {
+		if (!mockSrapperJob.login(driver)) {
 			logger.info("[Login ERROR] - Invalid Username or Password");
 		} else {
 			logger.info("[Login SUCCESS] - Logged in successfully");
-			Thread.sleep(2000);
 			executeScrapperForMocks(driver);
 			driver.quit();
 		}
-		TimeUnit.SECONDS.sleep(2);
 		driver.quit();
 	}
 
 
 	private void executeScrapperForMocks(WebDriver driver) throws IOException, DocumentException {
-
 			mockSrapperJob.accessArisp(driver);
 			mockSrapperJob.accessArpenp(driver);
 			mockSrapperJob.accessCadesp(driver);
@@ -63,7 +59,6 @@ public class MockSrapperExecutor {
 			mockSrapperJob.accessJucesp(driver);
 			mockSrapperJob.accessSiel(driver);
 			mockSrapperJob.accessSivec(driver);
-
 	}
 
 }

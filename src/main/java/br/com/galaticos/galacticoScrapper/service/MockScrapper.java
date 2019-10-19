@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.itextpdf.text.DocumentException;
 
-import br.com.galaticos.galacticoScrapper.constants.MockConstants;
-import br.com.galaticos.galacticoScrapper.dto.LoginDTO;
 import br.com.galaticos.galacticoScrapper.executor.MockSrapperExecutor;
 
 
@@ -24,10 +22,9 @@ public class MockScrapper {
 
 	public boolean initCrawaler(boolean isActive) {
 		boolean valid = Boolean.FALSE;
-		LoginDTO login = new LoginDTO(MockConstants.URL, MockConstants.LOGIN, MockConstants.PASSWORD);
 		try {
 			logger.info("Scrapper initialized at "+new Date());
-			mockSrapperExecutor.execute(login);
+			mockSrapperExecutor.execute();
 			logger.info("Scrapper finished at "+new Date());
 			valid = Boolean.TRUE;
 		} catch (InterruptedException | IOException | DocumentException e) {
