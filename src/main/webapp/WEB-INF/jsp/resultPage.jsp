@@ -707,7 +707,7 @@
 				<div class="d-flex align-">
 					<form class="form-button">
 						<button class="button btn btn-outline-light btn-sm"
-							onclick="HTMLtoPDF()">Download PDF</button>
+							onClick="window.print()">Download PDF</button>
 					</form>
 				</div>
 			</div>
