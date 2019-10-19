@@ -11,6 +11,13 @@ import com.itextpdf.text.DocumentException;
 
 import br.com.galaticos.galacticoScrapper.executor.MockSrapperExecutor;
 
+/**
+ * MPSP Scrapper System
+ * 
+ * @author Rafael Ferreira Silva Matos
+ * @version 1.0
+ * @rm 77899
+ */
 
 @Service
 public class MockScrapper {

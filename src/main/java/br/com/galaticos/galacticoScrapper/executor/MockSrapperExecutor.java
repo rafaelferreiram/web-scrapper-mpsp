@@ -15,6 +15,14 @@ import br.com.galaticos.galacticoScrapper.config.ChromeDriverConfig;
 import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 import br.com.galaticos.galacticoScrapper.job.MockSrapperJob;
 
+/**
+ * MPSP Scrapper System
+ * 
+ * @author Rafael Ferreira Silva Matos
+ * @version 1.0
+ * @rm 77899
+ */
+
 @Service
 @Scope("prototype")
 public class MockSrapperExecutor {
