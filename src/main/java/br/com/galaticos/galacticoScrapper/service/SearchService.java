@@ -20,10 +20,12 @@ public class SearchService {
 			model.addAttribute("caged", apiCallService.getToCagedCpf(cpfCnpj));
 		} else if ("Jucesp".equals(select)) {
 			model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
+			model.addAttribute("jucespPDF", "/downloads/jucesp.pdf");
 		} else if ("Cadesp".equals(select)) {
 			model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
 		} else if ("Caged".equals(select)) {
 			model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
+			model.addAttribute("cagedPDF", "/downloads/cagedTrabalhador.pdf");
 		} else if ("Censec".equals(select)) {
 			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
 		} else if ("Sivec".equals(select)) {
@@ -44,6 +46,8 @@ public class SearchService {
 			model.addAttribute("jucespList", repositories.jucespRepository.findAll());
 			model.addAttribute("sielList", repositories.sielRepository.findAll());
 			model.addAttribute("sivecList", repositories.sivecRepository.findAll());
+			model.addAttribute("cagedPDF", "/downloads/cagedTrabalhador.pdf");
+			model.addAttribute("jucespPDF", "/downloads/jucesp.pdf");
 			model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
 			model.addAttribute("detran", "/downloads/detran.pdf");
 			model.addAttribute("arisp", "/downloads/arisp.pdf");
@@ -54,12 +58,14 @@ public class SearchService {
 	public void getWithCnpjFilter(Model model, String select, String cpfCnpj) {
 		if ("Jucesp".equals(select)) {
 			model.addAttribute("jucesp", apiCallService.getToJucesp(cpfCnpj));
+			model.addAttribute("jucespPDF", "/downloads/jucesp.pdf");
 		} else if ("Cadesp".equals(select)) {
 			model.addAttribute("cadesp", apiCallService.getToCadesp(cpfCnpj));
 		} else if ("Arpenp".equals(select)) {
 			model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
 		} else if ("Caged".equals(select)) {
 			model.addAttribute("caged", apiCallService.getToCagedCnpj(cpfCnpj));
+			model.addAttribute("cagedPDF", "/downloads/cagedTrabalhador.pdf");
 		} else if ("Censec".equals(select)) {
 			model.addAttribute("censec", apiCallService.getToCensec(cpfCnpj));
 		} else if ("Sivec".equals(select)) {
@@ -81,6 +87,8 @@ public class SearchService {
 			model.addAttribute("sielList", repositories.sielRepository.findAll());
 			model.addAttribute("sivecList", repositories.sivecRepository.findAll());
 			model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
+			model.addAttribute("cagedPDF", "/downloads/cagedTrabalhador.pdf");
+			model.addAttribute("jucespPDF", "/downloads/jucesp.pdf");
 			model.addAttribute("detran", "/downloads/detran.pdf");
 			model.addAttribute("arisp", "/downloads/arisp.pdf");
 
@@ -96,6 +104,8 @@ public class SearchService {
 		model.addAttribute("sielList", repositories.sielRepository.findAll());
 		model.addAttribute("sivecList", repositories.sivecRepository.findAll());
 		model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
+		model.addAttribute("cagedPDF", "/downloads/cagedTrabalhador.pdf");
+		model.addAttribute("jucespPDF", "/downloads/jucesp.pdf");
 		model.addAttribute("detran", "/downloads/detran.pdf");
 		model.addAttribute("arisp", "/downloads/arisp.pdf");
 	}
@@ -103,12 +113,14 @@ public class SearchService {
 	public void getAllWithTypeFilter(Model model, String select) {
 		if ("Jucesp".equals(select)) {
 			model.addAttribute("jucespList", repositories.jucespRepository.findAll());
+			model.addAttribute("jucespPDF", "/downloads/jucesp.pdf");
 		} else if ("Cadesp".equals(select)) {
 			model.addAttribute("cadespList", repositories.cadespRepository.findAll());
 		} else if ("Arpenp".equals(select)) {
 			model.addAttribute("arpenpList", repositories.arpenpRepository.findAll());
 		} else if ("Caged".equals(select)) {
 			model.addAttribute("cagedList", repositories.cagedRepository.findAll());
+			model.addAttribute("cagedPDF", "/downloads/cagedTrabalhador.pdf");
 		} else if ("Censec".equals(select)) {
 			model.addAttribute("censecList", repositories.censecRepository.findAll());
 		} else if ("Sivec".equals(select)) {
