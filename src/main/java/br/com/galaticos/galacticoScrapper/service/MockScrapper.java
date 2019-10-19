@@ -28,7 +28,7 @@ public class MockScrapper {
 			logger.info("Scrapper finished at "+new Date());
 			valid = Boolean.TRUE;
 		} catch (InterruptedException | IOException | DocumentException e) {
-			//
+			//Silence error enableing to keep execution
 		}
 		return valid;
 	}
