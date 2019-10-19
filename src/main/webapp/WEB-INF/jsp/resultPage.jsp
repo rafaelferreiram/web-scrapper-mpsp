@@ -705,8 +705,10 @@
 					</form>
 				</div>
 				<div class="d-flex align-">
-					<button class="button btn btn-outline-light btn-sm"
-						onclick="HTMLtoPDF()">Download PDF</button>
+					<form class="form-button">
+						<button class="button btn btn-outline-light btn-sm"
+							onclick="HTMLtoPDF()">Download PDF</button>
+					</form>
 				</div>
 			</div>
 		</div>
