@@ -38,6 +38,7 @@ public class CadespController {
 		if(!users.isEmpty()) {
 			return ResponseEntity.ok().body(users.get(0));
 		}else {
+			//Even when no data found , return mock result
 			return ResponseEntity.ok().body(repository.findAll().get(0));
 		}
 	}

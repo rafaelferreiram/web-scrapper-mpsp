@@ -12,8 +12,10 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-	 <link href="/css/Style.css" rel="stylesheet">
-	 <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<link href="/css/Style.css" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+	rel="stylesheet">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -31,6 +33,11 @@
 	<div class="main">
 		<div class="col-md-6 col-sm-12">
 			<div class="login-form">
+			<c:if test="${not empty msgLogin}">
+				<div class="alert alert-danger alert-dismissible">
+					<strong>Invalid Login</strong> ${msgLogin}
+				</div>
+			</c:if>
 				<form method="POST" action="${contextPath}/login"
 					class="form-signin">
 					<div class="form-group">

@@ -109,6 +109,22 @@
 							</div>
 						</c:if>
 
+						<c:if test="${not empty jucespPDF}">
+							<h2>Jucesp :</h2>
+							<hr>
+							<object width="700" height="500" data="${jucespPDF}" width="400"
+								height="300"></object>
+							<br>
+						</c:if>
+
+						<c:if test="${not empty cagedPDF}">
+							<h2>Caged Trabalhador :</h2>
+							<hr>
+							<object width="700" height="500" data="${cagedPDF}" width="400"
+								height="300"></object>
+							<br>
+						</c:if>
+
 						<!-- PDF's -->
 						<c:if test="${not empty arisp}">
 							<h2>Arisp :</h2>
@@ -411,13 +427,6 @@
 							</div>
 						</c:if>
 						
-						<c:if test="${not empty cagedPDF}">
-							<hr>
-							<object width="700" height="500" data="${cagedPDF}" width="400"
-								height="300"></object>
-							<br>
-						</c:if>
-
 						<c:if test="${not empty censec}">
 							<h2>Censec :</h2>
 							<hr>
@@ -549,13 +558,6 @@
 							</div>
 						</c:if>
 
-						<c:if test="${not empty jucespPDF}">
-							<hr>
-							<object width="700" height="500" data="${jucespPDF}" width="400"
-								height="300"></object>
-							<br>
-						</c:if>
-						
 						<c:if test="${not empty siel}">
 							<h2>Siel :</h2>
 							<hr>

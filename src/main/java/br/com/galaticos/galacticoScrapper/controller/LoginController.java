@@ -26,9 +26,10 @@ public class LoginController {
 
 	@PostMapping("/login")
 	public String loginParam(Model model, String username, String password) {
-		String returnPage = "LoginPage";
-		if (loginValidadorService.isLoginValid(username, password)) {
-			returnPage = "welcome";
+		String returnPage = "welcome";
+		if (!loginValidadorService.isLoginValid(username, password)) {
+			returnPage = "LoginPage";
+			model.addAttribute("msgLogin", "Username or Password are incorrect");
 		}
 		return returnPage;
 	}

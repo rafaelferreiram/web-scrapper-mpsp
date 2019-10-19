@@ -80,6 +80,7 @@ public class CagedController {
 		if (cagedEmpresaObj != null || cagedObj != null) {
 			return ResponseEntity.ok().body(cagedAll);
 		} else {
+			//Even when no data found , return mock result
 			return ResponseEntity.ok().body(allRepository.findAll().get(0));
 		}
 
@@ -105,6 +106,7 @@ public class CagedController {
 		if (cagedTrabalhadorObj != null || cagedObj != null) {
 			return ResponseEntity.ok().body(cagedAll);
 		} else {
+			//Even when no data found , return mock result
 			return ResponseEntity.ok().body(allRepository.findAll().get(0));
 		}
 

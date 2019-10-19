@@ -30,6 +30,7 @@ public class CensecController {
 		if (isInTheDocument(result.getCpfCnpj(), cnpj)) {
 			return ResponseEntity.ok().body(result);
 		} else {
+			//Even when no data found , return mock result
 			return ResponseEntity.ok().body(repository.findAll().get(0));
 		}
 	}
@@ -38,8 +39,7 @@ public class CensecController {
 		boolean result = Boolean.FALSE;
 		if (cnpj != null) {
 			for(String cpfDoc : list) {
-				String cpfToCompare = cpfDoc;
-				if(cpfToCompare.trim().equalsIgnoreCase(cnpj.toString())) {
+				if(cpfDoc.trim().equalsIgnoreCase(cnpj.toString())) {
 					return Boolean.TRUE;
 				}
 			}
