@@ -9,4 +9,3 @@ Acessar 'http://localhost:8080/' para acessar aplicacao web.
 Sempre que executar o scrappar ele ira inserir registro no MongoDB e o sistema web consume a atrave de WebService.
 
 
-

@@ -36,7 +36,9 @@ public class SearchService {
 			model.addAttribute("arisp", "/downloads/arisp.pdf");
 		} else if ("Detran".equals(select)) {
 			model.addAttribute("detran", "/downloads/detran.pdf");
-		} else if ("Infocrim".equals(select)) {
+		} else if ("Arpenp".equals(select)) {
+			model.addAttribute("arpenp", apiCallService.getToArpenp(cpfCnpj));
+		}else if ("Infocrim".equals(select)) {
 			model.addAttribute("infocrim", "/downloads/Detalhe do BO Escolhido.pdf");
 		} else if ("All".equalsIgnoreCase(select)) {
 			model.addAttribute("arpenpList", repositories.arpenpRepository.findAll());
