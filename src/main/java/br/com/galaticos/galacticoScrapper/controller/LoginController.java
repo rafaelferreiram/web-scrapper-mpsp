@@ -10,16 +10,16 @@ import br.com.galaticos.galacticoScrapper.service.LoginValidadorService;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private LoginValidadorService loginValidadorService;
 
-	@GetMapping(value={"/", "/logout"})
+	@GetMapping(value = { "/", "/logout" })
 	public String login() {
 		return "LoginPage";
 	}
-	
-	@GetMapping(value={"/research", "/search"})
+
+	@GetMapping(value = { "/research", "/search" })
 	public String research() {
 		return "welcome";
 	}
@@ -33,5 +33,10 @@ public class LoginController {
 		}
 		return returnPage;
 	}
-	
+
+	@GetMapping("/login")
+	public String loginParam() {
+		return "LoginPage";
+	}
+
 }
