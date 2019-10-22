@@ -41,86 +41,81 @@
 			<div class="col-10">
 				<div id="HTMLtoPDF">
 					<div>
-						<br> <br>
 						<c:if test="${not empty arpenp }">
 							<h2>Arpenp</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
 								<!-- ARPENP  -->
-								<label>Cartorio : ${arpenp.cartorio} </label> <br> <label>CNS
-									: ${arpenp.cns} </label> <br> <label>UF : ${arpenp.uf} </label> <br>
-								<label>Nome Conjuge : ${arpenp.conjuge} </label> <br> <label>Novo
-									nome Conjuge : ${arpenp.conjugeNovoNome} </label> <br> <label>Nome
-									Conjuge 2 : ${arpenp.conjuge2} </label> <br> <label>Novo
-									nome Conjuge 2 : ${arpenp.conjuge2NovoNome} </label> <br> <label>Data
-									Casamento : ${arpenp.dtCasamento} </label> <br> <label>Matricula
-									: ${arpenp.matricula} </label> <br> <label>Data da Entrada
-									: ${arpenp.dtEntrada} </label> <br> <label>Data do
-									Registro : ${arpenp.dtRegistro} </label> <br> <label>Acervo
-									: ${arpenp.acervo} </label> <br> <label>Numero do Livro :
-									${arpenp.numeroLivro} </label> <br> <label>Numero da Folha
-									: ${arpenp.numeroFolha} </label> <br> <label>Numero do
-									Registro : ${arpenp.numeroRegistro} </label> <br> <label>Tipo
-									da Folha : ${arpenp.tipoLivro} </label> <br>
+								<label><b>Cartorio : </b>${arpenp.cartorio} </label> <br> <label><b>CNS
+										:</b>${arpenp.cns} </label> <br> <label><b>UF : </b>${arpenp.uf}
+								</label> <br> <label><b>Nome Conjuge : </b>${arpenp.conjuge}
+								</label> <br> <label><b>Novo nome Conjuge :</b>
+									${arpenp.conjugeNovoNome} </label> <br> <label><b>Nome
+										Conjuge 2 :</b> ${arpenp.conjuge2} </label> <br> <label><b>Novo
+										nome Conjuge 2 :</b> ${arpenp.conjuge2NovoNome} </label> <br> <label><b>Data
+										Casamento :</b> ${arpenp.dtCasamento} </label> <br> <label><b>Matricula
+										: </b>${arpenp.matricula} </label> <br> <label><b>Data da
+										Entrada : </b>${arpenp.dtEntrada} </label> <br> <label><b>Data
+										do Registro : </b>${arpenp.dtRegistro} </label> <br> <label><b>Acervo
+										:</b> ${arpenp.acervo} </label> <br> <label><b>Numero do
+										Livro :</b> ${arpenp.numeroLivro} </label> <br> <label><b>Numero
+										da Folha :</b> ${arpenp.numeroFolha} </label> <br> <label><b>Numero
+										do Registro :</b> ${arpenp.numeroRegistro} </label> <br> <label><b>Tipo
+										da Folha : </b>${arpenp.tipoLivro} </label> <br>
 								<!-- END ARPENP  -->
 							</div>
 						</c:if>
 						<c:if test="${not empty arpenpList }">
+							<br>
+							<br>
 							<h2>Arpenp</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
 								<c:forEach items="${arpenpList}" var="arpenp">
 									<!-- ARPENP  -->
-									<label>Cartorio : ${arpenp.cartorio} </label>
+									<label><b>Cartorio : </b>${arpenp.cartorio} </label>
 									<br>
-									<label>CNS : ${arpenp.cns} </label>
+									<label><b>CNS : </b>${arpenp.cns} </label>
 									<br>
-									<label>UF : ${arpenp.uf} </label>
+									<label><b>UF :</b> ${arpenp.uf} </label>
 									<br>
-									<label>Nome Conjuge : ${arpenp.conjuge} </label>
+									<label><b>Nome Conjuge :</b> ${arpenp.conjuge} </label>
 									<br>
-									<label>Novo nome Conjuge : ${arpenp.conjugeNovoNome} </label>
+									<label><b>Novo nome Conjuge :</b>
+										${arpenp.conjugeNovoNome} </label>
 									<br>
-									<label>Nome Conjuge 2 : ${arpenp.conjuge2} </label>
+									<label><b>Nome Conjuge 2 : </b>${arpenp.conjuge2} </label>
 									<br>
-									<label>Novo nome Conjuge 2 : ${arpenp.conjuge2NovoNome}
+									<label><b>Novo nome Conjuge 2 :</b>
+										${arpenp.conjuge2NovoNome} </label>
+									<br>
+									<label><b>Data Casamento :</b> ${arpenp.dtCasamento} </label>
+									<br>
+									<label><b>Matricula :</b> ${arpenp.matricula} </label>
+									<br>
+									<label><b>Data da Entrada :</b> ${arpenp.dtEntrada} </label>
+									<br>
+									<label><b>Data do Registro : </b>${arpenp.dtRegistro} </label>
+									<br>
+									<label><b>Acervo : </b>${arpenp.acervo} </label>
+									<br>
+									<label><b>Numero do Livro : </b>${arpenp.numeroLivro} </label>
+									<br>
+									<label><b>Numero da Folha :</b> ${arpenp.numeroFolha} </label>
+									<br>
+									<label><b>Numero do Registro : </b>${arpenp.numeroRegistro}
 									</label>
 									<br>
-									<label>Data Casamento : ${arpenp.dtCasamento} </label>
-									<br>
-									<label>Matricula : ${arpenp.matricula} </label>
-									<br>
-									<label>Data da Entrada : ${arpenp.dtEntrada} </label>
-									<br>
-									<label>Data do Registro : ${arpenp.dtRegistro} </label>
-									<br>
-									<label>Acervo : ${arpenp.acervo} </label>
-									<br>
-									<label>Numero do Livro : ${arpenp.numeroLivro} </label>
-									<br>
-									<label>Numero da Folha : ${arpenp.numeroFolha} </label>
-									<br>
-									<label>Numero do Registro : ${arpenp.numeroRegistro} </label>
-									<br>
-									<label>Tipo da Folha : ${arpenp.tipoLivro} </label>
+									<label><b>Tipo da Folha : </b>${arpenp.tipoLivro} </label>
 									<br>
 									<!-- END ARPENP  -->
 								</c:forEach>
 							</div>
 						</c:if>
-
 						<c:if test="${not empty jucespPDF}">
 							<h2>Jucesp :</h2>
 							<hr>
 							<object width="700" height="500" data="${jucespPDF}" width="400"
-								height="300"></object>
-							<br>
-						</c:if>
-
-						<c:if test="${not empty cagedPDF}">
-							<h2>Caged Trabalhador :</h2>
-							<hr>
-							<object width="700" height="500" data="${cagedPDF}" width="400"
 								height="300"></object>
 							<br>
 						</c:if>
@@ -133,82 +128,147 @@
 								height="300"></object>
 							<br>
 						</c:if>
+
 						<c:if test="${not empty detranInfo}">
+							<br>
+							<br>
 							<h2>Detran :</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
 								<!-- DETRAN  -->
-								<img src="${detranInfo.caminhoImg}" alt="imgProfiel" height="200" width="150">
-								<br>
-								<label>Nome Condutor : ${detranInfo.nomeCondutor} </label>
-										<br>
-										<label>CPF : ${detranInfo.cpf} </label>
-										<br>
-										<label>Identidade : ${detranInfo.identidade} </label>
-										<br>
-										<label>Renach : ${detranInfo.renach} </label>
-										<br>
-										<label>Categoria : ${detranInfo.categoria} </label>
-										<br>
-										<label>Emissao : ${detranInfo.emissao} </label>
-										<br>
-										<label>Nascimento : ${detranInfo.nascimento} </label>
-										<br>
-										<label>Nome do Pai : ${detranInfo.nomePai} </label>
-										<br>
-										<label>Nome da Mae : ${detranInfo.nomeMae} </label>
-										<br>
-										<label>Registro : ${detranInfo.registro} </label>
-										<br>
-										<label>Tipo Grafico : ${detranInfo.tipografico} </label>
-										<br>
+								<img src="${detranInfo.caminhoImg}" alt="imgProfiel"
+									height="200" width="150"> <br> <label><b>Nome
+										Condutor :</b> ${detranInfo.nomeCondutor} </label> <br> <label><b>CPF
+										: </b>${detranInfo.cpf} </label> <br> <label><b>Identidade
+										: </b>${detranInfo.identidade} </label> <br> <label><b>Renach
+										:</b> ${detranInfo.renach} </label> <br> <label><b>Categoria
+										:</b> ${detranInfo.categoria} </label> <br> <label><b>Emissao
+										: </b>${detranInfo.emissao} </label> <br> <label><b>Nascimento
+										:</b> ${detranInfo.nascimento} </label> <br> <label><b>Nome
+										do Pai :</b>${detranInfo.nomePai} </label> <br> <label><b>Nome
+										da Mae : </b>${detranInfo.nomeMae} </label> <br> <label><b>Registro
+										: </b>${detranInfo.registro} </label> <br> <label><b>Tipo
+										Grafico : </b>${detranInfo.tipografico} </label> <br>
 								<!-- END DETRAN  -->
 							</div>
-							
+
 							<object width="700" height="500" data="${detran}" width="400"
 								height="300"></object>
 							<object width="700" height="500" data="${detran2}" width="400"
 								height="300"></object>
 							<br>
 						</c:if>
-						
+
 						<c:if test="${not empty detranList}">
+							<h2>Detran :</h2>
+							<hr>
 							<div align="left" style="width: 100%; height: 100%">
-								<img src="${detranList.caminhoImg}" alt="imgProfiel"
-										height="200" width="150"> 
 								<c:forEach items="${detranList}" var="detran">
+									<%-- <img src="${detranList.caminhoImg}" alt="imgProfiel"
+										height="200" width="150"> --%>
 									<!-- DETRAN  -->
-									<label>Nome Condutor : ${detran.nomeCondutor} </label>
+									<label><b>Nome Condutor :</b> ${detran.nomeCondutor} </label>
 									<br>
-									<label>CPF : ${detran.cpf} </label>
+									<label><b>CPF :</b> ${detran.cpf} </label>
 									<br>
-									<label>Identidade : ${detran.identidade} </label>
+									<label><b>Identidade : </b>${detran.identidade} </label>
 									<br>
-									<label>Renach : ${detran.renach} </label>
+									<label><b>Renach : </b>${detran.renach} </label>
 									<br>
-									<label>Categoria : ${detran.categoria} </label>
+									<label><b>Categoria :</b> ${detran.categoria} </label>
 									<br>
-									<label>Emissao : ${detran.emissao} </label>
+									<label><b>Emissao : </b>${detran.emissao} </label>
 									<br>
-									<label>Nascimento : ${detran.nascimento} </label>
+									<label><b>Nascimento : </b>${detran.nascimento} </label>
 									<br>
-									<label>Nome do Pai : ${detran.nomePai} </label>
+									<label><b>Nome do Pai :</b> ${detran.nomePai} </label>
 									<br>
-									<label>Nome da Mae : ${detran.nomeMae} </label>
+									<label><b>Nome da Mae : </b>${detran.nomeMae} </label>
 									<br>
-									<label>Registro : ${detran.registro} </label>
+									<label><b>Registro : </b>${detran.registro} </label>
 									<br>
-									<label>Tipo Grafico : ${detran.tipografico} </label>
+									<label><b>Tipo Grafico :</b> ${detran.tipografico} </label>
 									<br>
 									<!-- END DETRAN  -->
 									<object width="700" height="500" data="${detran}" width="400"
 										height="300"></object>
 									<object width="700" height="500" data="${detran2}" width="400"
 										height="300"></object>
+									<br>
+									<br>
+									<br>
+								</c:forEach>
+								<br>
+								<br>
+							</div>
+							<br>
+							<br>
+						</c:if>
+
+						<c:if test="${not empty cadesp}">
+							<h2>Cadesp :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<!-- CADESP  -->
+								<label><b>IE :</b> ${cadesp.ie} </label> <br> <label><b>CNPJ
+										: </b>${cadesp.cnpj} </label> <br> <label><b>Situacao :</b>
+									${cadesp.situacao} </label> <br> <label><b>Data
+										Inscricao Estado :</b> ${cadesp.dtInscricaoEstado} </label> <br> <label><b>Nome
+										Empresarial :</b> ${cadesp.nomeEmpresarial} </label> <br> <label><b>Regime
+										Estadual:</b> ${cadesp.regimeEstadual} </label> <br> <label><b>DRT
+										:</b> ${cadesp.drt} </label> <br> <label><b>Posto Fiscal
+										:</b> ${cadesp.postoFiscal} </label> <br> <label><b>Data
+										Inicio IE :</b> ${cadesp.dtInicioIE} </label> <br> <label><b>NIRE
+										:</b> ${cadesp.nire} </label> <br> <label><b>Ocorrencia
+										Fiscal :</b> ${cadesp.ocorrenciaFiscal} </label> <br> <label><b>Tipo
+										de Unidade :</b> ${cadesp.tipoUnidade} </label> <br> <label><b>Forma
+										de Atuacao :</b> ${cadesp.formaAtuacao} </label> <br>
+								<!-- END CADESP  -->
+							</div>
+						</c:if>
+						<c:if test="${not empty cadespList}">
+							<br>
+							<br>
+							<br>
+							<h2>Cadesp :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<c:forEach items="${cadespList}" var="cadesp">
+									<!-- CADESP  -->
+									<label><b>IE :</b> ${cadesp.ie} </label>
+									<br>
+									<label><b>CNPJ :</b> ${cadesp.cnpj} </label>
+									<br>
+									<label><b>Situacao : </b>${cadesp.situacao} </label>
+									<br>
+									<label><b>Data Inscricao Estado :</b>
+										${cadesp.dtInscricaoEstado} </label>
+									<br>
+									<label><b>Nome Empresarial : </b>${cadesp.nomeEmpresarial}
+									</label>
+									<br>
+									<label><b>Regime Estadual: </b>${cadesp.regimeEstadual}
+									</label>
+									<br>
+									<label><b>DRT : </b>${cadesp.drt} </label>
+									<br>
+									<label><b>Posto Fiscal : </b>${cadesp.postoFiscal} </label>
+									<br>
+									<label><b>Data Inicio IE : </b>${cadesp.dtInicioIE} </label>
+									<br>
+									<label><b>NIRE :</b> ${cadesp.nire} </label>
+									<br>
+									<label><b>Ocorrencia Fiscal :</b>
+										${cadesp.ocorrenciaFiscal} </label>
+									<br>
+									<label><b>Tipo de Unidade :</b>${cadesp.tipoUnidade} </label>
+									<br>
+									<label><b>Forma de Atuacao :</b> ${cadesp.formaAtuacao}
+									</label>
+									<!-- END CADESP  -->
 								</c:forEach>
 							</div>
 						</c:if>
-
 						<c:if test="${not empty infocrim}">
 							<h2>Infocrim :</h2>
 							<hr>
@@ -216,463 +276,70 @@
 								height="300"></object>
 							<br>
 						</c:if>
-						<!-- END PDF's -->
-
-						<c:if test="${not empty cadesp}">
-							<h2>Cadesp :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<!-- CADESP  -->
-								<label>IE : ${cadesp.ie} </label> <br> <label>CNPJ
-									: ${cadesp.cnpj} </label> <br> <label>Situacao :
-									${cadesp.situacao} </label> <br> <label>Data Inscricao
-									Estado : ${cadesp.dtInscricaoEstado} </label> <br> <label>Nome
-									Empresarial : ${cadesp.nomeEmpresarial} </label> <br> <label>Regime
-									Estadual: ${cadesp.regimeEstadual} </label> <br> <label>DRT
-									: ${cadesp.drt} </label> <br> <label>Posto Fiscal :
-									${cadesp.postoFiscal} </label> <br> <label>Data Inicio IE
-									: ${cadesp.dtInicioIE} </label> <br> <label>NIRE :
-									${cadesp.nire} </label> <br> <label>Ocorrencia Fiscal :
-									${cadesp.ocorrenciaFiscal} </label> <br> <label>Tipo de
-									Unidade : ${cadesp.tipoUnidade} </label> <br> <label>Forma
-									de Atuacao : ${cadesp.formaAtuacao} </label> <br>
-								<!-- END CADESP  -->
-							</div>
-						</c:if>
-						<c:if test="${not empty cadespList}">
-							<h2>Cadesp :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<c:forEach items="${cadespList}" var="cadesp">
-									<!-- CADESP  -->
-									<label>IE : ${cadesp.ie} </label>
-									<br>
-									<label>CNPJ : ${cadesp.cnpj} </label>
-									<br>
-									<label>Situacao : ${cadesp.situacao} </label>
-									<br>
-									<label>Data Inscricao Estado :
-										${cadesp.dtInscricaoEstado} </label>
-									<br>
-									<label>Nome Empresarial : ${cadesp.nomeEmpresarial} </label>
-									<br>
-									<label>Regime Estadual: ${cadesp.regimeEstadual} </label>
-									<br>
-									<label>DRT : ${cadesp.drt} </label>
-									<br>
-									<label>Posto Fiscal : ${cadesp.postoFiscal} </label>
-									<br>
-									<label>Data Inicio IE : ${cadesp.dtInicioIE} </label>
-									<br>
-									<label>NIRE : ${cadesp.nire} </label>
-									<br>
-									<label>Ocorrencia Fiscal : ${cadesp.ocorrenciaFiscal} </label>
-									<br>
-									<label>Tipo de Unidade : ${cadesp.tipoUnidade} </label>
-									<br>
-									<label>Forma de Atuacao : ${cadesp.formaAtuacao} </label>
-									<br>
-									<!-- END CADESP  -->
-								</c:forEach>
-							</div>
-						</c:if>
-
-						<c:if test="${not empty caged}">
-							<h2>Caged :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<!-- CAGED  -->
-								<c:if test="${not empty caged.caged}">
-									<h4>Caged</h4>
-									<label>CPF / CNPJ : ${caged.caged.cnpjCeiCpf} </label>
-									<br>
-									<label>Razao Social : ${caged.caged.razaoSocial} </label>
-									<br>
-									<label>Logradouro : ${caged.caged.logradouro} </label>
-									<br>
-									<label>Bairro : ${caged.caged.bairoo} </label>
-									<br>
-									<label>Municipi : ${caged.caged.municipio} </label>
-									<br>
-									<label>UF : ${caged.caged.municipio} </label>
-									<br>
-									<label>CEP : ${caged.caged.cep} </label>
-									<br>
-									<label>Nome do Contato : ${caged.caged.nome} </label>
-									<br>
-									<label>CPF do Contato : ${caged.caged.cpf} </label>
-									<br>
-									<label>Telefone do Contato : ${caged.caged.telefone} </label>
-									<br>
-									<label>Ramal do Contato: ${caged.caged.ramal} </label>
-									<br>
-									<label>E-mail : ${caged.caged.email} </label>
-									<br>
-								</c:if>
-								<!--END CAGED  -->
-								<!-- CAGED TRABALHADO -->
-								<c:if test="${not empty caged.cagedTrabalhador}">
-									<h4>Caged Trabalhador</h4>
-									<label>Nome : ${caged.cagedTrabalhador.nome} </label>
-									<br>
-									<label>CPF : ${caged.cagedTrabalhador.cpf} </label>
-									<br>
-									<label>PIS : ${caged.cagedTrabalhador.pis} </label>
-									<br>
-									<label>PIS Convertido :
-										${caged.cagedTrabalhador.pisConvertido} </label>
-									<br>
-									<label>Nascimento :
-										${caged.cagedTrabalhador.dtNascimento} </label>
-									<br>
-									<label>CTPS : ${caged.cagedTrabalhador.ctps} </label>
-									<br>
-									<label>UF : ${caged.cagedTrabalhador.uf} </label>
-									<br>
-									<label>CEP : ${caged.cagedTrabalhador.cep} </label>
-									<br>
-									<label>Situacao PIS :
-										${caged.cagedTrabalhador.situacaoPis} </label>
-									<br>
-									<label>Sexo : ${caged.cagedTrabalhador.sexo} </label>
-									<br>
-									<label>Nacionalidade :
-										${caged.cagedTrabalhador.nacionalidade} </label>
-									<br>
-									<label>Raca / Cor : ${caged.cagedTrabalhador.racaCor} </label>
-									<br>
-									<label>Grau Instituicao :
-										${caged.cagedTrabalhador.grauInstituicao} </label>
-									<br>
-									<label>PDC :
-										${caged.cagedTrabalhador.possuiDeficiencia} </label>
-									<br>
-									<label>Caged : ${caged.cagedTrabalhador.caged} </label>
-									<br>
-									<label>Rais : ${caged.cagedTrabalhador.rais} </label>
-									<br>
-								</c:if>
-								<!--END CAGED TRABALHADO -->
-								<!-- CAGED EMPRESA -->
-								<c:if test="${not empty caged.cagedEmpresa}">
-									<h4>Caged Empresa</h4>
-									<label>CNPJ : ${caged.cagedEmpresa.cnpj} </label>
-									<br>
-									<label>Razao Social : ${caged.cagedEmpresa.razaoSocial}
-									</label>
-									<br>
-									<label>Atividade Economica :
-										${caged.cagedEmpresa.atividadeEconomica} </label>
-									<br>
-									<label>Filiais : ${caged.cagedEmpresa.numeroFiliais} </label>
-									<br>
-									<label>Vinculos : ${caged.cagedEmpresa.totalVinculos} </label>
-									<br>
-									<label>Primeiro Dia : ${caged.cagedEmpresa.primeiroDia}
-									</label>
-									<br>
-									<label>Admissoes : ${caged.cagedEmpresa.admissoes} </label>
-									<br>
-									<label>Desligamentos :
-										${caged.cagedEmpresa.desligamentos} </label>
-									<br>
-									<label>Ultimo Dia : ${caged.cagedEmpresa.ultimoDia} </label>
-									<br>
-									<label>Variacao Absoluta :
-										${caged.cagedEmpresa.variacaoAbsoluta} </label>
-									<br>
-								</c:if>
-							</div>
-						</c:if>
-						<c:if test="${not empty cagedList}">
-							<h2>Caged :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<c:forEach items="${cagedList}" var="caged">
-									<!-- CAGED  -->
-									<c:if test="${not empty caged.caged}">
-										<h4>Caged</h4>
-										<label>CPF / CNPJ : ${caged.caged.cnpjCeiCpf} </label>
-										<br>
-										<label>Razao Social : ${caged.caged.razaoSocial} </label>
-										<br>
-										<label>Logradouro : ${caged.caged.logradouro} </label>
-										<br>
-										<label>Bairro : ${caged.caged.bairoo} </label>
-										<br>
-										<label>Municipi : ${caged.caged.municipio} </label>
-										<br>
-										<label>UF : ${caged.caged.municipio} </label>
-										<br>
-										<label>CEP : ${caged.caged.cep} </label>
-										<br>
-										<label>Nome do Contato : ${caged.caged.nome} </label>
-										<br>
-										<label>CPF do Contato : ${caged.caged.cpf} </label>
-										<br>
-										<label>Telefone do Contato : ${caged.caged.telefone} </label>
-										<br>
-										<label>Ramal do Contato: ${caged.caged.ramal} </label>
-										<br>
-										<label>E-mail : ${caged.caged.email} </label>
-										<br>
-									</c:if>
-									<!--END CAGED  -->
-									<!-- CAGED TRABALHADO -->
-									<c:if test="${not empty caged.cagedTrabalhador}">
-										<h4>Caged Trabalhador</h4>
-										<label>Nome : ${caged.cagedTrabalhador.nome} </label>
-										<br>
-										<label>CPF : ${caged.cagedTrabalhador.cpf} </label>
-										<br>
-										<label>PIS : ${caged.cagedTrabalhador.pis} </label>
-										<br>
-										<label>PIS Convertido :
-											${caged.cagedTrabalhador.pisConvertido} </label>
-										<br>
-										<label>Nascimento :
-											${caged.cagedTrabalhador.dtNascimento} </label>
-										<br>
-										<label>CTPS : ${caged.cagedTrabalhador.ctps} </label>
-										<br>
-										<label>UF : ${caged.cagedTrabalhador.uf} </label>
-										<br>
-										<label>CEP : ${caged.cagedTrabalhador.cep} </label>
-										<br>
-										<label>Situacao PIS :
-											${caged.cagedTrabalhador.situacaoPis} </label>
-										<br>
-										<label>Sexo : ${caged.cagedTrabalhador.sexo} </label>
-										<br>
-										<label>Nacionalidade :
-											${caged.cagedTrabalhador.nacionalidade} </label>
-										<br>
-										<label>Raca / Cor : ${caged.cagedTrabalhador.racaCor}
-										</label>
-										<br>
-										<label>Grau Instituicao :
-											${caged.cagedTrabalhador.grauInstituicao} </label>
-										<br>
-										<label>PDC :
-											${caged.cagedTrabalhador.possuiDeficiencia} </label>
-										<br>
-										<label>Caged : ${caged.cagedTrabalhador.caged} </label>
-										<br>
-										<label>Rais : ${caged.cagedTrabalhador.rais} </label>
-										<br>
-									</c:if>
-									<!--END CAGED TRABALHADO -->
-									<!-- CAGED EMPRESA -->
-									<c:if test="${not empty caged.cagedEmpresa}">
-										<h4>Caged Empresa</h4>
-										<label>CNPJ : ${caged.cagedEmpresa.cnpj} </label>
-										<br>
-										<label>Razao Social :
-											${caged.cagedEmpresa.razaoSocial} </label>
-										<br>
-										<label>Atividade Economica :
-											${caged.cagedEmpresa.atividadeEconomica} </label>
-										<br>
-										<label>Filiais : ${caged.cagedEmpresa.numeroFiliais} </label>
-										<br>
-										<label>Vinculos : ${caged.cagedEmpresa.totalVinculos}
-										</label>
-										<br>
-										<label>Primeiro Dia :
-											${caged.cagedEmpresa.primeiroDia} </label>
-										<br>
-										<label>Admissoes : ${caged.cagedEmpresa.admissoes} </label>
-										<br>
-										<label>Desligamentos :
-											${caged.cagedEmpresa.desligamentos} </label>
-										<br>
-										<label>Ultimo Dia : ${caged.cagedEmpresa.ultimoDia} </label>
-										<br>
-										<label>Variacao Absoluta :
-											${caged.cagedEmpresa.variacaoAbsoluta} </label>
-										<br>
-									</c:if>
-								</c:forEach>
-							</div>
-						</c:if>
-
-						<c:if test="${not empty censec}">
-							<h2>Censec :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<label>Carga : ${censec.carga} </label> <br> <label>Data
-									: ${censec.dtMesAno} </label> <br> <label>Ato :
-									${censec.ato} </label> <br> <label>Data do Ato :
-									${censec.dtAto} </label> <br> <label>Livro :
-									${censec.livro} </label> <br> <label>Complemento :
-									${censec.complemento} </label> <br> <label>Folha :
-									${censec.folha} </label> <br> <label>Nome : ${censec.nome}
-								</label> <br> <label>CNPJ : ${censec.cpfCnpj} </label> <br> <label>Qualidade
-									: ${censec.qualidade} </label> <br> <label>Telefone :
-									${censec.telefone} </label> <br> <label>Tipo :
-									${censec.tipo} </label> <br> <label>Ramal :
-									${censec.ramal} </label> <br> <label>Contato :
-									${censec.contato} </label> <br> <label>Status :
-									${censec.status} </label> <br> <label>UF : ${censec.uf} </label> <br>
-								<label>Municipio : ${censec.municipio} </label> <br> <label>Cartorio
-									: ${censec.cartorio} </label><br>
-							</div>
-						</c:if>
-
-						<c:if test="${not empty censecList}">
-							<h2>Censec :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<c:forEach items="${censecList}" var="censec">
-									<label>Carga : ${censec.carga} </label>
-									<br>
-									<label>Data : ${censec.dtMesAno} </label>
-									<br>
-									<label>Ato : ${censec.ato} </label>
-									<br>
-									<label>Data do Ato : ${censec.dtAto} </label>
-									<br>
-									<label>Livro : ${censec.livro} </label>
-									<br>
-									<label>Complemento : ${censec.complemento} </label>
-									<br>
-									<label>Folha : ${censec.folha} </label>
-									<br>
-									<label>Nome : ${censec.nome} </label>
-									<br>
-									<label>CNPJ : ${censec.cpfCnpj} </label>
-									<br>
-									<label>Qualidade : ${censec.qualidade} </label>
-									<br>
-									<label>Telefone : ${censec.telefone} </label>
-									<br>
-									<label>Tipo : ${censec.tipo} </label>
-									<br>
-									<label>Ramal : ${censec.ramal} </label>
-									<br>
-									<label>Contato : ${censec.contato} </label>
-									<br>
-									<label>Status : ${censec.status} </label>
-									<br>
-									<label>UF : ${censec.uf} </label>
-									<br>
-									<label>Municipio : ${censec.municipio} </label>
-									<br>
-									<label>Cartorio : ${censec.cartorio} </label>
-									<br>
-								</c:forEach>
-							</div>
-						</c:if>
-
-
 						<c:if test="${not empty jucesp}">
 							<h2>Jucesp :</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
-								<label>Nire Matriz : ${jucesp.nire} </label> <br> <label>Tipo
-									de Empresa : ${jucesp.tipoEmpresa} </label> <br> <label>Data
-									da constituição : ${jucesp.dtConst} </label> <br> <label>Inicio
-									da Atividade : ${jucesp.inicioAtividade} </label> <br> <label>CNPJ
-									: ${jucesp.cnpj} </label> <br> <label>Inscricao Estadual :
-									${jucesp.incricaoEstadual} </label> <br> <label>Objeto
-									Descricao : ${jucesp.objetoDescricao} </label> <br> <label>Capital
-									: ${jucesp.capital} </label> <br> <label>Logradouro :
-									${jucesp.logradouro} </label> <br> <label>Numero :
-									${jucesp.numero} </label> <br> <label>Bairro :
-									${jucesp.bairro} </label> <br> <label>Complemento :
-									${jucesp.complemento} </label> <br> <label>Municipio :
-									${jucesp.municipio} </label> <br> <label>CEP :
-									${jucesp.cep} </label> <br> <label>UF : ${jucesp.uf} </label><br>
+								<br> <label><b>Nire Matriz :</b> ${jucesp.nire} </label> <br>
+								<label><b>Tipo de Empresa : </b>${jucesp.tipoEmpresa} </label> <br>
+								<label><b>Data da constituição : </b>${jucesp.dtConst} </label>
+								<br> <label><b>Inicio da Atividade :</b>
+									${jucesp.inicioAtividade} </label> <br> <label><b>CNPJ
+										: </b>${jucesp.cnpj} </label> <br> <label><b>Inscricao
+										Estadual :</b> ${jucesp.incricaoEstadual} </label> <br> <label><b>Objeto
+										Descricao :</b> ${jucesp.objetoDescricao} </label> <br> <label><b>Capital
+										: </b>${jucesp.capital} </label> <br> <label><b>Logradouro
+										:</b> ${jucesp.logradouro} </label> <br> <label><b>Numero
+										:</b> ${jucesp.numero} </label> <br> <label><b>Bairro :</b>
+									${jucesp.bairro} </label> <br> <label><b>Complemento :</b>
+									${jucesp.complemento} </label> <br> <label><b>Municipio
+										:</b> ${jucesp.municipio} </label> <br> <label><b>CEP :</b>
+									${jucesp.cep} </label> <br> <label><b>UF :</b>
+									${jucesp.uf} </label><br>
 							</div>
 						</c:if>
 
 						<c:if test="${not empty jucespList}">
+							<br>
+							<br>
 							<h2>Jucesp :</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
 								<c:forEach items="${jucespList}" var="jucesp">
-									<label>Nire Matriz : ${jucesp.nire} </label>
 									<br>
-									<label>Tipo de Empresa : ${jucesp.tipoEmpresa} </label>
+									<label><b>Nire Matriz :</b> ${jucesp.nire} </label>
 									<br>
-									<label>Data da constituição : ${jucesp.dtConst} </label>
+									<label><b>Tipo de Empresa : </b>${jucesp.tipoEmpresa} </label>
 									<br>
-									<label>Inicio da Atividade : ${jucesp.inicioAtividade}
+									<label><b>Data da constituição : </b>${jucesp.dtConst}
 									</label>
 									<br>
-									<label>CNPJ : ${jucesp.cnpj} </label>
+									<label><b>Inicio da Atividade :</b>
+										${jucesp.inicioAtividade} </label>
 									<br>
-									<label>Inscricao Estadual : ${jucesp.incricaoEstadual}
+									<label><b>CNPJ : </b>${jucesp.cnpj} </label>
+									<br>
+									<label><b>Inscricao Estadual : </b>${jucesp.incricaoEstadual}
 									</label>
 									<br>
-									<label>Objeto Descricao : ${jucesp.objetoDescricao} </label>
+									<label><b>Objeto Descricao : </b>${jucesp.objetoDescricao}
+									</label>
 									<br>
-									<label>Capital : ${jucesp.capital} </label>
+									<label><b>Capital : </b>${jucesp.capital} </label>
 									<br>
-									<label>Logradouro : ${jucesp.logradouro} </label>
+									<label><b>Logradouro :</b> ${jucesp.logradouro} </label>
 									<br>
-									<label>Numero : ${jucesp.numero} </label>
+									<label><b>Numero : </b>${jucesp.numero} </label>
 									<br>
-									<label>Bairro : ${jucesp.bairro} </label>
+									<label><b>Bairro :</b> ${jucesp.bairro} </label>
 									<br>
-									<label>Complemento : ${jucesp.complemento} </label>
+									<label><b>Complemento : </b>${jucesp.complemento} </label>
 									<br>
-									<label>Municipio : ${jucesp.municipio} </label>
+									<label><b>Municipio : </b>${jucesp.municipio} </label>
 									<br>
-									<label>CEP : ${jucesp.cep} </label>
+									<label><b>CEP :</b> ${jucesp.cep} </label>
 									<br>
-									<label>UF : ${jucesp.uf} </label>
-									<br>
-								</c:forEach>
-							</div>
-						</c:if>
-
-						<c:if test="${not empty siel}">
-							<h2>Siel :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<label>Nome : ${siel.nome} </label> <br> <label>Titulo
-									de Eleitor : ${siel.titulo} </label> <br> <label>Data de
-									Nascimento : ${siel.dtNascimento} </label> <br> <label>Zona
-									: ${siel.zone} </label> <br> <label>Endereco :
-									${siel.endereco} </label> <br> <label>Municipio :
-									${siel.municipio} </label> <br> <label>UF : ${siel.uf} </label> <br>
-								<label>Data Domicilio : ${siel.dtDomicilio} </label> <br> <label>Nome
-									do Pai : ${siel.nomePai} </label> <br> <label>Nome da Mae
-									: ${siel.nomeMae} </label> <br> <label>Naturalidade :
-									${siel.naturalidade} </label> <br> <label>Codigo Validacao
-									: ${siel.cdValidacao} </label><br>
-							</div>
-						</c:if>
-
-						<c:if test="${not empty sielList}">
-							<h2>Siel :</h2>
-							<hr>
-							<div align="left" style="width: 100%; height: 100%">
-								<c:forEach items="${sielList}" var="siel">
-									<label>Nome : ${siel.nome} </label>
-									<br>
-									<label>Titulo de Eleitor : ${siel.titulo} </label>
-									<br>
-									<label>Data de Nascimento : ${siel.dtNascimento} </label>
-									<br>
-									<label>Zona : ${siel.zone} </label>
-									<br>
-									<label>Endereco : ${siel.endereco} </label>
-									<br>
-									<label>Municipio : ${siel.municipio} </label>
-									<br>
-									<label>UF : ${siel.uf} </label>
-									<br>
-									<label>Data Domicilio : ${siel.dtDomicilio} </label>
-									<br>
-									<label>Nome do Pai : ${siel.nomePai} </label>
-									<br>
-									<label>Nome da Mae : ${siel.nomeMae} </label>
-									<br>
-									<label>Naturalidade : ${siel.naturalidade} </label>
-									<br>
-									<label>Codigo Validacao : ${siel.cdValidacao} </label>
+									<label><b>UF : </b>${jucesp.uf} </label>
 									<br>
 								</c:forEach>
 							</div>
@@ -682,105 +349,491 @@
 							<h2>Sivec :</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
-								<label>Nome : ${sivec.nome} </label> <br> <label>Sexo
-									: ${sivec.sexo} </label> <br> <label>RG : ${sivec.rg} </label> <br>
-								<label>Tipo de RG : ${sivec.tipoRg} </label> <br> <label>Data
-									de Nascimento : ${sivec.dtNascimento} </label> <br> <label>Controle
-									: ${sivec.controleVec} </label> <br> <label>Emissao do RG
-									: ${sivec.emissaoRg} </label> <br> <label>Estado Civil :
-									${sivec.estadoCivil} </label> <br> <label>Naturalizado :
-									${sivec.naturalizado} </label> <br> <label>Naturalidade :
-									${sivec.naturalidade} </label> <br> <label>Grau de
-									Instituicao : ${sivec.grauInstituicao} </label> <br> <label>Nome
-									do Pai : ${sivec.nomePai} </label> <br> <label>Nome da Mae
-									: ${sivec.nomeMae} </label> <br> <label>Cor da Pele :
-									${sivec.corPele} </label> <br> <label>Profissao :
-									${sivec.profissao} </label> <br> <label>Cabelo :
-									${sivec.cabelo} </label> <br> <label>Cor dos Olhos :
-									${sivec.corOlhos} </label> <br> <label>Formula Fundamental
-									: ${sivec.formulaFundamental} </label> <br> <label>Posto
-									de Identificacao : ${sivec.postoIdentificacao} </label> <br> <label>Alcunha
-									: ${sivec.alcunha} </label> <br> <label>Endereco
-									Residencial : ${sivec.residencial} </label> <br> <label>Endereco
-									Trabalho : ${sivec.trabalho} </label> <br> <label>Nome
-									Outros : ${sivec.nomeOutros} </label> <br> <label>RG
-									Outros : ${sivec.rgOutros} </label> <br> <label>Data de
-									Nacimento Outros : ${sivec.dtNascimentoOutros} </label> <br> <label>Nacionalidade
-									Outros : ${sivec.nacionalidadeOutros} </label> <br> <label>Nome
-									do Pai Outros : ${sivec.nomePaiOutros} </label> <br> <label>Nome
-									do Mae Outros : ${sivec.nomeMaeOutros} </label><br>
+								<label><b>Nome : </b>${sivec.nome} </label> <br> <label><b>Sexo
+										:</b> ${sivec.sexo} </label> <br> <label><b>RG :</b>
+									${sivec.rg} </label> <br> <label><b>Tipo de RG :</b>
+									${sivec.tipoRg} </label> <br> <label><b>Data de
+										Nascimento : </b>${sivec.dtNascimento} </label> <br> <label><b>Controle
+										: </b>${sivec.controleVec} </label> <br> <label><b>Emissao
+										do RG :</b> ${sivec.emissaoRg} </label> <br> <label><b>Estado
+										Civil :</b> ${sivec.estadoCivil} </label> <br> <label><b>Naturalizado
+										:</b> ${sivec.naturalizado} </label> <br> <label><b>Naturalidade
+										:</b> ${sivec.naturalidade} </label> <br> <label><b>Grau
+										de Instituicao : </b>${sivec.grauInstituicao} </label> <br> <label><b>Nome
+										do Pai :</b> ${sivec.nomePai} </label> <br> <label><b>Nome
+										da Mae :</b> ${sivec.nomeMae} </label> <br> <label><b>Cor
+										da Pele :</b> ${sivec.corPele} </label> <br> <label><b>Profissao
+										:</b> ${sivec.profissao} </label> <br> <label><b>Cabelo :</b>
+									${sivec.cabelo} </label> <br> <label><b>Cor dos Olhos
+										:</b> ${sivec.corOlhos} </label> <br> <label><b>Formula
+										Fundamental</b> : ${sivec.formulaFundamental} </label> <br> <label><b>Posto
+										de Identificacao :</b> ${sivec.postoIdentificacao} </label> <br> <label><b>Alcunha
+										:</b> ${sivec.alcunha} </label> <br> <label><b>Endereco
+										Residencial : </b>${sivec.residencial} </label> <br> <label><b>Endereco
+										Trabalho : </b>${sivec.trabalho} </label> <br> <label><b>Nome
+										Outros : </b>${sivec.nomeOutros} </label> <br> <label><b>RG
+										Outros : </b>${sivec.rgOutros} </label> <br> <label><b>Data
+										de Nacimento Outros :</b> ${sivec.dtNascimentoOutros} </label> <br> <label><b>Nacionalidade
+										Outros : </b>${sivec.nacionalidadeOutros} </label> <br> <label><b>Nome
+										do Pai Outros :</b> ${sivec.nomePaiOutros} </label> <br> <label><b>Nome
+										do Mae Outros : </b>${sivec.nomeMaeOutros} </label><br>
 							</div>
 						</c:if>
 
 						<c:if test="${not empty sivecList}">
+							<br>
 							<h2>Sivec :</h2>
 							<hr>
 							<div align="left" style="width: 100%; height: 100%">
 								<c:forEach items="${sivecList}" var="sivec">
-									<label>Nome : ${sivec.nome} </label>
 									<br>
-									<label>Sexo : ${sivec.sexo} </label>
+									<label><b>Nome :</b> ${sivec.nome} </label>
 									<br>
-									<label>RG : ${sivec.rg} </label>
+									<label><b>Sexo : </b>${sivec.sexo} </label>
 									<br>
-									<label>Tipo de RG : ${sivec.tipoRg} </label>
+									<label><b>RG : </b>${sivec.rg} </label>
 									<br>
-									<label>Data de Nascimento : ${sivec.dtNascimento} </label>
+									<label><b>Tipo de RG :</b> ${sivec.tipoRg} </label>
 									<br>
-									<label>Controle : ${sivec.controleVec} </label>
+									<label><b>Data de Nascimento : </b>${sivec.dtNascimento}
+									</label>
 									<br>
-									<label>Emissao do RG : ${sivec.emissaoRg} </label>
+									<label><b>Controle : </b>${sivec.controleVec} </label>
 									<br>
-									<label>Estado Civil : ${sivec.estadoCivil} </label>
+									<label><b>Emissao do RG : </b>${sivec.emissaoRg} </label>
 									<br>
-									<label>Naturalizado : ${sivec.naturalizado} </label>
+									<label><b>Estado Civil : </b>${sivec.estadoCivil} </label>
 									<br>
-									<label>Naturalidade : ${sivec.naturalidade} </label>
+									<label><b>Naturalizado : </b>${sivec.naturalizado} </label>
 									<br>
-									<label>Grau de Instituicao : ${sivec.grauInstituicao} </label>
+									<label><b>Naturalidade :</b>${sivec.naturalidade} </label>
 									<br>
-									<label>Nome do Pai : ${sivec.nomePai} </label>
+									<label><b>Grau de Instituicao :</b>
+										${sivec.grauInstituicao} </label>
 									<br>
-									<label>Nome da Mae : ${sivec.nomeMae} </label>
+									<label><b>Nome do Pai : </b>${sivec.nomePai} </label>
 									<br>
-									<label>Cor da Pele : ${sivec.corPele} </label>
+									<label><b>Nome da Mae : </b>${sivec.nomeMae} </label>
 									<br>
-									<label>Profissao : ${sivec.profissao} </label>
+									<label><b>Cor da Pele :</b> ${sivec.corPele} </label>
 									<br>
-									<label>Cabelo : ${sivec.cabelo} </label>
+									<label><b>Profissao :</b> ${sivec.profissao} </label>
 									<br>
-									<label>Cor dos Olhos : ${sivec.corOlhos} </label>
+									<label><b>Cabelo : </b>${sivec.cabelo} </label>
 									<br>
-									<label>Formula Fundamental :
+									<label><b>Cor dos Olhos : </b>${sivec.corOlhos} </label>
+									<br>
+									<label><b>Formula Fundamental :</b>
 										${sivec.formulaFundamental} </label>
 									<br>
-									<label>Posto de Identificacao :
+									<label><b>Posto de Identificacao :</b>
 										${sivec.postoIdentificacao} </label>
 									<br>
-									<label>Alcunha : ${sivec.alcunha} </label>
+									<label><b>Alcunha :</b> ${sivec.alcunha} </label>
 									<br>
-									<label>Endereco Residencial : ${sivec.residencial} </label>
+									<label><b>Endereco Residencial :</b>
+										${sivec.residencial} </label>
 									<br>
-									<label>Endereco Trabalho : ${sivec.trabalho} </label>
+									<label><b>Endereco Trabalho :</b> ${sivec.trabalho} </label>
 									<br>
-									<label>Nome Outros : ${sivec.nomeOutros} </label>
+									<label><b>Nome Outros : </b>${sivec.nomeOutros} </label>
 									<br>
-									<label>RG Outros : ${sivec.rgOutros} </label>
+									<label><b>RG Outros :</b> ${sivec.rgOutros} </label>
 									<br>
-									<label>Data de Nacimento Outros :
+									<label><b>Data de Nacimento Outros :</b>
 										${sivec.dtNascimentoOutros} </label>
 									<br>
-									<label>Nacionalidade Outros :
+									<label><b>Nacionalidade Outros :</b>
 										${sivec.nacionalidadeOutros} </label>
 									<br>
-									<label>Nome do Pai Outros : ${sivec.nomePaiOutros} </label>
+									<label><b>Nome do Pai Outros : </b>${sivec.nomePaiOutros}
+									</label>
 									<br>
-									<label>Nome do Mae Outros : ${sivec.nomeMaeOutros} </label>
+									<label><b>Nome do Mae Outros :</b>
+										${sivec.nomeMaeOutros} </label>
 									<br>
+									<br>
+									<br>
+								</c:forEach>
+								<br> <br>
+								<br>
+							</div>
+							<br>
+							<br>
+							<br>
+						</c:if>
+						<br>
+						<c:if test="${not empty siel}">
+							<h2>Siel :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<label><b>Nome : </b>${siel.nome} </label> <br> <label><b>Titulo
+										de Eleitor :</b> ${siel.titulo} </label> <br> <label><b>Data
+										de Nascimento : </b>${siel.dtNascimento} </label> <br> <label><b>Zona
+										:</b> ${siel.zone} </label> <br> <label><b>Endereco :</b>
+									${siel.endereco} </label> <br> <label><b>Municipio :</b>
+									${siel.municipio} </label> <br> <label><b>UF : </b>${siel.uf}
+								</label> <br> <label>Data Domicilio : ${siel.dtDomicilio} </label>
+								<br> <label><b>Nome do Pai :</b> ${siel.nomePai} </label> <br>
+								<label><b>Nome da Mae : </b>${siel.nomeMae} </label> <br> <label><b>Naturalidade
+										:</b> ${siel.naturalidade} </label> <br> <label><b>Codigo
+										Validacao : </b>${siel.cdValidacao} </label><br>
+							</div>
+						</c:if>
+						<br>
+						<c:if test="${not empty sielList}">
+							<br>
+							<br>
+							<br>
+							<h2>Siel :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<c:forEach items="${sielList}" var="siel">
+									<br>
+									<label><b>Nome :</b> ${siel.nome} </label>
+									<br>
+									<label><b>Titulo de Eleitor :</b> ${siel.titulo} </label>
+									<br>
+									<label><b>Data de Nascimento :</b> ${siel.dtNascimento}
+									</label>
+									<br>
+									<label><b>Zona :</b> ${siel.zone} </label>
+									<br>
+									<label><b>Endereco : </b>${siel.endereco} </label>
+									<br>
+									<label><b>Municipio : </b>${siel.municipio} </label>
+									<br>
+									<label><b>UF :</b> ${siel.uf} </label>
+									<br>
+									<label><b>Data Domicilio :</b> ${siel.dtDomicilio} </label>
+									<br>
+									<label><b>Nome do Pai :</b> ${siel.nomePai} </label>
+									<br>
+									<label><b>Nome da Mae :</b> ${siel.nomeMae} </label>
+									<br>
+									<label><b>Naturalidade :</b> ${siel.naturalidade} </label>
+									<br>
+									<label><b>Codigo Validacao : </b>${siel.cdValidacao} </label>
 								</c:forEach>
 							</div>
 						</c:if>
 
+						<br>
+						<c:if test="${not empty censec}">
+							<h2>Censec :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<label><b>Carga :</b> ${censec.carga} </label> <br> <label><b>Data
+										:</b> ${censec.dtMesAno} </label> <br> <label><b>Ato :</b>
+									${censec.ato} </label> <br> <label><b>Data do Ato :</b>
+									${censec.dtAto} </label> <br> <label><b>Livro :</b>
+									${censec.livro} </label> <br> <label><b>Complemento :</b>
+									${censec.complemento} </label> <br> <label><b>Folha :</b>
+									${censec.folha} </label> <br> <label><b>Nome : </b>${censec.nome}
+								</label> <br> <label>CNPJ : ${censec.cpfCnpj} </label> <br> <label><b>Qualidade
+										: </b>${censec.qualidade} </label> <br> <label><b>Telefone
+										:</b> ${censec.telefone} </label> <br> <label><b>Tipo :</b>
+									${censec.tipo} </label> <br> <label><b>Ramal :</b>
+									${censec.ramal} </label> <br> <label><b>Contato :</b>
+									${censec.contato} </label> <br> <label><b>Status :</b>
+									${censec.status} </label> <br> <label><b>UF :</b>
+									${censec.uf} </label> <br> <label><b>Municipio :</b>
+									${censec.municipio} </label> <br> <label><b>Cartorio :
+								</b>${censec.cartorio} </label><br>
+							</div>
+						</c:if>
+
+						<c:if test="${not empty censecList}">
+							<br>
+							<h2>Censec :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<c:forEach items="${censecList}" var="censec">
+									<br>
+									<label><b>Carga :</b> ${censec.carga} </label>
+									<br>
+									<label><b>Data : </b>${censec.dtMesAno} </label>
+									<br>
+									<label><b>Ato :</b> ${censec.ato} </label>
+									<br>
+									<label><b>Data do Ato : </b>${censec.dtAto} </label>
+									<br>
+									<label><b>Livro : </b>${censec.livro} </label>
+									<br>
+									<label><b>Complemento :</b> ${censec.complemento} </label>
+									<br>
+									<label><b>Folha :</b> ${censec.folha} </label>
+									<br>
+									<label><b>Nome :</b> ${censec.nome} </label>
+									<br>
+									<label><b>CNPJ : </b>${censec.cpfCnpj} </label>
+									<br>
+									<label><b>Qualidade : </b>${censec.qualidade} </label>
+									<br>
+									<label><b>Telefone :</b> ${censec.telefone} </label>
+									<br>
+									<label><b>Tipo :</b> ${censec.tipo} </label>
+									<br>
+									<label><b>Ramal : </b>${censec.ramal} </label>
+									<br>
+									<label><b>Contato :</b> ${censec.contato} </label>
+									<br>
+									<label><b>Status : </b>${censec.status} </label>
+									<br>
+									<label><b>UF : </b>${censec.uf} </label>
+									<br>
+									<label><b>Municipio :</b> ${censec.municipio} </label>
+									<br>
+									<label><b>Cartorio : </b>${censec.cartorio} </label>
+									<br>
+								</c:forEach>
+							</div>
+						</c:if>
+						<c:if test="${not empty caged}">
+							<h2>Caged :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<!-- CAGED  -->
+								<c:if test="${not empty caged.caged}">
+									<h4>Caged</h4>
+									<label><b>CPF / CNPJ :</b> ${caged.caged.cnpjCeiCpf} </label>
+									<br>
+									<label><b>Razao Social :</b>${caged.caged.razaoSocial}
+									</label>
+									<br>
+									<label><b>Logradouro :</b> ${caged.caged.logradouro} </label>
+									<br>
+									<label><b>Bairro :</b> ${caged.caged.bairoo} </label>
+									<br>
+									<label><b>Municipio :</b> ${caged.caged.municipio} </label>
+									<br>
+									<label><b>UF : </b>${caged.caged.municipio} </label>
+									<br>
+									<label><b>CEP :</b> ${caged.caged.cep} </label>
+									<br>
+									<label><b>Nome do Contato : </b>${caged.caged.nome} </label>
+									<br>
+									<label><b>CPF do Contato : </b>${caged.caged.cpf} </label>
+									<br>
+									<label><b>Telefone do Contato : </b>${caged.caged.telefone}
+									</label>
+									<br>
+									<label><b>Ramal do Contato:</b> ${caged.caged.ramal} </label>
+									<br>
+									<label><b>E-mail : </b>${caged.caged.email} </label>
+									<br>
+								</c:if>
+								<!--END CAGED  -->
+								<!-- CAGED TRABALHADO -->
+								<c:if test="${not empty caged.cagedTrabalhador}">
+									<h4>Caged Trabalhador</h4>
+									<label><b>Nome :</b> ${caged.cagedTrabalhador.nome} </label>
+									<br>
+									<label><b>CPF :</b> ${caged.cagedTrabalhador.cpf} </label>
+									<br>
+									<label><b>PIS :</b> ${caged.cagedTrabalhador.pis} </label>
+									<br>
+									<label><b>PIS Convertido :</b>
+										${caged.cagedTrabalhador.pisConvertido} </label>
+									<br>
+									<label><b>Nascimento :</b>
+										${caged.cagedTrabalhador.dtNascimento} </label>
+									<br>
+									<label><b>CTPS : </b>${caged.cagedTrabalhador.ctps} </label>
+									<br>
+									<label><b>UF :</b> ${caged.cagedTrabalhador.uf} </label>
+									<br>
+									<label><b>CEP :</b> ${caged.cagedTrabalhador.cep} </label>
+									<br>
+									<label><b>Situacao PIS :</b>
+										${caged.cagedTrabalhador.situacaoPis} </label>
+									<br>
+									<label><b>Sexo : </b>${caged.cagedTrabalhador.sexo} </label>
+									<br>
+									<label><b>Nacionalidade :</b>
+										${caged.cagedTrabalhador.nacionalidade} </label>
+									<br>
+									<label><b>Raca / Cor :</b>
+										${caged.cagedTrabalhador.racaCor} </label>
+									<br>
+									<label><b>Grau Instituicao :</b>
+										${caged.cagedTrabalhador.grauInstituicao} </label>
+									<br>
+									<label><b>PDC :</b>
+										${caged.cagedTrabalhador.possuiDeficiencia} </label>
+									<br>
+									<label><b>Caged :</b> ${caged.cagedTrabalhador.caged} </label>
+									<br>
+									<label><b>Rais :</b> ${caged.cagedTrabalhador.rais} </label>
+									<br>
+									<c:if test="${not empty cagedPDF}">
+										<hr>
+										<object width="700" height="500" data="${cagedPDF}"
+											width="400" height="300"></object>
+										<br>
+									</c:if>
+								</c:if>
+								<!--END CAGED TRABALHADO -->
+								<!-- CAGED EMPRESA -->
+								<c:if test="${not empty caged.cagedEmpresa}">
+									<h4>Caged Empresa</h4>
+									<label><b>CNPJ :</b> ${caged.cagedEmpresa.cnpj} </label>
+									<br>
+									<label><b>Razao Social :</b>
+										${caged.cagedEmpresa.razaoSocial} </label>
+									<br>
+									<label><b>Atividade Economica :</b>
+										${caged.cagedEmpresa.atividadeEconomica} </label>
+									<br>
+									<label><b>Filiais : </b>${caged.cagedEmpresa.numeroFiliais}
+									</label>
+									<br>
+									<label><b>Vinculos :</b>
+										${caged.cagedEmpresa.totalVinculos} </label>
+									<br>
+									<label><b>Primeiro Dia :</b>
+										${caged.cagedEmpresa.primeiroDia} </label>
+									<br>
+									<label><b>Admissoes :</b>
+										${caged.cagedEmpresa.admissoes} </label>
+									<br>
+									<label><b>Desligamentos :</b>
+										${caged.cagedEmpresa.desligamentos} </label>
+									<br>
+									<label><b>Ultimo Dia :</b>
+										${caged.cagedEmpresa.ultimoDia} </label>
+									<br>
+									<label><b>Variacao Absoluta :</b>
+										${caged.cagedEmpresa.variacaoAbsoluta} </label>
+									<br>
+								</c:if>
+							</div>
+						</c:if>
+						<c:if test="${not empty cagedList}">
+							<br>
+							<br>
+							<h2>Caged :</h2>
+							<hr>
+							<div align="left" style="width: 100%; height: 100%">
+								<c:forEach items="${cagedList}" var="caged">
+									<!-- CAGED  -->
+									<c:if test="${not empty caged.caged}">
+										<h4>Caged</h4>
+										<label><b>CPF / CNPJ :</b> ${caged.caged.cnpjCeiCpf} </label>
+										<br>
+										<label><b>Razao Social : </b>${caged.caged.razaoSocial}
+										</label>
+										<br>
+										<label><b>Logradouro : </b>${caged.caged.logradouro} </label>
+										<br>
+										<label><b>Bairro : </b>${caged.caged.bairoo} </label>
+										<br>
+										<label><b>Municipi : </b>${caged.caged.municipio} </label>
+										<br>
+										<label><b>UF :</b> ${caged.caged.municipio} </label>
+										<br>
+										<label><b>CEP :</b> ${caged.caged.cep} </label>
+										<br>
+										<label><b>Nome do Contato : </b>${caged.caged.nome} </label>
+										<br>
+										<label><b>CPF do Contato : </b>${caged.caged.cpf} </label>
+										<br>
+										<label><b>Telefone do Contato : </b>${caged.caged.telefone}
+										</label>
+										<br>
+										<label><b>Ramal do Contato:</b> ${caged.caged.ramal} </label>
+										<br>
+										<label><b>E-mail :</b> ${caged.caged.email} </label>
+										<br>
+									</c:if>
+									<!--END CAGED  -->
+									<!-- CAGED TRABALHADO -->
+									<c:if test="${not empty caged.cagedTrabalhador}">
+										<h4>Caged Trabalhador</h4>
+										<label><b>Nome : </b>${caged.cagedTrabalhador.nome} </label>
+										<br>
+										<label><b>CPF :</b> ${caged.cagedTrabalhador.cpf} </label>
+										<br>
+										<label><b>PIS :</b>${caged.cagedTrabalhador.pis} </label>
+										<br>
+										<label><b>PIS Convertido :</b>
+											${caged.cagedTrabalhador.pisConvertido} </label>
+										<br>
+										<label><b>Nascimento :</b>
+											${caged.cagedTrabalhador.dtNascimento} </label>
+										<br>
+										<label><b>CTPS : </b>${caged.cagedTrabalhador.ctps} </label>
+										<br>
+										<label><b>UF : </b>${caged.cagedTrabalhador.uf} </label>
+										<br>
+										<label><b>CEP :</b> ${caged.cagedTrabalhador.cep} </label>
+										<br>
+										<label><b>Situacao PIS :</b>
+											${caged.cagedTrabalhador.situacaoPis} </label>
+										<br>
+										<label><b>Sexo : </b>${caged.cagedTrabalhador.sexo} </label>
+										<br>
+										<label><b>Nacionalidade :</b>
+											${caged.cagedTrabalhador.nacionalidade} </label>
+										<br>
+										<label><b>Raca / Cor : </b>${caged.cagedTrabalhador.racaCor}
+										</label>
+										<br>
+										<label><b>Grau Instituicao :</b>
+											${caged.cagedTrabalhador.grauInstituicao} </label>
+										<br>
+										<label><b>PDC :</b>
+											${caged.cagedTrabalhador.possuiDeficiencia} </label>
+										<br>
+										<label><b>Caged :</b> ${caged.cagedTrabalhador.caged}
+										</label>
+										<br>
+										<label><b>Rais :</b> ${caged.cagedTrabalhador.rais} </label>
+										<br>
+										<c:if test="${not empty cagedPDF}">
+											<hr>
+											<object width="700" height="500" data="${cagedPDF}"
+												width="400" height="300"></object>
+											<br>
+										</c:if>
+									</c:if>
+									<!--END CAGED TRABALHADO -->
+									<!-- CAGED EMPRESA -->
+									<c:if test="${not empty caged.cagedEmpresa}">
+										<h4>Caged Empresa</h4>
+										<label><b>CNPJ :</b> ${caged.cagedEmpresa.cnpj} </label>
+										<br>
+										<label><b>Razao Social :</b>
+											${caged.cagedEmpresa.razaoSocial} </label>
+										<br>
+										<label><b>Atividade Economica :</b>
+											${caged.cagedEmpresa.atividadeEconomica} </label>
+										<br>
+										<label><b>Filiais : </b>${caged.cagedEmpresa.numeroFiliais}
+										</label>
+										<br>
+										<label><b>Vinculos :</b>
+											${caged.cagedEmpresa.totalVinculos} </label>
+										<br>
+										<label><b>Primeiro Dia :</b>
+											${caged.cagedEmpresa.primeiroDia} </label>
+										<br>
+										<label><b>Admissoes :</b>
+											${caged.cagedEmpresa.admissoes} </label>
+										<br>
+										<label><b>Desligamentos :</b>
+											${caged.cagedEmpresa.desligamentos} </label>
+										<br>
+										<label><b>Ultimo Dia : </b>${caged.cagedEmpresa.ultimoDia}
+										</label>
+										<br>
+										<label><b>Variacao Absoluta :</b>
+											${caged.cagedEmpresa.variacaoAbsoluta} </label>
+										<br>
+									</c:if>
+								</c:forEach>
+							</div>
+						</c:if>
 					</div>
 					<!-- /.col-md-4 -->
 				</div>
