@@ -33,7 +33,7 @@
 			<form class="input-field fifth-wrap inner-form"
 				action="${contextPath}/logout">
 				<input
-					style="position: absolute; right: 0; margin: 3%; top: 0; border-radius: 20px; cursor: pointer;"
+					style="position: absolute; right: 0; margin: 20px; top: 0; border-radius: 20px; cursor: pointer;"
 					type="submit" value="Logout" />
 			</form>
 		</div>

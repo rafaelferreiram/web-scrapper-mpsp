@@ -66,7 +66,7 @@
 						</div>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty arpenpList }">
 							<h2>Arpenp</h2>
 							<hr>
@@ -144,7 +144,7 @@
 						<br>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty detranList}">
 							<h2>Detran :</h2>
 							<hr>
@@ -211,7 +211,7 @@
 						</div>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty cadespList}">
 							<h2>Cadesp :</h2>
 							<hr>
@@ -257,7 +257,7 @@
 					<!-- END CADESP DATA -->
 					
 					<!-- BEGIN ARISP DATA -->
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty arisp}">
 							<h2>Arisp :</h2>
 							<hr>
@@ -269,7 +269,7 @@
 					<!-- END ARISP DATA -->
 					
 					<!-- BEGIN INFOCRIM DATA -->
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty infocrim}">
 							<h2>Infocrim :</h2>
 							<hr>
@@ -304,7 +304,7 @@
 						</div>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty jucespList}">
 							<h2>Jucesp :</h2>
 							<hr>
@@ -349,7 +349,7 @@
 							</div>
 						</c:if>
 					</div>
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty jucespPDF}">
 							<h2>Jucesp :</h2>
 							<hr>
@@ -396,7 +396,7 @@
 						</div>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div>
 						<c:if test="${not empty sivecList}">
 							<h2>Sivec :</h2>
 							<hr>
@@ -493,7 +493,7 @@
 						</div>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div>
 						<c:if test="${not empty sielList}">
 							<h2>Siel :</h2>
 							<hr>
@@ -555,7 +555,7 @@
 						</div>
 					</c:if>
 					
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty censecList}">
 							<h2>Censec :</h2>
 							<hr>
@@ -725,7 +725,7 @@
 						</div>
 					</c:if>
 
-					<div style="margin-top: 50px">
+					<div >
 						<c:if test="${not empty cagedList}">
 							<h2>Caged :</h2>
 							<hr>
@@ -860,7 +860,7 @@
 							value="Nova Pesquisa" />
 					</form>
 				</div>
-				<div class="d-flex align-">
+				<div class="d-flex">
 					<form class="form-button">
 						<a class="button btn btn-outline-light btn-sm" href="#"
 							onClick="HTMLtoPDF()">Download PDF</a>
