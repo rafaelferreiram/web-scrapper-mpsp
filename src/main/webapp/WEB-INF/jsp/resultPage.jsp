@@ -174,7 +174,7 @@
 						
 						<c:if test="${not empty detranList}">
 							<div align="left" style="width: 100%; height: 100%">
-								<img src="${detranInfo.caminhoImg}" alt="imgProfiel"
+								<img src="${detranList.caminhoImg}" alt="imgProfiel"
 										height="200" width="150"> 
 								<c:forEach items="${detranList}" var="detran">
 									<!-- DETRAN  -->
