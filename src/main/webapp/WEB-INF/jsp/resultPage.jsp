@@ -164,44 +164,51 @@
 										<br>
 								<!-- END DETRAN  -->
 							</div>
-							<c:if test="${not empty detranList}">
-								<div align="left" style="width: 100%; height: 100%">
-									<%-- <img src="${detranInfo.caminhoImg}" alt="imgProfiel"
-										height="200" width="150"> --%>
-									<c:forEach items="${detranList}" var="detran">
-										<!-- DETRAN  -->
-										<label>Nome Condutor : ${detran.nomeCondutor} </label>
-										<br>
-										<label>CPF : ${detran.cpf} </label>
-										<br>
-										<label>Identidade : ${detran.identidade} </label>
-										<br>
-										<label>Renach : ${detran.renach} </label>
-										<br>
-										<label>Categoria : ${detran.categoria} </label>
-										<br>
-										<label>Emissao : ${detran.emissao} </label>
-										<br>
-										<label>Nascimento : ${detran.nascimento} </label>
-										<br>
-										<label>Nome do Pai : ${detran.nomePai} </label>
-										<br>
-										<label>Nome da Mae : ${detran.nomeMae} </label>
-										<br>
-										<label>Registro : ${detran.registro} </label>
-										<br>
-										<label>Tipo Grafico : ${detran.tipografico} </label>
-										<br>
-										<!-- END DETRAN  -->
-									</c:forEach>
-								</div>
-							</c:if>
+							
 							<object width="700" height="500" data="${detran}" width="400"
 								height="300"></object>
 							<object width="700" height="500" data="${detran2}" width="400"
 								height="300"></object>
 							<br>
 						</c:if>
+						
+						<c:if test="${not empty detranList}">
+							<div align="left" style="width: 100%; height: 100%">
+								<img src="${detranInfo.caminhoImg}" alt="imgProfiel"
+										height="200" width="150"> 
+								<c:forEach items="${detranList}" var="detran">
+									<!-- DETRAN  -->
+									<label>Nome Condutor : ${detran.nomeCondutor} </label>
+									<br>
+									<label>CPF : ${detran.cpf} </label>
+									<br>
+									<label>Identidade : ${detran.identidade} </label>
+									<br>
+									<label>Renach : ${detran.renach} </label>
+									<br>
+									<label>Categoria : ${detran.categoria} </label>
+									<br>
+									<label>Emissao : ${detran.emissao} </label>
+									<br>
+									<label>Nascimento : ${detran.nascimento} </label>
+									<br>
+									<label>Nome do Pai : ${detran.nomePai} </label>
+									<br>
+									<label>Nome da Mae : ${detran.nomeMae} </label>
+									<br>
+									<label>Registro : ${detran.registro} </label>
+									<br>
+									<label>Tipo Grafico : ${detran.tipografico} </label>
+									<br>
+									<!-- END DETRAN  -->
+									<object width="700" height="500" data="${detran}" width="400"
+										height="300"></object>
+									<object width="700" height="500" data="${detran2}" width="400"
+										height="300"></object>
+								</c:forEach>
+							</div>
+						</c:if>
+
 						<c:if test="${not empty infocrim}">
 							<h2>Infocrim :</h2>
 							<hr>
