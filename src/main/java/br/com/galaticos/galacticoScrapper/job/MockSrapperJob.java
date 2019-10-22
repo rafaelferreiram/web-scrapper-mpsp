@@ -1,8 +1,6 @@
 package br.com.galaticos.galacticoScrapper.job;
 
-import java.awt.print.PageFormat;
 import java.io.IOException;
-import java.net.URL;
 
 import javax.swing.text.BadLocationException;
 
@@ -13,8 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.jhonnymertz.wkhtmltopdf.wrapper.Pdf;
+import com.github.jhonnymertz.wkhtmltopdf.wrapper.configurations.WrapperConfig;
 import com.itextpdf.text.DocumentException;
-import com.qoppa.pdfWriter.PDFDocument;
 
 import br.com.galaticos.galacticoScrapper.constants.MockConstants;
 
@@ -43,6 +42,9 @@ public class MockSrapperJob {
 
 	@Autowired
 	private JucespJob jucespJob;
+
+	@Autowired
+	private DetranJob detranJob;
 
 	public boolean login(WebDriver driver) {
 		boolean logged = Boolean.FALSE;
@@ -178,12 +180,7 @@ public class MockSrapperJob {
 
 	}
 
-	// Private Methods
-	private static void goHome(WebDriver driver) {
-		driver.get(MockConstants.URL_HOME);
-	}
-
-	public void accessDetran(WebDriver driver) {
+	public void accessDetran(WebDriver driver) throws InterruptedException {
 		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/login.html");
 		logger.info("Got into DETRAN");
 		WebElement input = driver.findElement(By.xpath(
@@ -195,6 +192,18 @@ public class MockSrapperJob {
 		driver.findElement(By.id("form:j_id563205015_44efc15b")).click();
 		driver.get(
 				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina6-relat%C3%B3rio-linha-de-vida.pdf");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina5-pesquisa-veiculo.html");
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina7-relatório-veiculo.pdf");
+		Thread.sleep(2000);
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina4-pesquisa-imagem-cnh.html");
+		driver.findElement(
+				By.xpath("/html/body/div[4]/div/table/tbody/tr/td/div/div/form/div[1]/div[2]/table[3]/tbody/tr/td/a"))
+				.click();
+		driver.get("http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/detran/pagina7-imagem-cnh.html");
+		String img = driver.findElement(By.id("form:imgFoto")).getAttribute("src");
+		System.out.println(img);
+		detranJob.getElementsFromScreenDetran(driver, img);
+		goHome(driver);
 	}
 
 	public void accessInfocrim(WebDriver driver) throws IOException, DocumentException {
@@ -225,13 +234,18 @@ public class MockSrapperJob {
 				"http://ec2-18-231-116-58.sa-east-1.compute.amazonaws.com/jucesp/pagina6-ficha-cadastral-simplificada-relatorio.pdf");
 	}
 
+	private static void goHome(WebDriver driver) {
+		driver.get(MockConstants.URL_HOME);
+	}
+
 	private void getPdf(WebDriver driver, String urlPdf) throws IOException, DocumentException, BadLocationException {
-		URL url = new URL(driver.getCurrentUrl().toString());
-		String downloadFilepath = System.getProperty("user.dir") + "/downloads";
-		logger.info("File path: " + downloadFilepath);
-		PageFormat pf = new PageFormat();
-		PDFDocument pdfDoc = PDFDocument.loadHTML(url, pf, true);
-		pdfDoc.saveDocument(downloadFilepath + "/" + driver.getTitle() + ".pdf");
+		try {
+			Pdf pdf = new Pdf(new WrapperConfig("/usr/local/bin/wkhtmltopdf"));//
+			pdf.addPageFromUrl(driver.getCurrentUrl());
+			pdf.saveAs(System.getProperty("user.dir") + "/downloads/"+driver.getTitle() + ".pdf");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

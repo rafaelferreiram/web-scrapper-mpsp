@@ -14,6 +14,7 @@ import br.com.galaticos.galacticoScrapper.model.Arpenp;
 import br.com.galaticos.galacticoScrapper.model.Cadesp;
 import br.com.galaticos.galacticoScrapper.model.CagedAll;
 import br.com.galaticos.galacticoScrapper.model.Censec;
+import br.com.galaticos.galacticoScrapper.model.Detran;
 import br.com.galaticos.galacticoScrapper.model.Jucesp;
 
 @Service
@@ -28,11 +29,11 @@ public class ApiCallService {
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
 			conn = connectToWebService(apiUrl, conn);
-			
+
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = parseApiReturnToJson(br);
 
-			if(!"No data found".equals(b.toString())) {
+			if (!"No data found".equals(b.toString())) {
 				jucesp = new Gson().fromJson(b.toString(), Jucesp.class);
 			}
 
@@ -40,7 +41,7 @@ public class ApiCallService {
 		} catch (IOException e) {
 
 		}
-		
+
 		return jucesp.getId() == null ? null : jucesp;
 	}
 
@@ -51,11 +52,11 @@ public class ApiCallService {
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
 			conn = connectToWebService(apiUrl, conn);
-			
+
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = parseApiReturnToJson(br);
 
-			if(!"No data found".equals(b.toString())) {
+			if (!"No data found".equals(b.toString())) {
 				cadesp = new Gson().fromJson(b.toString(), Cadesp.class);
 			}
 
@@ -73,11 +74,11 @@ public class ApiCallService {
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
 			conn = connectToWebService(apiUrl, conn);
-			
+
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = parseApiReturnToJson(br);
 
-			if(!"No data found".equals(b.toString())) {
+			if (!"No data found".equals(b.toString())) {
 				arpenp = new Gson().fromJson(b.toString(), Arpenp.class);
 			}
 
@@ -95,11 +96,11 @@ public class ApiCallService {
 
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
 			conn = connectToWebService(apiUrl, conn);
-			
+
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = parseApiReturnToJson(br);
 
-			if(!"No data found".equals(b.toString())) {
+			if (!"No data found".equals(b.toString())) {
 				cagedAll = new Gson().fromJson(b.toString(), CagedAll.class);
 			}
 
@@ -120,29 +121,29 @@ public class ApiCallService {
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = parseApiReturnToJson(br);
-			
-			if(!"No data found".equals(b.toString())) {
+
+			if (!"No data found".equals(b.toString())) {
 				cagedAllCpf = new Gson().fromJson(b.toString(), CagedAll.class);
 
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
-		return cagedAllCpf.getCagedTrabalhador()  == null && cagedAllCpf.getCaged()  == null ? null : cagedAllCpf;
+		return cagedAllCpf.getCagedTrabalhador() == null && cagedAllCpf.getCaged() == null ? null : cagedAllCpf;
 	}
 
 	public Censec getToCensec(String cpfCnpj) {
 		Censec censec = new Censec();
 		try {
 			URL apiUrl = new URL(BASE_URL + "censec/cnpj?cnpj=" + cpfCnpj.trim());
-			
+
 			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
 			conn = connectToWebService(apiUrl, conn);
-			
+
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			StringBuilder b = parseApiReturnToJson(br);
 
-			if(!"No data found".equals(b.toString())) {
+			if (!"No data found".equals(b.toString())) {
 				censec = new Gson().fromJson(b.toString(), Censec.class);
 			}
 
@@ -152,6 +153,29 @@ public class ApiCallService {
 			// TODO Auto-generated catch block
 		}
 		return censec.getId() == null ? null : censec;
+	}
+
+	public Detran getToDetran(String cpfCnpj) {
+		Detran detran = new Detran();
+		try {
+			URL apiUrl = new URL(BASE_URL + "detran/cpf?cpf=" + cpfCnpj.trim());
+
+			HttpURLConnection conn = (HttpURLConnection) apiUrl.openConnection();
+			conn = connectToWebService(apiUrl, conn);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+			StringBuilder b = parseApiReturnToJson(br);
+
+			if (!"No data found".equals(b.toString())) {
+				detran = new Gson().fromJson(b.toString(), Detran.class);
+			}
+
+			conn.disconnect();
+		} catch (IOException e) {
+
+		}
+
+		return detran.getId() == null ? null : detran;
 	}
 
 	private StringBuilder parseApiReturnToJson(BufferedReader br) throws IOException {

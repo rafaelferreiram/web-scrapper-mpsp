@@ -56,17 +56,17 @@ public class MockSrapperExecutor {
 	}
 
 
-	private void executeScrapperForMocks(WebDriver driver) throws IOException, DocumentException {
-			mockSrapperJob.accessArisp(driver);
-			mockSrapperJob.accessArpenp(driver);
-			mockSrapperJob.accessCadesp(driver);
-			mockSrapperJob.accessCaged(driver);
-			mockSrapperJob.accessCensec(driver);
-			mockSrapperJob.accessDetran(driver);
+	private void executeScrapperForMocks(WebDriver driver) throws IOException, DocumentException, InterruptedException {
+//			mockSrapperJob.accessArisp(driver);
+//			mockSrapperJob.accessArpenp(driver);
+//			mockSrapperJob.accessCadesp(driver);
+//			mockSrapperJob.accessCaged(driver);
+//			mockSrapperJob.accessCensec(driver);
+//			mockSrapperJob.accessDetran(driver);
 			mockSrapperJob.accessInfocrim(driver);
-			mockSrapperJob.accessJucesp(driver);
-			mockSrapperJob.accessSiel(driver);
-			mockSrapperJob.accessSivec(driver);
+//			mockSrapperJob.accessJucesp(driver);
+//			mockSrapperJob.accessSiel(driver);
+//			mockSrapperJob.accessSivec(driver);
 	}
 
 }

@@ -51,6 +51,7 @@
 					<select data-trigger="" name="tipoBusca" required="required">
 						<option value="all">ALL</option>
 						<option value="cpf">CPF</option>
+						<option value="rg">RG</option>
 						<option value="cnpj">CNPJ</option>
 					</select>
 				</div>

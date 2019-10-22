@@ -1,5 +1,9 @@
-Projeto possui uma depencia local utilizada para realizar a conversao de HTML para PDF durante o Srapper, 
-que esta em /resouces/lib , configurar o build path para execução do mesmo no Eclipse.
+Para realizar a conversao de HTML para PDF no caso do INFOCRIM, foi usado uma lib chamada WKHTML. 
+Para utilizar a mesma, e necessario a instalacao local, qual o link da lib e download da mesma segue abaixo.
+
+https://wkhtmltopdf.org/downloads.html
+https://github.com/jhonnymertz/java-wkhtmltopdf-wrapper
+
 
 Para realizar o scrapper utilizar o Chrome versão 77 pois chromedriver esta com essa versao.
 ativando a execucao do scrapper atraves da url 'http://localhost:8080/mpsp/scrapping?active=true' GET

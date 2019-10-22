@@ -16,12 +16,13 @@ public class SearchController {
 	private SearchService searchService;
 
 	@PostMapping("/search")
-	public String search(Model model, String cpfCnpj, String tipoBusca, String select)
-			throws MalformedURLException {
+	public String search(Model model, String cpfCnpj, String tipoBusca, String select) throws MalformedURLException {
 		if (isCpf(tipoBusca)) {
 			searchService.getWithCpfFilter(model, select, cpfCnpj);
 		} else if (isCnpj(tipoBusca)) {
 			searchService.getWithCnpjFilter(model, select, cpfCnpj);
+		} else if (isRg(tipoBusca)) {
+			searchService.getWithRgFilter(model, select, cpfCnpj);
 		} else {
 			if (isTypeSelected(select)) {
 				searchService.getAllWithNoFilter(model);
@@ -31,7 +32,11 @@ public class SearchController {
 		}
 		return "resultPage";
 	}
-	
+
+	private boolean isRg(String tipoBusca) {
+		return "rg".equalsIgnoreCase(tipoBusca) ? true : false;
+	}
+
 	private boolean isTypeSelected(String select) {
 		return "All".equalsIgnoreCase(select) ? true : false;
 	}

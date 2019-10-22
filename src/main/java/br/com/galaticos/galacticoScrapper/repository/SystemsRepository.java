@@ -8,22 +8,25 @@ public class SystemsRepository {
 
 	@Autowired
 	public ArpenpRepository arpenpRepository;
-	
+
 	@Autowired
 	public CadespRepository cadespRepository;
-	
+
 	@Autowired
 	public CagedAllRepository cagedRepository;
-	
+
 	@Autowired
 	public CensecRepository censecRepository;
-	
+
 	@Autowired
 	public JucespRepository jucespRepository;
-	
+
 	@Autowired
 	public SielRepository sielRepository;
-	
+
 	@Autowired
 	public SivecRepository sivecRepository;
+
+	@Autowired
+	public DetranRepository detranRepository;
 }
