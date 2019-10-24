@@ -153,6 +153,7 @@
 									<img src="${detran.caminhoImg}" alt="imgProfiel" height="200"
 										width="150">
 									<!-- DETRAN  -->
+									<br>
 									<label><b>Nome Condutor :</b> ${detran.nomeCondutor} </label>
 									<br>
 									<label><b>CPF :</b> ${detran.cpf} </label>
@@ -351,7 +352,6 @@
 					</div>
 					<div >
 						<c:if test="${not empty jucespPDF}">
-							<h2>Jucesp :</h2>
 							<hr>
 							<object width="700" height="500" data="${jucespPDF}" width="400"
 								height="300"></object>
