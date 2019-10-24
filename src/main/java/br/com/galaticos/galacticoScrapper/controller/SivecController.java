@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.galaticos.galacticoScrapper.business.SivecBusiness;
 import br.com.galaticos.galacticoScrapper.model.Sivec;
-import br.com.galaticos.galacticoScrapper.repository.SivecRepository;
 
 @RestController
 @RequestMapping(value = "/sivec")
 public class SivecController {
 
 	@Autowired
-	private SivecRepository repository;
+	private SivecBusiness sivecBusiness;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<List<Sivec>> getSivec() {
-		return ResponseEntity.ok().body(repository.findAll());
+		return ResponseEntity.ok().body(sivecBusiness.findAll());
 	}
 }

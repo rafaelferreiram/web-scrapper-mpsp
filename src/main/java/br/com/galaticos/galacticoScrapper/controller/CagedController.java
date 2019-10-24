@@ -3,7 +3,6 @@ package br.com.galaticos.galacticoScrapper.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.ResponseEntity;
@@ -12,52 +11,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.galaticos.galacticoScrapper.business.CagedBusiness;
 import br.com.galaticos.galacticoScrapper.model.Caged;
 import br.com.galaticos.galacticoScrapper.model.CagedAll;
 import br.com.galaticos.galacticoScrapper.model.CagedEmpresa;
 import br.com.galaticos.galacticoScrapper.model.CagedTrabalhador;
-import br.com.galaticos.galacticoScrapper.repository.CagedAllRepository;
-import br.com.galaticos.galacticoScrapper.repository.CagedEmpresaRepository;
-import br.com.galaticos.galacticoScrapper.repository.CagedRepository;
-import br.com.galaticos.galacticoScrapper.repository.CagedTrabalhadorRepository;
 
 @RestController
 @RequestMapping("/caged")
 public class CagedController {
 
 	@Autowired
-	private CagedRepository cagedRepository;
-
-	@Autowired
-	private CagedAllRepository allRepository;
-
-	@Autowired
-	private CagedEmpresaRepository cagedEmpresaRepository;
-
-	@Autowired
-	private CagedTrabalhadorRepository cagedTrabalhadorRepository;
-
-	@Autowired
-	private MongoTemplate mongoTemplate;
+	private CagedBusiness cagedBusiness;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<CagedAll>> getAll() {
-		return ResponseEntity.ok().body(allRepository.findAll());
+		return ResponseEntity.ok().body(cagedBusiness.findCagedAll());
 	}
 
 	@RequestMapping(value = "/caged", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<Caged>> getCaged() {
-		return ResponseEntity.ok().body(cagedRepository.findAll());
+		return ResponseEntity.ok().body(cagedBusiness.findCaged());
 	}
 
 	@RequestMapping(value = "/cagedEmpresa", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<CagedEmpresa>> getCagedEmpresa() {
-		return ResponseEntity.ok().body(cagedEmpresaRepository.findAll());
+		return ResponseEntity.ok().body(cagedBusiness.findCagedEmpresa());
 	}
 
 	@RequestMapping(value = "/cagedTrabalhador", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<List<CagedTrabalhador>> getCagedTrabalhador() {
-		return ResponseEntity.ok().body(cagedTrabalhadorRepository.findAll());
+		return ResponseEntity.ok().body(cagedBusiness.findCagedTrabalhador());
 	}
 
 	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET, produces = "application/json")
@@ -65,12 +49,12 @@ public class CagedController {
 		Query query = new Query();
 		// get Caged
 		query.addCriteria(Criteria.where("CnpjCeiCpf").is(cnpj));
-		List<Caged> caged = mongoTemplate.find(query, Caged.class);
+		List<Caged> caged = cagedBusiness.findCagedCnpjCpf(query);
 
 		query = new Query();
 		// get CagedEmpresa
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
-		List<CagedEmpresa> cagedEmpresa = mongoTemplate.find(query, CagedEmpresa.class);
+		List<CagedEmpresa> cagedEmpresa = cagedBusiness.findCagedEmpresaCnpjCpf(query);
 
 		Caged cagedObj = new Caged();
 		cagedObj = caged.isEmpty() ? null : caged.get(0);
@@ -81,7 +65,7 @@ public class CagedController {
 			return ResponseEntity.ok().body(cagedAll);
 		} else {
 			//Even when no data found , return mock result
-			return ResponseEntity.ok().body(allRepository.findAll().get(0));
+			return ResponseEntity.ok().body(cagedBusiness.findCagedAll().get(0));
 		}
 
 	}
@@ -91,12 +75,12 @@ public class CagedController {
 		Query query = new Query();
 		// get Caged
 		query.addCriteria(Criteria.where("CnpjCeiCpf").is(cpf));
-		List<Caged> caged = mongoTemplate.find(query, Caged.class);
+		List<Caged> caged = cagedBusiness.findCagedCnpjCpf(query);
 
 		// get CagedTrabalhador
 		query = new Query();
 		query.addCriteria(Criteria.where("cpf").is(cpf));
-		List<CagedTrabalhador> cagedTrabalhador = mongoTemplate.find(query, CagedTrabalhador.class);
+		List<CagedTrabalhador> cagedTrabalhador = cagedBusiness.findCagedTrabalhadorCnpjCpf(query);
 		Caged cagedObj = new Caged();
 		cagedObj = caged.isEmpty() ? null : caged.get(0);
 		CagedTrabalhador cagedTrabalhadorObj = new CagedTrabalhador();
@@ -107,7 +91,7 @@ public class CagedController {
 			return ResponseEntity.ok().body(cagedAll);
 		} else {
 			//Even when no data found , return mock result
-			return ResponseEntity.ok().body(allRepository.findAll().get(0));
+			return ResponseEntity.ok().body(cagedBusiness.findCagedAll().get(0));
 		}
 
 	}
