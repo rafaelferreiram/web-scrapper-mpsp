@@ -40,4 +40,5 @@ public class CadespBusinessTest {
 
 		Assert.assertEquals("19.811.201/0001-05", listReturn.get(0).getCnpj());
 	}
+	
 }
