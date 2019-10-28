@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -23,8 +24,16 @@ public class JucespBusiness {
 		return jucespRepository.findAll();
 	}
 
-	public List<Jucesp> findCnpj(Query query) {
-		return mongoTemplate.find(query, Jucesp.class);
+	public List<Jucesp> findCnpj(String cnpj) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("cnpj").is(cnpj));
+		List<Jucesp> users = mongoTemplate.find(query, Jucesp.class);
+		if (!users.isEmpty()) {
+			return users;
+		} else {
+			// Even when no data found , return mock result
+			return findAll();
+		}
 	}
 
 }

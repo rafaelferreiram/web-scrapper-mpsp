@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ public class DetranBusiness {
 
 	@Autowired
 	private DetranRepository detranRepository;
-	
+
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
@@ -23,9 +24,16 @@ public class DetranBusiness {
 		return detranRepository.findAll();
 	}
 
-	public List<Detran> findCpf(Query query) {
-		return mongoTemplate.find(query, Detran.class);
+	public List<Detran> findCpf(String cnpj) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("cpf").is(cnpj));
+		List<Detran> users = mongoTemplate.find(query, Detran.class);
+		if (!users.isEmpty()) {
+			return users;
+		} else {
+			// Even when no data found , return mock result
+			return findAll();
+		}
 	}
-	
-	
+
 }
