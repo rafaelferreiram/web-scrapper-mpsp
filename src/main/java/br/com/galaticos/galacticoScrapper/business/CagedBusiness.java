@@ -1,9 +1,11 @@
 package br.com.galaticos.galacticoScrapper.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -50,16 +52,58 @@ public class CagedBusiness {
 		return cagedTrabalhadorRepository.findAll();
 	}
 
-	public List<Caged> findCagedCnpjCpf(Query query) {
-		return mongoTemplate.find(query, Caged.class);
+	public List<CagedAll> findCagedCnpjCpf(String cnpj) {
+		Query query = new Query();
+		List<CagedAll> listaCagedAll = new ArrayList<CagedAll>();
+		// get Caged
+		query.addCriteria(Criteria.where("CnpjCeiCpf").is(cnpj));
+		List<Caged> caged = mongoTemplate.find(query, Caged.class);
+
+		query = new Query();
+		// get CagedEmpresa
+		query.addCriteria(Criteria.where("cnpj").is(cnpj));
+		List<CagedEmpresa> cagedEmpresa = mongoTemplate.find(query, CagedEmpresa.class);
+
+		Caged cagedObj = new Caged();
+		cagedObj = caged.isEmpty() ? null : caged.get(0);
+		CagedEmpresa cagedEmpresaObj = new CagedEmpresa();
+		cagedEmpresaObj = cagedEmpresa.isEmpty() ? null : cagedEmpresa.get(0);
+		CagedAll cagedAll = new CagedAll(cagedObj, cagedEmpresaObj, null);
+		if (cagedEmpresaObj != null || cagedObj != null) {
+			listaCagedAll.add(cagedAll);
+			return listaCagedAll;
+		} else {
+			// Even when no data found , return mock result
+			return findCagedAll();
+		}
 	}
 
 	public List<CagedEmpresa> findCagedEmpresaCnpjCpf(Query query) {
 		return mongoTemplate.find(query, CagedEmpresa.class);
 	}
 
-	public List<CagedTrabalhador> findCagedTrabalhadorCnpjCpf(Query query) {
-		return mongoTemplate.find(query, CagedTrabalhador.class);
+	public List<CagedAll> findCagedTrabalhadorCnpjCpf(String cnpj) {
+		Query query = new Query();
+		List<CagedAll> listaCagedAll = new ArrayList<CagedAll>();
+		// get Caged
+		query.addCriteria(Criteria.where("CnpjCeiCpf").is(cnpj));
+		List<Caged> caged = mongoTemplate.find(query, Caged.class);
+
+		query = new Query();
+		query.addCriteria(Criteria.where("cpf").is(cnpj));
+		List<CagedTrabalhador> cagedTrabalhador = mongoTemplate.find(query, CagedTrabalhador.class);
+		Caged cagedObj = new Caged();
+		cagedObj = caged.isEmpty() ? null : caged.get(0);
+		CagedTrabalhador cagedTrabalhadorObj = new CagedTrabalhador();
+		cagedTrabalhadorObj = cagedTrabalhador.isEmpty() ? null : cagedTrabalhador.get(0);
+		CagedAll cagedAll = new CagedAll(cagedObj, cagedTrabalhadorObj);
+		if (cagedTrabalhadorObj != null || cagedObj != null) {
+			listaCagedAll.add(cagedAll);
+			return listaCagedAll;
+		} else {
+			// Even when no data found , return mock result
+			return findCagedAll();
+		}
 	}
 
 }

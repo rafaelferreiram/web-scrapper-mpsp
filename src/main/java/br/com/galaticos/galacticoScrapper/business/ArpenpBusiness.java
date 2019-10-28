@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -23,8 +24,15 @@ public class ArpenpBusiness {
 		return repository.findAll();
 	}
 
-	public List<Arpenp> find(Query query) {
-		return mongoTemplate.find(query, Arpenp.class);
+	public List<Arpenp> find(String cnpj) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("cnpj").is(cnpj));
+		List<Arpenp> users = mongoTemplate.find(query, Arpenp.class);
+		if (!users.isEmpty()) {
+			return users;
+		} else {
+			return findAll();
+		}
 	}
 
 }

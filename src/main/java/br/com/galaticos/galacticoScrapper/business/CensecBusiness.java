@@ -17,4 +17,26 @@ public class CensecBusiness {
 	public List<Censec> findAll() {
 		return censecRepository.findAll();
 	}
+	
+	public Censec find(String cnpj) {
+		Censec resultSearch = (Censec) censecRepository.findAll().get(0);
+		if (isInTheDocument(resultSearch.getCpfCnpj(), cnpj)) {
+			return resultSearch;
+		} else {
+			// Even when no data found , return mock result
+			return censecRepository.findAll().get(0);
+		}
+	}
+
+	public boolean isInTheDocument(List<String> list, String cnpj) {
+		boolean result = Boolean.FALSE;
+		if (cnpj != null) {
+			for (String cpfDoc : list) {
+				if (cpfDoc.trim().equalsIgnoreCase(cnpj.toString())) {
+					return Boolean.TRUE;
+				}
+			}
+		}
+		return result;
+	}	
 }

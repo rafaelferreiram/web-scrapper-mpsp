@@ -26,25 +26,7 @@ public class CensecController {
 
 	@RequestMapping(value = "/cnpj{id}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<Object> getByCnpj(@RequestParam("cnpj") String cnpj) {
-		Censec result = (Censec) censecBusiness.findAll().get(0);
-		if (isInTheDocument(result.getCpfCnpj(), cnpj)) {
-			return ResponseEntity.ok().body(result);
-		} else {
-			// Even when no data found , return mock result
-			return ResponseEntity.ok().body(censecBusiness.findAll().get(0));
-		}
-	}
-
-	public boolean isInTheDocument(List<String> list, String cnpj) {
-		boolean result = Boolean.FALSE;
-		if (cnpj != null) {
-			for (String cpfDoc : list) {
-				if (cpfDoc.trim().equalsIgnoreCase(cnpj.toString())) {
-					return Boolean.TRUE;
-				}
-			}
-		}
-		return result;
+		return ResponseEntity.ok().body(censecBusiness.find(cnpj));
 	}
 
 }

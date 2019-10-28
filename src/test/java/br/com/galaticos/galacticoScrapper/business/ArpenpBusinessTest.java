@@ -1,4 +1,4 @@
-package br.com.galaticos.galacticoScrapper.repository;
+package br.com.galaticos.galacticoScrapper.business;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import br.com.galaticos.galacticoScrapper.business.ArpenpBusiness;
 import br.com.galaticos.galacticoScrapper.model.Arpenp;
+import br.com.galaticos.galacticoScrapper.repository.ArpenpRepository;
 import junit.framework.Assert;
 
 @SpringBootTest
@@ -40,4 +40,5 @@ public class ArpenpBusinessTest {
 
 		Assert.assertEquals("Antonio TORRES Coutinho", listReturn.get(0).getConjuge());
 	}
+	
 }

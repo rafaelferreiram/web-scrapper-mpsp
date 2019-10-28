@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ public class CadespBusiness {
 
 	@Autowired
 	private CadespRepository cadespRepository;
-	
+
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
@@ -23,9 +24,16 @@ public class CadespBusiness {
 		return cadespRepository.findAll();
 	}
 
-	public List<Cadesp> find(Query query) {
-		return mongoTemplate.find(query, Cadesp.class);
+	public List<Cadesp> find(String cnpj) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("cnpj").is(cnpj));
+		List<Cadesp> users = mongoTemplate.find(query, Cadesp.class);
+		if (!users.isEmpty()) {
+			return mongoTemplate.find(query, Cadesp.class);
+		} else {
+			// Even when no data found , return mock result
+			return findAll();
+		}
 	}
-	
-	
+
 }
