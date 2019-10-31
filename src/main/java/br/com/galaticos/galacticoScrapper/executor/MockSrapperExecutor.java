@@ -31,17 +31,17 @@ public class MockSrapperExecutor {
 
 	@Autowired
 	private MockSrapperJob mockSrapperJob;
-	
+
 	@Autowired
 	private ChromeDriverConfig chromeDriverConfig;
 
 	public void execute() throws InterruptedException, IOException, DocumentException {
 
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/driver/chromedriver");
-		System.setProperty("java.net.preferIPv4Stack" , "true");
+		System.setProperty("java.net.preferIPv4Stack", "true");
 		WebDriver driver = new ChromeDriver();
 		driver = chromeDriverConfig.setConfig(driver);
-		
+
 		// Navigate to URL
 		driver.get(MockConstants.URL);
 
@@ -55,18 +55,17 @@ public class MockSrapperExecutor {
 		driver.quit();
 	}
 
-
 	private void executeScrapperForMocks(WebDriver driver) throws IOException, DocumentException, InterruptedException {
-			mockSrapperJob.accessArisp(driver);
-			mockSrapperJob.accessArpenp(driver);
-			mockSrapperJob.accessCadesp(driver);
-			mockSrapperJob.accessCaged(driver);
-			mockSrapperJob.accessCensec(driver);
-			mockSrapperJob.accessDetran(driver);
-			mockSrapperJob.accessInfocrim(driver);
-			mockSrapperJob.accessJucesp(driver);
-			mockSrapperJob.accessSiel(driver);
-			mockSrapperJob.accessSivec(driver);
+		mockSrapperJob.accessArisp(driver);
+		mockSrapperJob.accessArpenp(driver);
+		mockSrapperJob.accessCadesp(driver);
+		mockSrapperJob.accessCaged(driver);
+		mockSrapperJob.accessCensec(driver);
+		mockSrapperJob.accessDetran(driver);
+		mockSrapperJob.accessInfocrim(driver);
+		mockSrapperJob.accessJucesp(driver);
+		mockSrapperJob.accessSiel(driver);
+		mockSrapperJob.accessSivec(driver);
 	}
 
 }
