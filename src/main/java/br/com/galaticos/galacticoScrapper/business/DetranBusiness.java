@@ -28,12 +28,7 @@ public class DetranBusiness {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cpf").is(cnpj));
 		List<Detran> users = mongoTemplate.find(query, Detran.class);
-		if (!users.isEmpty()) {
-			return users;
-		} else {
-			// Even when no data found , return mock result
-			return findAll();
-		}
+		return users.isEmpty() ? findAll() : users;
 	}
 
 }

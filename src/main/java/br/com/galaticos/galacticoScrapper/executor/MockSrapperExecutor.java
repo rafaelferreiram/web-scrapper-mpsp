@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -34,11 +35,23 @@ public class MockSrapperExecutor {
 
 	@Autowired
 	private ChromeDriverConfig chromeDriverConfig;
+	
+	@Value("${galaticos.webdriver.chrome}")
+	private String webdriver;
+	
+	@Value("${galaticos.webdriver.chrome.directory}")
+	private String directory;
+	
+	@Value("${galaticos.webdriver.chrome.property}")
+	private String property;
+	
+	@Value("${galaticos.webdriver.chrome.property.active}")
+	private String isPropertyActive;
 
 	public void execute() throws InterruptedException, IOException, DocumentException {
 
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/driver/chromedriver");
-		System.setProperty("java.net.preferIPv4Stack", "true");
+		System.setProperty(webdriver, System.getProperty("user.dir") + directory);
+		System.setProperty(property, isPropertyActive);
 		WebDriver driver = new ChromeDriver();
 		driver = chromeDriverConfig.setConfig(driver);
 

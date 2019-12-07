@@ -28,12 +28,7 @@ public class JucespBusiness {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Jucesp> users = mongoTemplate.find(query, Jucesp.class);
-		if (!users.isEmpty()) {
-			return users;
-		} else {
-			// Even when no data found , return mock result
-			return findAll();
-		}
+		return users.isEmpty() ? findAll() : users;
 	}
 
 }

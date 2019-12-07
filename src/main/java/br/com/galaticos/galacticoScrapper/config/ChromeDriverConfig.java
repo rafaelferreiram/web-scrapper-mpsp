@@ -7,13 +7,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ChromeDriverConfig {
+	
+	@Value("${galaticos.webdriver.chrome.downloads}")
+	private String downloadsDirectory;
 
 	public WebDriver setConfig(WebDriver driver) {
-		String downloadFilepath = System.getProperty("user.dir") + "/downloads";
+		String downloadFilepath = System.getProperty("user.dir") + downloadsDirectory;
 
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);

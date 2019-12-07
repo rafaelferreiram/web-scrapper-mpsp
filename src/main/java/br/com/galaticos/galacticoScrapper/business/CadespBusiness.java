@@ -28,12 +28,7 @@ public class CadespBusiness {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Cadesp> users = mongoTemplate.find(query, Cadesp.class);
-		if (!users.isEmpty()) {
-			return mongoTemplate.find(query, Cadesp.class);
-		} else {
-			// Even when no data found , return mock result
-			return findAll();
-		}
+		return users.isEmpty() ? users : findAll();
 	}
 
 }

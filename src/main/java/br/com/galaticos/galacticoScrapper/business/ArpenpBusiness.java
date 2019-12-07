@@ -28,11 +28,7 @@ public class ArpenpBusiness {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("cnpj").is(cnpj));
 		List<Arpenp> users = mongoTemplate.find(query, Arpenp.class);
-		if (!users.isEmpty()) {
-			return users;
-		} else {
-			return findAll();
-		}
+		return users.isEmpty() ? users : findAll();
 	}
 
 }
